@@ -354,7 +354,6 @@ public class HomeFragment extends BaseFragment{
                                 }
                                 convenientBanner = BannerUtils.initImageBar(activity, convenientBanner, adImageUrlList, adMapList);
                             }
-//asdasda
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

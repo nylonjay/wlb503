@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_marginRight="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spann_height"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_start_date"
+            android:layout_width="0dp"
+            android:gravity="center_vertical|left"
+            android:text="@string/start_date"
+            android:textColor="@color/blackText"
+            android:textSize="16sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:id="@+id/re_type_start"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:orientation="horizontal"
+            android:background="@drawable/spanner_head_gray_selector">
+            <TextView
+                android:id="@+id/tv_date_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/spanner_text_blue"/>
+
+            <com.bankscene.bes.welllinkbank.view.IconFontTextView
+                android:id="@+id/icon_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                app:value="@string/wlb_date"
+                app:fontFile="welllbk.ttf"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

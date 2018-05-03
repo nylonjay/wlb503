@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:type="1" />
+    <RelativeLayout
+        android:id="@+id/re_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_height="1dp"
+        android:background="@color/main_theme_color" />
+
+    <WebView
+        android:id="@+id/webView"
+        android:layerType="software"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/progressBar"
+        android:layout_height="match_parent" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="15dp"
+        android:orientation="vertical">
+
+        <com.bankscene.bes.welllinkbank.view.CustomListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/line"
+            android:dividerHeight="0.5dp"/>
+
+    </LinearLayout>
+
+</merge >

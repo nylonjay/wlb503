@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="40dp"
+        android:background="@drawable/_background_toast"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.bankscene.bes.welllinkbank.view.IconFontTextView
+            android:id="@+id/tips_icon"
+            style="@style/TextWrapLight"
+            android:textColor="@color/white"
+            android:textSize="70dp"
+            app:fontFile="iconfont.ttf"
+            app:value="@string/icons_success" />
+
+        <TextView
+            android:id="@+id/tips_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:lineSpacingExtra="3dp"
+            android:text="保存成功"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

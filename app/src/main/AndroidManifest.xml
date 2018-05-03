@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bankscene.bes.welllinkbank">
+
+    <!-- 读取设备状态的权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 读写SDCARD的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 完全的互联网访问权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 获取网络状态的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 获取WIFI状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 相机权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 震动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 闪光灯 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <!-- 获取精确的位置 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 拨打电话权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <!-- 允许一个程序获取信息有关当前或最近运行的任务，一个缩略的任务状态，是否活动等等 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="paul.permission.USE" />
+
+    <!-- android:supportsRtl="true" -->
+    <!-- android:hardwareAccelerated="true" -->
+    <!-- tools:replace="android:allowBackup" -->
+    <!-- android:allowBackup="true" -->
+    <application
+        android:name=".core.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/welllbk_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/welllbk_launcher"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name=".core.SplashActivity"
+            android:theme="@style/ImageTranslucentTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ShareActivity"
+            android:configChanges="locale" />
+
+        <!-- 5a6fe8bbb27b0a4325000101 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5a6fe8bbb27b0a4325000101" />
+
+        <activity
+            android:name=".core.WebViewActivity"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.finance.TransferActivity" />
+        <activity android:name=".activity.finance.TransferPreview" />
+        <activity android:name=".activity.finance.record.TransactionRecord" />
+        <activity android:name=".activity.finance.record.TransactionQueryResult" />
+        <activity android:name=".activity.finance.balance.QueryBalance" />
+        <activity android:name=".activity.finance.quoteprice.ForeignQuotePrice" />
+        <activity android:name=".activity.finance.query.QueryCertificateNum" />
+        <activity android:name=".activity.MenuList" />
+        <!-- <activity android:name=".activity.mine.CodeReset" /> -->
+        <activity
+            android:name=".core.WebDelegate"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name="com.csii.powerenter.PEKbdActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleTask"
+            android:theme="@style/TranslucentAnimStyle" />
+        <activity android:name=".activity.gesture.LoginGestureActivity" />
+        <activity android:name=".activity.mine.password.CodeReset" />
+        <!-- android:theme="@style/activity_switch_translate_right_left" -->
+        <activity android:name=".activity.mine.password.CodeReset2" />
+        <!-- android:theme="@style/activity_switch_translate_right_left" -->
+        <activity android:name=".activity.mine.PersonInfo" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.zhihu.matisse.wlllbk.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths_public" />
+        </provider>
+
+        <activity
+            android:name="com.zhihu.matisse.ui.MatisseActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.zhihu.matisse.internal.ui.AlbumPreviewActivity" />
+        <activity
+            android:name="com.zhihu.matisse.internal.ui.SelectedPreviewActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".core.MenuListViewActivity" />
+        <activity android:name=".activity.mine.gesture.GestureSetResult" />
+        <activity android:name=".activity.mine.gesture.GestureSetPre" />
+        <activity android:name=".activity.mine.AboutUs" />
+        <activity
+            android:name=".activity.Dialog2GetPassWord"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog_style" />
+        <activity android:name=".activity.NoticeInfo.NoticeDetail" />
+        <activity
+            android:name=".activity.PassWordDialogActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog_style" />
+        <activity
+            android:name=".activity.LoginSMSVerify"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog_style" />
+        <activity android:name=".activity.mine.password.TradeCodeReset" />
+        <activity android:name=".activity.LoginTabActivity"></activity>
+    </application>
+
+</manifest>

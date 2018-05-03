@@ -1,0 +1,322 @@
+<resources xmlns:android="http://schemas.android.com/tools">
+
+    Base application theme.
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/main_theme_color</item>
+        <!--<item name="colorButtonNormal">@color/main_theme_color</item>-->
+    </style>
+    <style name="TextWrapLight">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/lightText</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+    <style name="dialog_style" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowEnterAnimation">@anim/slide_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_to_bottom</item>
+        <!-- 是否半透明 -->
+    </style>
+
+    <style name="WeigtWrapContentBase">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="PasswordEdit2Transfer" parent="@style/WeigtWrapContentBase">
+        <item name="android:layout_weight">2.5</item>
+        <item name="android:layout_height">@dimen/height_def_edit</item>
+        <item name="android:layout_width">0dp</item>
+        <!-- <item name="android:gravity">left</item> -->
+        <!-- <item name="android:layout_gravity">right</item> -->
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:ems">6</item>
+        <item name="android:background">@drawable/corner_edit</item>
+        <item name="android:textSize">@dimen/text_label</item>
+
+        <!-- add by wrt -->
+        <!-- <item name="android:paddingTop">@dimen/padding_default</item> -->
+        <!-- <item name="android:paddingBottom">@dimen/padding_default</item> -->
+        <item name="android:paddingLeft">@dimen/input_paddingleft</item>
+        <!-- add end -->
+    </style>
+
+    <style name="TextMatchBlack">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blackText</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="TextMatchLight">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/lightText</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+    <style name="line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/line</item>
+    </style>
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">?attr/colorAccent</item>
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabBackground">@color/white</item>
+        <item name="tabSelectedTextColor">?android:textColorPrimary</item>
+    </style>
+
+
+    <style name="PopupWindow_Style_I">
+        <item name="android:windowEnterAnimation">@anim/in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/out_to_bottom</item>
+    </style>
+
+    <style name="PopupWindow_Style_II">
+        <item name="android:windowEnterAnimation">@anim/in_from_bottom_alpha</item>
+        <item name="android:windowExitAnimation">@anim/out_to_bottom_alpha</item>
+    </style>
+
+    <style name="TextWrapBlack">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blackText</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="TextBigBlack">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blackText</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxEms">3</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="TextBigBlue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blue_title</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:maxEms">3</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+
+    <style name="Texsmallgrey">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/greyText</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:maxEms">3</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="TextWrapGrey">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/greyText</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="notice_bg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="tweetName">
+        <item name="android:textColor">@color/hard_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <!--<item name="android:textStyle">bold</item>-->
+        <item name="android:shadowColor">#44000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="tweetText">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColorLink">#888888</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+    <style name="tweetDate">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#FFCCCCCC</item>
+    </style>
+    <style name="empty_img">
+        <item name="android:layout_width">@dimen/def_height</item>
+        <item name="android:layout_height">@dimen/def_height</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="EditTextWeight">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/greyText</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColorHint">@color/snowText</item>
+    </style>
+
+    <style name="edit_login_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColorHint">@color/lighterText</item>
+        <item name="android:textColor">@color/blackText</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:maxLength">20</item>
+        <item name="android:textSize">@dimen/login_text_size</item>
+        <item name="android:gravity">center_vertical|left</item>
+    </style>
+    <style name="edit_trade_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColorHint">@color/lighterText</item>
+        <item name="android:textColor">@color/blackText</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:maxLength">6</item>
+        <item name="android:textSize">@dimen/login_text_size</item>
+        <item name="android:gravity">center_vertical|left</item>
+    </style>
+
+    <style name="RoundButton_NoMargin">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="RoundButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="TranslucentAnimStyle" parent="@android:style/Theme.Translucent"></style>
+    <style name="TextWeightGrey">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/greyText</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/out_to_right_alpha</item>
+    </style>
+
+    <style name="verifyMobileCode">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">27dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/_selector_color_code</item>
+        <item name="android:textSize">11dp</item>
+        <item name="android:text">获取短信验证码</item>
+        <item name="android:background">@drawable/_button_round_white</item>
+    </style>
+    <!--<code class="hljs" xml="">-->
+        <!--<style name="Anim_fade"-->
+            <!--parent="android:Theme.NoTitleBar"-->
+            <!--type="text/css">-->
+            <!--<item name="android:windowAnimationStyle">@style/fade</item>-->
+        <!--</style>-->
+    <!--</code>-->
+    <!--<code applescript="" class="hljs">-->
+        <!--<style name="fade" parent="@android:style/Animation.Activity" type="text/css">-->
+            <!--<item name="android:activityOpenEnterAnimation">@anim/in_from_right</item>-->
+            <!--<item name="android:activityOpenExitAnimation">@anim/out_to_left</item>-->
+            <!--<item name="android:activityCloseEnterAnimation">@anim/in_from_left</item>-->
+            <!--<item name="android:activityCloseExitAnimation">@anim/out_to_right</item></style>-->
+    <!--</code>-->
+    <!-- 右边滑入左边滑出 -->
+    <style name="activity_switch_translate_right_left" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/translate_right_left</item>
+    </style>
+    <!--
+    第一个表示新的activity创建进入效果，
+    第2个表示activity还没有finish()下退出效果，
+    第3个表示上一个activity返回进入效果，
+    第4个表示的是activity finish()之后退出效果
+    比如有两个activity A和B, A上面有个按钮可以打开B, 点击按钮后，此时A执行第二个动画（android:activityOpenExitAnimation）
+    B执行第一个动画(android:activityOpenEnterAnimation)
+    如此此时按下返回键,B退出，A显示，则此时A执行动画3（android:activityCloseEnterAnimation）
+    B执行动画4（android:activityCloseExitAnimation）
+    -->
+    <style name="translate_right_left" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/act_switch_translate_right2screen</item>
+        <item name="android:activityOpenExitAnimation">@anim/act_switch_translate_screen2left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/act_switch_translate_left2screen</item>
+        <item name="android:activityCloseExitAnimation">@anim/act_switch_translate_screen2right</item>
+    </style>
+
+    <style name="ActionSheetDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/BottomAnimation</item>
+    </style>
+
+    <style name="BottomAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_to_bottom</item>
+    </style>
+    <style name="Matisse.Zhihu" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/zhihu_primary</item>
+        <item name="colorPrimaryDark">@color/zhihu_primary_dark</item>
+        <item name="toolbar">@style/Toolbar.Zhihu</item>
+        <item name="album.dropdown.title.color">@color/zhihu_album_dropdown_title_text</item>
+        <item name="album.dropdown.count.color">@color/zhihu_album_dropdown_count_text</item>
+        <item name="album.element.color">@android:color/white</item>
+        <item name="album.thumbnail.placeholder">@color/zhihu_album_dropdown_thumbnail_placeholder</item>
+        <item name="album.emptyView">@mipmap/ic_empty_zhihu</item>
+        <item name="album.emptyView.textColor">@color/zhihu_album_empty_view</item>
+        <item name="item.placeholder">@color/zhihu_item_placeholder</item>
+        <item name="item.checkCircle.backgroundColor">@color/zhihu_item_checkCircle_backgroundColor</item>
+        <item name="item.checkCircle.borderColor">@color/zhihu_item_checkCircle_borderColor</item>
+        <item name="page.bg">@color/zhihu_page_bg</item>
+        <item name="bottomToolbar.bg">@color/zhihu_bottom_toolbar_bg</item>
+        <item name="bottomToolbar.preview.textColor">@color/zhihu_bottom_toolbar_preview</item>
+        <item name="bottomToolbar.apply.textColor">@color/zhihu_bottom_toolbar_apply</item>
+        <item name="preview.bottomToolbar.back.textColor">@color/zhihu_preview_bottom_toolbar_back_text</item>
+        <item name="preview.bottomToolbar.apply.textColor">@color/zhihu_preview_bottom_toolbar_apply</item>
+        <item name="listPopupWindowStyle">@style/Popup.Zhihu</item>
+        <item name="capture.textColor">@color/zhihu_capture</item>
+    </style>
+    <style name="Toolbar.Zhihu" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    </style>
+
+    <style name="Popup.Zhihu" parent="Widget.AppCompat.Light.ListPopupWindow">
+        <item name="android:popupBackground">@color/zhihu_album_popup_bg</item>
+    </style>
+</resources>

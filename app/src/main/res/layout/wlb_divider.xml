@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:background="@color/background">
+
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/re_toreset"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/finance_item_height"-->
+        <!--android:background="@color/white"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:padding="10dp">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:text="@string/change_login_code"-->
+            <!--android:textColor="@color/blackText"-->
+            <!--android:textSize="16sp"/>-->
+
+        <!--<com.bankscene.bes.welllinkbank.view.IconFontTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/greyText"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:textSize="13sp"-->
+            <!--android:text="@string/wlb_arrow_r"-->
+            <!--app:fontFile="welllbk.ttf"/>-->
+    <!--</RelativeLayout>-->
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/re_toreset"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/finance_item_height"-->
+        <!--android:background="@color/white"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:padding="10dp">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:text="@string/change_login_code"-->
+            <!--android:textColor="@color/blackText"-->
+            <!--android:textSize="16sp"/>-->
+
+        <!--<com.bankscene.bes.welllinkbank.view.IconFontTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/greyText"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:textSize="13sp"-->
+            <!--android:text="@string/wlb_arrow_r"-->
+            <!--app:fontFile="welllbk.ttf"/>-->
+    <!--</RelativeLayout>-->
+
+</View>

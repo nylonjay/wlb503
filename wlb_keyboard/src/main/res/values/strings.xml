@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="please_enter_transcode">請輸入交易密碼</string>
+    <string name="resend_sms">重發短信</string>
+</resources>

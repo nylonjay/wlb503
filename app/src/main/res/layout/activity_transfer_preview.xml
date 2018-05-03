@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bankscene.bes.welllinkbank.activity.finance.TransferPreview">
+    <com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:type="1"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/base_function_block">
+
+        <ListView
+            android:id="@+id/mlistview"
+            android:layout_width="match_parent"
+            android:divider="@null"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_preview"
+        style="@style/RoundButton"
+        android:layout_marginTop="30dp"
+        android:text="@string/trans_cofirm"
+        android:background="@drawable/selector_button_login"/>
+</LinearLayout>

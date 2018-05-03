@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context="com.bankscene.bes.welllinkbank.activity.mine.password.CodeReset2">
+    <com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:type="1"
+        />
+    <LinearLayout
+        android:id="@+id/ll_toreset"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/codereset_item_height"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/used_code"
+            android:textColor="@color/blackText"
+            android:textSize="16sp"/>
+
+         <EditText
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/ed_1"
+             android:inputType="textPassword"
+             android:focusableInTouchMode="false"
+             style="@style/edit_login_style"
+             android:hint="@string/reset_1"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="10dp"
+        android:layout_height="1dp"
+        android:background="@color/white"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/codereset_item_height"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/new_code"
+            android:textColor="@color/blackText"
+            android:textSize="16sp"/>
+
+        <EditText
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ed_2"
+            android:inputType="textPassword"
+            android:focusableInTouchMode="false"
+            style="@style/edit_login_style"
+            android:hint="@string/reset_2"/>
+    </LinearLayout>
+    <View
+        android:layout_width="10dp"
+        android:layout_height="1dp"
+        android:background="@color/white"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/codereset_item_height"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/confirm_newcode"
+            android:textColor="@color/blackText"
+            android:textSize="16sp"/>
+
+        <EditText
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ed_3"
+            android:inputType="textPassword"
+            android:focusableInTouchMode="false"
+            style="@style/edit_login_style"
+            android:hint="@string/reset_3"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_confirm"
+        style="@style/RoundButton"
+        android:layout_marginTop="30dp"
+        android:text="@string/confirm"
+        android:onClick="onTapConfirm"
+        android:background="@drawable/selector_button_login"/>
+</LinearLayout>

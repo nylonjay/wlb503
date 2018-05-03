@@ -1,0 +1,303 @@
+<resources>
+    <string name="app_name">立橋銀行</string>
+
+    <!--<string name="icons_back">&#xe6c9;</string>-->
+    <!--<string name="icons_search">&#xe6c3;</string>-->
+    <!--<string name="icons_set">&#xe6c6;</string>-->
+    <!--<string name="icons_location">&#xe6b8;</string>-->
+    <!--<string name="icons_home">&#xe6d8;</string>-->
+    <!--<string name="icons_more">&#xe6dc;</string>-->
+    <!--<string name="icons_date">&#xe6dd;</string>-->
+    <!--<string name="icons_quit">&#xe6bf;</string>-->
+    <!--<string name="icons_star">&#xe6cc;</string>-->
+    <!--<string name="icons_add">&#xe6bb;</string>-->
+    <!--<string name="icons_share">&#xe6cb;</string>-->
+    <!--<string name="icons_keep">&#xe6cf;</string>-->
+
+    <!--<string name="icons_scan">&#xe6fe;</string>-->
+    <!--<string name="icons_pay">&#xe6ff;</string>-->
+    <!--<string name="icons_collect">&#xe700;</string>-->
+    <!--<string name="icons_searchBold">&#xe727;</string>-->
+    <!--<string name="icons_up">&#xe6d3;</string>-->
+    <!--<string name="icons_hide">&#xe702;</string>-->
+    <!--<string name="icons_noInfo">&#xe6fd;</string>-->
+    <!--<string name="icons_down">&#xe6d4;</string>-->
+
+    <!--<string name="icons_pointRight">&#xe6ca;</string>-->
+    <!--<string name="icons_phone">&#xe6e6;</string>-->
+    <!--<string name="icons_success">&#xe6f7;</string>-->
+    <!--<string name="icons_right">&#xe6b6;</string>-->
+    <!--<string name="icons_icon">&#xe703;</string>-->
+
+    <!--<string name="icons_warn">&#xe73b;</string>-->
+    <!--<string name="icons_clear">&#xe73c;</string>-->
+
+
+    <!--<string name="icons_main0">&#xe6d8;</string>-->
+    <!--<string name="icons_main1">&#xe6f3;</string>-->
+
+    <!--<string name="icons_loan0">&#xe6eb;</string>-->
+    <!--<string name="icons_loan1">&#xe6f2;</string>-->
+
+    <!--<string name="icons_finance0">&#xe6ec;</string>-->
+    <!--<string name="icons_finance1">&#xe6f1;</string>-->
+
+    <!--<string name="icons_life0">&#xe6ed;</string>-->
+    <!--<string name="icons_life1">&#xe6f0;</string>-->
+
+    <!--<string name="icons_user0">&#xe6ee;</string>-->
+    <!--<string name="icons_user1">&#xe6f4;</string>-->
+
+    <string name="wait">請稍後…</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="accountRecord">交易记录 &#xe6d4;"</string>
+    <string name="accountRecordAll">全部记录 &#xe6d4;"</string>
+    <string name="accountRecordIn">充值记录 &#xe6d4;"</string>
+    <string name="accountRecordOut">提现记录 &#xe6d4;"</string>
+
+
+    //功能列表
+    <string name="account_query">賬戶查詢</string>
+    <string name="transaction_history">交易歷史</string>
+    <string name="loan_inquiry">第三方轉賬</string>
+    <string name="synonym_transfer">同名轉賬/兌換</string>
+    <string name="remittance">匯款</string>
+    <string name="exchange_rate_quotation">外匯牌價</string>
+    <string name="subscribe_exchange_foreign_currency">預約兌換外匯</string>
+    <string name="regular_billing">定期開單</string>
+    <string name="add">添加</string>
+    <string name="click_again2quit">再按一次退出程序</string>
+    <string name="Home">首頁</string>
+    <string name="Mine">我的</string>
+    <string name="Notice">公告</string>
+    <string name="finance">金融</string>
+
+    //沈飞给的字体列表
+    <string name="wlb_username">&#xe797;</string>
+    <string name="wlb_arrow_r">&#xe796;</string>
+    <string name="wlb_verifycode">&#xe795;</string>
+    <string name="wlb_setting">&#xe794;</string>
+    <string name="wlb_add">&#xe793;</string>
+    <string name="wlb_arrow_d">&#xe792;</string>
+    <string name="wlb_date">&#xe791;</string>
+    <string name="wlb_code">&#xe790;</string>
+    <string name="wlb_login">&#xe78f;</string>
+    <string name="wlb_delete">&#xe78e;</string>
+    <string name="wlb_arrow_l">&#xe78d;</string>
+    <string name="wlb_arrow">&#xe798;</string>
+    <string name="wlb_home_nomal">&#xe79f;</string>
+    <string name="wlb_finance_nomal">&#xe7a0;</string>
+    <string name="wlb_notice_normal">&#xe79e;</string>
+    <string name="wlb_mine_normal">&#xe79d;</string>
+
+    <string name="wlb_home_selected">&#xe79b;</string>
+    <string name="wlb_finance_selected">&#xe799;</string>
+    <string name="wlb_notice_selected">&#xe79c;</string>
+    <string name="wlb_mine_selected">&#xe79a;</string>
+    // x
+    <string name="wlb_close">&#xe78c;</string>
+    <string name="brvah_loading">加载更多</string>
+    <string name="brvah_load_failed">加載失敗，點我重試</string>
+    <string name="brvah_load_end">沒有更多數據</string>
+    <string name="network_err">網絡錯誤</string>
+    <string name="empty_no_data">暫無數據，點擊重試</string>
+    <string name="empty_network_error">網絡錯誤，點擊重試</string>
+    <string name="my_account">我的賬戶</string>
+    <string name="deposits_product">存款產品</string>
+    <string name="my_regular">我的定期</string>
+    <string name="regular_withdrawal">定期結算</string>
+    <string name="live_rotation">定活互轉</string>
+    <string name="regular_history">定期交易歷史</string>
+    <string name="loan_enquiries">貸款查詢</string>
+    <string name="bank_rate">本行利率</string>
+    <string name="reimbursement_enquiries">還款查詢</string>
+    <string name="transfer">轉賬</string>
+    <string name="personal_info">個人信息</string>
+    <string name="code_setting">密碼設置</string>
+    <string name="language">語言/Language</string>
+    <string name="client_service">客戶服務</string>
+    <string name="about_us">關於我們</string>
+    <string name="starting">正在啟動中......</string>
+    <string name="enter_verify_code">驗證碼</string>
+    <string name="enter_password">密碼</string>
+    <string name="enter_username">用戶名</string>
+    <string name="login">普通登錄</string>
+    <string name="transfer_title">同名戶轉賬/兌換</string>
+    <string name="acc_num">支出賬號</string>
+    <string name="spann_currency">支出貨幣</string>
+    <string name="in_account">存入賬號</string>
+    <string name="in_currency">存入貨幣</string>
+    <string name="deposit_amount">存入金額</string>
+    <string name="pay_amount">支出金額</string>
+    <string name="amount">金額</string>
+    <string name="preview">預覽</string>
+
+    <string name="notice">1.金額輸入分為整數和小數兩部分；#2.澳門元及港元轉賬：24小時服務； #3.人民幣/外幣買賣交易時間：星期壹至五上午7:00-翌日淩晨3:30(個別幣別至下午6:00)； 星期六、日及特殊情況不提供服務，銀行不另行通知； #4.凡於銀行假期內所做的交易，有關您所應付的利息均以緊接假期後首個工作日為起息日。</string>
+    <string name="account_list">賬戶列表</string>
+    <string name="trans_cofirm">確認</string>
+
+    <string name="start_date">起始時間</string>
+    <string name="end_date">結束日期</string>
+    <string name="query_7_day">查詢最近7天</string>
+    <string name="query_60_day">查詢最近60天</string>
+    <string name="query_record">查詢</string>
+    <string name="query_text">1.您可查閱近12個月的交易記錄。</string>
+    <string name="query_accout_trans_record">查詢賬戶交易記錄</string>
+    <string name="account">賬號</string>
+    <string name="currency">貨幣</string>
+    <string name="currency_type">幣別</string>
+    <string name="trade_amount">交易金额</string>
+    <string name="buss_type">業務類型</string>
+    <string name="next_month">下個月</string>
+    <string name="last_pape">上一頁</string>
+    <string name="client_name">客戶名稱</string>
+    <string name="account_num">賬號</string>
+    <string name="usable_balance">可用餘額</string>
+    <string name="query_date">查詢日期</string>
+    <string name="query_trade_in_date">查詢期內交易筆數</string>
+    <string name="query_acc_balance">查詢賬戶餘額</string>
+    <string name="acc_type">賬戶類型：</string>
+    <string name="acnum">賬號</string>
+    <string name="curbla">現時餘額</string>
+    <string name="useful_bla">可用余額</string>
+    <string name="excel_update_time">表格更新時間</string>
+    <string name="oof_in_price">現鈔買入價</string>
+    <string name="oof_out_price">現鈔賣出價</string>
+    <string name="tel_out_price">電匯賣出價</string>
+    <string name="tel_in_price">電匯買入價</string>
+    <string name="query_certi_num">查詢存單編號</string>
+    <string name="certi_num">存單號</string>
+    <string name="out_date">到期日</string>
+    <string name="state">狀態</string>
+    <string name="certi_type">存單類型</string>
+    <string name="back">返回</string>
+    <string name="remerber_usename">記住用戶名</string>
+    <string name="forget_pass">忘記密碼?</string>
+    <string name="languagelist">語言/Language</string>
+
+
+    <string name="otp_login">動態密碼登錄</string>
+    <string name="please_enter_otp">請輸入動態密碼</string>
+    <string name="verify_login">普通登錄</string>
+    <string name="quit">退出登錄</string>
+    <string name="menu_list">菜單列表</string>
+    <string name="logined">已登陸</string>
+    <string name="custom">自定義</string>
+    <string name="my_loans">我的貸款</string>
+    <string name="repayment_history">還款歷史</string>
+    <string name="repayment_plan">還款計劃</string>
+    <string name="repayment_query">應還款查詢</string>
+    <string name="states_msci">各國指數查詢</string>
+    <string name="noble_metal_query">貴金屬查詢</string>
+    <string name="shares_query">股票查詢</string>
+    <string name="save">保存</string>
+    <string name="logout_succed">登出成功</string>
+    <string name="gesture_login">手勢登陸</string>
+    <string name="CODE_RESET">密碼設置</string>
+    <string name="change_login_code">更改登陸密碼</string>
+    <string name="used_code">原登錄密碼</string>
+    <string name="reset_1">請輸入原登陸密碼</string>
+    <string name="reset_2">請輸入新的登錄密碼</string>
+    <string name="reset_3">請再次輸入新的登錄密碼</string>
+    <string name="confirm_newcode">確認新密碼</string>
+    <string name="new_code">新登陸密碼</string>
+    <string name="head_img">頭像</string>
+    <string name="chinese_name">中文姓名</string>
+    <string name="en_name">英文姓名</string>
+    <string name="phone_name">手機號碼</string>
+    <string name="camera">相機</string>
+    <string name="album">從手機相冊選擇</string>
+    <string name="wenxin">温馨提示</string>
+    <string name="cancle_1">取消</string>
+    <string name="error_gif">长宽不小于 %1$dpx，且大小不超过 %2$sM。</string>
+    <string name="capture">拍照</string>
+    <string name="select_from_Album">从手机相册选择</string>
+    <string name="circle">○</string>
+    <string name="wxts_hk">请根据汇款真实用途提供相关证明材料</string>
+    <string name="wxts_kh">为保证成功开户,请务必上传证件正面照,反面照,手持证件照</string>
+    <string name="sure_back">确认并返回</string>
+    <string name="album_name_all">全部</string>
+    <string name="button_preview">预览</string>
+    <string name="button_apply_default">使用</string>
+    <string name="button_apply">使用(%1$d)</string>
+    <string name="button_back">取消</string>
+    <string name="photo_grid_capture">拍一张</string>
+    <string name="empty_text">还没有图片或视频</string>
+    <string name="button_ok">我知道了</string>
+    <string name="error_no_video_activity">沒有支持視頻預覽的應用</string>
+
+    <string name="error_over_count_default">您已经达到最大选择数量</string>
+    <string name="error_over_count">最多只能选择 %1$d 个文件</string>
+    <string name="error_under_quality">图片质量太低</string>
+    <string name="error_over_quality">图片质量太高</string>
+    <string name="error_file_type">不支持的文件类型</string>
+    <string name="error_type_conflict">不能同时选择图片和视频</string>
+    <string name="edit">编辑</string>
+    <string name="delete_string">删除</string>
+
+    <string name="phoneNum">phoneNum</string>
+    <string name="switch_login_type">使用手勢登錄</string>
+    <string name="confirm">確認</string>
+    <string name="error_verify_code">驗證碼錯誤</string>
+    <string name="gesture_setting">設置手勢密碼</string>
+    <string name="gesture_set_succeed">手勢密碼設置成功</string>
+    <string name="gesture_not_same">兩次輸入的密碼不相同，請重新設置</string>
+    <string name="conseal_safty">請設置手勢密碼圖案</string>
+    <string name="redraw">重新繪製</string>
+    <string name="redraw2confirm">再次繪製圖案以確認</string>
+    <string name="atleast4">至少鏈接6個點,請重新繪製</string>
+    <string name="finish">完成</string>
+    <string name="setted">設置成功</string>
+    <string name="show_tail">顯示軌跡</string>
+    <string name="use_gesture_login">使用手勢密碼登陸</string>
+    <string name="changge_gesture_code">修改手勢密碼</string>
+    <string name="incorrect_gs">手勢密碼驗證錯誤</string>
+    <string name="no_gs_setted">您還未開啓手勢登陸或未設置手勢密碼</string>
+    <string name="current_version">當前版本</string>
+    <string name="service_call">服務熱綫</string>
+    <string name="visit_eb">訪問門戶網站</string>
+    <string name="clause">條款與説明</string>
+    <string name="portal_site">門戶網站</string>
+    <string name="share_code">分享二維碼給好友</string>
+    <string name="tel">(853)2878 5222</string>
+    <string name="ABOUT_US">關於我們</string>
+    <string name="others">other</string>
+    <string name="className">className</string>
+    <string name="wlb_hompage">立橋銀行官方網站</string>
+    <string name="UPLOAD_SUCCEED">上傳成功</string>
+    <string name="modify_head_img_succeed">修改頭像成功</string>
+    <string name="notice_detail">公告詳情</string>
+    <string name="empty">--</string>
+    <string name="load_data_fail">讀取公告信息失敗</string>
+    <string name="get_client_info">獲取客戶信息失敗</string>
+    <string name="update_password_ok">修改密碼成功</string>
+    <string name="promot">提示</string>
+    <string name="update_password_failed">修改密碼失敗</string>
+    <string name="enter_cell_phone_code">短信驗證碼</string>
+    <string name="get_cell_code">獲取手機驗證碼</string>
+    <string name="recapture">重新獲取</string>
+    <string name="cell_verify_login">短信驗證碼登錄</string>
+    <string name="sms_verify">請輸入短信驗證碼</string>
+
+    <string name="please_enter_transcode">請輸入交易密碼</string>
+    <string name="delete_char">刪除</string>
+    <string name="enter_opt">請輸入動態驗證碼</string>
+    <string name="enter_vfc">請輸入圖形驗證碼</string>
+    <string name="insert_8_atleast">請最少輸入8位密碼</string>
+    <string name="no_same_type">密碼不能為純數字或純字母</string>
+    <string name="confim2logout">是否放棄密碼修改？用戶將登出</string>
+    <string name="trade_code_reset">修改交易密碼</string>
+    <string name="insert_6_atleast">請最少輸入6位密碼</string>
+    <string name="used_trade_code">原交易密碼</string>
+    <string name="new_trade_code">新交易密碼</string>
+    <string name="confirm_trade_newcode">確認新交易密碼</string>
+
+    <string name="Treset_1">請輸入原交易密碼</string>
+    <string name="Treset_2">請輸入新的交易密碼</string>
+    <string name="Treset_3">請再次輸入新的交易密碼</string>
+    <string name="update_Tpassword_ok">修改交易密碼成功</string>
+    <string name="use_pwd_login">使用密碼登錄</string>
+</resources>

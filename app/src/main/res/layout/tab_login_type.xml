@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginTop="-30dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:id="@+id/ll_pwd_edits"
+    android:background="@color/white"
+    >
+
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_bg_edits">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/now_update"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <include layout="@layout/layout_login_normal"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/today_choose"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <include layout="@layout/layout_login_cell"/>
+                </LinearLayout>
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/good_choose"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:gravity="center"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_tips"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content" />-->
+                    <!--<FrameLayout-->
+                        <!--android:id="@+id/gesture_container"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/tv_tips"-->
+                        <!--android:layout_centerHorizontal="true"-->
+                        <!--android:layout_marginTop="25dp" >-->
+                    <!--</FrameLayout>-->
+                <!--</LinearLayout>-->
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+</LinearLayout>

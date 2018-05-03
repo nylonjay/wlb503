@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_grey"
+    android:id="@+id/rl_key"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/keyboard_back_hide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/greyText"/>
+
+        <FrameLayout
+            android:id="@+id/keyboard_layer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.kh.keyboard.CustomKeyboardView
+                android:id="@+id/keyboard_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:keyBackground="@drawable/keyboard_number_selector_bg"
+                android:keyTextColor="#000000"
+                android:keyPreviewLayout="@null"
+                android:background="@color/light_grey"
+                android:visibility="gone" />
+
+            <com.kh.keyboard.CustomKeyboardView
+                android:id="@+id/keyboard_view_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:background="@color/light_grey"
+                android:focusableInTouchMode="true"
+                android:keyPreviewHeight="90dp"
+                android:keyBackground="@drawable/keyboard_selector_bg"
+                android:keyPreviewLayout="@layout/keyboard_key_preview_layout"
+                android:keyPreviewOffset="45dp"
+                android:keyTextColor="#000000"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone" />
+        </FrameLayout>
+
+    </LinearLayout>
+</RelativeLayout>

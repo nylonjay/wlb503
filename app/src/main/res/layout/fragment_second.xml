@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clipChildren="false"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/re_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/wlb_icon_fiance">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/title_noa_mt">
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_centerInParent="true"
+            android:text="@string/finance"
+            android:textSize="@dimen/title_size"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+            <ImageView
+                android:id="@+id/finace_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/wlb_icon_head"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+        </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+       <LinearLayout
+           android:id="@+id/ll_my_acc"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:orientation="vertical"
+           android:layout_gravity="left"
+           android:gravity="center">
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="37dp"
+               android:src="@mipmap/wlb_icon_myaccount"
+               />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:gravity="center"
+               android:textColor="@color/white"
+               android:textSize="@dimen/mainitem_size_plus"
+               android:text="@string/my_account"/>
+       </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_2transfer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:src="@mipmap/wlb_icon_bg_price"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textSize="@dimen/mainitem_size_plus"
+                android:textColor="@color/white"
+                android:text="@string/transfer"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_third"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_gravity="right"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:src="@mipmap/wlb_icon_bg_usd"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textSize="@dimen/mainitem_size_plus"
+                android:textColor="@color/white"
+                android:text="@string/remittance"/>
+        </LinearLayout>
+    </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/re_container"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/re_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/ll_dot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="horizontal" />
+    </RelativeLayout>
+    <!--<com.bankscene.bes.welllinkbank.view.CustomGridView-->
+        <!--android:id="@+id/cusom_swipe_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_below="@+id/frame_top"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginTop="10dp"/>-->
+    <!--<com.bankscene.bes.welllinkbank.recyclergrid.PageRecyclerView-->
+        <!--android:id="@+id/cusom_swipe_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/re_content"-->
+        <!--android:layout_marginTop="10dp"/>-->
+
+    <!--<com.bankscene.bes.welllinkbank.recyclergrid.PageIndicatorView-->
+        <!--android:id="@+id/indicator"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginTop="5dp" />-->
+
+</RelativeLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="main_theme_color">#BED336</color>
+    <color name="main_theme_color_dark">#BBB000</color>
+    <color name="red">#d13231</color>
+    <color name="accountRed">#ff4b16</color>
+    <color name="yellow">#ff9c00</color>
+    <color name="blue">#5fa0e0</color>
+    <color name="transparent">#00000000</color>
+    <!--<color name="titleBackground">#fafafa</color>-->
+    <color name="titleBackground">#ffffff</color>
+    <color name="background">#f4f4f4</color>
+    <color name="toastBackground">#80000000</color>
+    <color name="cardBackground">#383838</color>
+    <color name="line">#eaeaea</color>
+    <color name="actionBarText">#444444</color>
+    <color name="actionBarIcon">#666666</color>
+    <color name="lifeTopIcon">#606978</color>
+    <color name="maskBackground">#80000000</color>
+    <color name="dark_grey">#ECECEC</color>
+
+    <color name="keyboard">#d9dbdf</color>
+    <color name="scanIcon">#99ffffff</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_text">#ffffffff</color>
+
+
+    <color name="white">#ffffff</color>
+    <color name="snowText">#eaeaea</color>
+    <color name="lighterText">#bbbbbb</color>
+    <color name="lightText">#999999</color>
+    <color name="greyText">#666666</color>
+    <color name="blackText">#333333</color>
+    <color name="redText">#d13231</color>
+    <color name="dark_blue">#13227a</color>
+    <color name="brownText">#633d07</color>
+    <color name="greenText">#0c9041</color>
+    <color name="yellowText">#eebb2d</color>
+    <color name="blue_title">#5C468A</color>
+    <color name="quote_item_bg">#F5F6EF</color>
+
+
+    <color name="brownButton">#b0937a</color>
+    <color name="greyButton">#c6c6c6</color>
+    <color name="redButton">#d13231</color>
+    <color name="darkRedButton">#a72827</color>
+    <color name="lightRedButton">#f6d6d6</color>
+    <color name="whiteButton">#f7f7f7</color>
+    <color name="whiteButtonLine">#cfd0cf</color>
+    <color name="whiteButtonText">#d8d8d8</color>
+
+    <color name="lifeTab">#fd7048</color>
+    <color name="lifePrice">#f55744</color>
+    <color name="financePercent">#ff801a</color>
+    <color name="progressStart">#f76d1d</color>
+    <color name="progressEnd">#efefef</color>
+    <color name="iconBackground">#fbf5e8</color>
+    <color name="iconText">#cca351</color>
+    <color name="submenu_color">#5b5b5b</color>
+    <color name="bg_color_new2">#e0dddd</color>
+
+    <color name="hard_color">#48495f</color>
+    <color name="clickspan_color">#00ddb6</color>
+    <color name="dull_blue">#3B4BBF</color>
+    <color name="item_bg">#FFFFFF</color>
+    <color name="spinner_stroker">#7E7E7E</color>
+    <color name="spinner_gray_solid">#F4F4F4</color>
+    <color name="spanner_text_blue">#5C468A</color>
+    <color name="blue_text">#4A90E2</color>
+    <color name="login_edits_bg">#ECECEC</color>
+
+    <color name="conn_line_color">#BED336</color>
+    <color name="text_default_color">#9d9d9d</color>
+    <color name="three_f4">#f4f4f4</color>
+    <color name="nylon_blue">#0077FE</color>
+    <color name="preview_bottom_toolbar_bg">#CC000000</color>
+    <color name="preview_bottom_size">#61FFFFFF</color>
+
+    <color name="gesture_ok">#676867</color>
+    <color name="lightgray">#D3D3D3</color>
+    <color name="text_color">#434343</color>
+    <color name="gray">#808080</color>
+</resources>

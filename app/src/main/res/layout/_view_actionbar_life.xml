@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/titleBackground"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/statusBar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/lifeView"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <com.bankscene.bes.welllinkbank.view.IconFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/actionBarIcon"
+                    android:textSize="28dp"
+                    app:fontFile="welllbk.ttf"
+                    app:value="@string/icons_location" />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:maxLines="1"
+                    android:text="南昌"
+                    android:textColor="@color/actionBarText"
+                    android:textSize="13dp" />
+
+
+            </LinearLayout>
+
+            <com.bankscene.bes.financialmall.view.IconFontTextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/actionBarIcon"
+                android:textSize="28dp"
+                app:fontFile="welllbk.ttf"
+                app:value="@string/icons_scan" />
+
+            <com.bankscene.bes.financialmall.view.IconFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:gravity="center"
+                android:textColor="@color/actionBarIcon"
+                android:textSize="28dp"
+                app:fontFile="welllbk.ttf"
+                app:value="@string/icons_pay" />
+
+            <com.bankscene.bes.financialmall.view.IconFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:gravity="center"
+                android:textColor="@color/actionBarIcon"
+                android:textSize="28dp"
+                app:fontFile="welllbk.ttf"
+                app:value="@string/icons_collect" />
+
+            <com.bankscene.bes.financialmall.view.IconFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:gravity="center"
+                android:textColor="@color/actionBarIcon"
+                android:textSize="28dp"
+                app:fontFile="welllbk.ttf"
+                app:value="@string/icons_search" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/actionBarView"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <LinearLayout
+                android:id="@+id/left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:minWidth="60dp"
+                android:orientation="horizontal">
+
+                <com.bankscene.bes.financialmall.view.IconFontTextView
+                    android:id="@+id/leftIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/actionBarIcon"
+                    android:textSize="20dp"
+                    app:fontFile="welllbk.ttf"
+                    app:value="@string/icons_back" />
+
+                <TextView
+                    android:id="@+id/leftText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/actionBarText"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <com.bankscene.bes.financialmall.view.IconFontTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:maxLines="1"
+                android:minWidth="60dp"
+                android:text="标题"
+                android:textColor="@color/blackText"
+                android:textSize="16dp"
+                app:fontFile="welllbk.ttf" />
+
+            <LinearLayout
+                android:id="@+id/right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical|right"
+                android:minWidth="60dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/rightText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/actionBarText"
+                    android:textSize="12dp" />
+
+
+                <com.bankscene.bes.financialmall.view.IconFontTextView
+                    android:id="@+id/rightIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/actionBarIcon"
+                    android:textSize="20dp"
+                    app:fontFile="welllbk.ttf"
+                    app:value="" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

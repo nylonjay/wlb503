@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context="com.bankscene.bes.welllinkbank.activity.mine.gesture.GestureSetResult">
+    <com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:type="1"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@mipmap/gesture_ok"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/setted"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/gesture_ok"/>
+        
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_ok"
+        style="@style/RoundButton"
+        android:layout_marginTop="20dp"
+        android:text="@string/finish"
+        android:onClick="onTapOK"
+        android:background="@drawable/selector_button_login"/>
+
+
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:clipChildren="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--<com.bankscene.bes.welllinkbank.view.translucent.Translu1centActionBar-->
+        <!--android:id="@+id/actionBar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:type="1"-->
+        <!--/>-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/bg_group"/>
+    <ImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@mipmap/icon_photo"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="-20dp"
+        />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TextWrapBlack"
+            android:text="刘德华"
+            />
+        <TextView
+            android:id="@+id/tv_phone_num"
+            style="@style/TextWrapLight"
+            android:text="1365656556"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

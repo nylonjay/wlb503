@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/re_toreset"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mine_item_height"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/change_login_code"
+            android:layout_centerVertical="true"
+            android:textColor="@color/blackText"
+            android:textSize="16sp"/>
+
+        <com.bankscene.bes.welllinkbank.view.IconFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/greyText"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="13sp"
+            android:layout_marginRight="10dp"
+            android:text="@string/wlb_arrow_r"
+            app:fontFile="welllbk.ttf"/>
+        
+        <ToggleButton
+            android:id="@+id/tg_btn"
+            android:layout_width="44dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:layout_height="28dp" />
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@color/background"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentBottom="true"/>-->
+    </RelativeLayout>
+</LinearLayout>

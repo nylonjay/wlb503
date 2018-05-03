@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.bankscene.bes.welllinkbank.MainActivity">
+
+    <com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+    <com.bankscene.bes.welllinkbank.view.CustomViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="48.5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48.5dp"
+            android:orientation="vertical">
+
+            <View
+                style="@style/line" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLayout"
+                style="@style/CustomTabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/tabMask"
+            android:layout_width="match_parent"
+            android:layout_height="48.5dp"
+            android:background="@color/maskBackground"
+            android:visibility="gone" />
+
+    </FrameLayout>
+    <!--<FrameLayout-->
+        <!--android:id="@+id/content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+    <!--</FrameLayout>-->
+</LinearLayout>

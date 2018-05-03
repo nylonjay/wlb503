@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.bankscene.bes.welllinkbank.view.IconFontTextView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/snowText"
+        android:textSize="45dp"
+        app:fontFile="iconfont.ttf"
+        app:value="@string/icons_star" />
+
+    <TextView
+        android:id="@+id/text"
+        style="@style/TextWrapGrey"
+        android:textSize="12sp"
+        android:layout_marginTop="5dp" />
+
+</LinearLayout>

@@ -142,7 +142,6 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
                         try {
                             JSONObject jsonObject=new JSONObject(info.getRetDetail());
                             String result=jsonObject.getString("List");
-                            Trace.e("detail===",result);
                             DBHelper.insert(new Data(DataKey.notice,result));
 //                            checkPermissions(needPermissions);
 

@@ -325,6 +325,12 @@ public class HomeFragment extends BaseFragment{
                                     map.put("url",adb.getAdvertUrl());
                                     adMapList.add(map);
                                 }
+
+//                                Map map=new HashMap();
+////                                    map.put("url",adb.getAdvertUrl());
+//                                adImageUrlList.add("http://c.hiphotos.baidu.com/image/pic/item/d50735fae6cd7b89acbea9df032442a7d8330e9f.jpg");
+//                                map.put("url","http://c.hiphotos.baidu.com/image/pic/item/d50735fae6cd7b89acbea9df032442a7d8330e9f.jpg");
+//                                adMapList.add(map);
                                 convenientBanner = BannerUtils.initImageBar(activity, convenientBanner, adImageUrlList, adMapList);
                             }
                         } catch (JSONException e) {

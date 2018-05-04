@@ -15,6 +15,8 @@ import android.webkit.CookieSyncManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -60,7 +62,9 @@ public class WebViewActivity extends ShareActivity implements View.OnClickListen
     public int setLayoutId() {
         return R.layout.activity_webview;
     }
-
+    public void Close2Home(View v){
+        WebViewActivity.this.finish();
+    }
     @Override
     public void setActionBar() {
 //        actionBar.setActionBar(title, TranslucentActionBar.ICON_BACK, "",
@@ -179,6 +183,13 @@ public class WebViewActivity extends ShareActivity implements View.OnClickListen
                 if (null!=progressBar){
                     progressBar.setVisibility(View.GONE);
                 }
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+//                super.onReceivedError(view, request, error);
+                setStatusBarColor(WebViewActivity.this,R.color.error_404);
+                findViewById(R.id.ll_error).setVisibility(View.VISIBLE);
             }
         });
 

@@ -1,12 +1,15 @@
 package com.bankscene.bes.welllinkbank.core;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +18,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -37,6 +42,7 @@ import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.gyf.barlibrary.ImmersionBar;
+import com.lzy.imagepicker.view.SystemBarTintManager;
 
 import java.util.Locale;
 import java.util.Map;
@@ -105,7 +111,37 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         setListener();
     }
-
+    public static void setStatusBarColor(Activity activity, int colorId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = activity.getWindow();
+            window.setStatusBarColor(activity.getResources().getColor(colorId));
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //使用SystemBarTint库使4.4版本状态栏变色，需要先将状态栏设置为透明
+            transparencyBar(activity);
+            SystemBarTintManager tintManager = new SystemBarTintManager(activity);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(colorId);
+        }
+    }
+    @TargetApi(19)
+    public static void transparencyBar(Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = activity.getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            //api21新增接口
+            window.setStatusBarColor(Color.TRANSPARENT);
+            window.setNavigationBarColor(Color.TRANSPARENT);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = activity.getWindow();
+            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+    }
     @Override
     public void recreate() {
         super.recreate();

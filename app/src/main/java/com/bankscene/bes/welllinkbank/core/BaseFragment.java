@@ -1,7 +1,6 @@
 package com.bankscene.bes.welllinkbank.core;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -16,15 +15,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bankscene.bes.welllinkbank.R;
-import com.bankscene.bes.welllinkbank.Util.SharedPreferenceUtil;
 import com.bankscene.bes.welllinkbank.Util.Trace;
 import com.bankscene.bes.welllinkbank.Util.dialog.DialogUtils;
 import com.bankscene.bes.welllinkbank.Util.notice.NoticeUtils;
 import com.bankscene.bes.welllinkbank.adapter.common.GlideCircleTransform;
 import com.bankscene.bes.welllinkbank.adapter.common.GlideRoundTransform;
 import com.bankscene.bes.welllinkbank.adapter.common.ImageShape;
-import com.bankscene.bes.welllinkbank.biz.FinanceMainBiz;
-import com.bankscene.bes.welllinkbank.view.AccountSpannerItem;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -32,9 +28,6 @@ import com.gyf.barlibrary.ImmersionBar;
 import com.okhttplib.HttpInfo;
 import com.okhttplib.OkHttpUtil;
 import com.okhttplib.callback.Callback;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -143,9 +136,6 @@ public abstract class BaseFragment extends Fragment {
                 callback.onFailure(info);
             }
         });
-    }
-    public Map GetUserIndexMap(){
-        return  (Map) SharedPreferenceUtil.get(activity,BaseApplication.USER_INDEX,null);
     }
 
     @Override

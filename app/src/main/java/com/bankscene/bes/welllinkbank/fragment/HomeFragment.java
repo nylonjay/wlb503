@@ -1,59 +1,34 @@
 package com.bankscene.bes.welllinkbank.fragment;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bankscene.bes.welllinkbank.R;
-import com.bankscene.bes.welllinkbank.Util.SharedPreferenceUtil;
-import com.bankscene.bes.welllinkbank.Util.ToastUtils;
 import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.activity.LoginActivity;
 import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
 import com.bankscene.bes.welllinkbank.activity.MenuList;
-import com.bankscene.bes.welllinkbank.activity.finance.TransferActivity;
-import com.bankscene.bes.welllinkbank.activity.finance.balance.QueryBalance;
-import com.bankscene.bes.welllinkbank.activity.finance.query.QueryCertificateNum;
-import com.bankscene.bes.welllinkbank.activity.finance.quoteprice.ForeignQuotePrice;
-import com.bankscene.bes.welllinkbank.activity.finance.record.TransactionRecord;
 import com.bankscene.bes.welllinkbank.adapter.GridViewAdapter;
 import com.bankscene.bes.welllinkbank.adapter.ViewPagerAdapter;
 import com.bankscene.bes.welllinkbank.biz.AdvertiseBiz;
-import com.bankscene.bes.welllinkbank.biz.FinanceMainBiz;
 import com.bankscene.bes.welllinkbank.biz.MenuBiz;
 import com.bankscene.bes.welllinkbank.biz.MessageEvent;
 import com.bankscene.bes.welllinkbank.common.CommDictAction;
 import com.bankscene.bes.welllinkbank.common.Constant;
 import com.bankscene.bes.welllinkbank.core.BaseApplication;
 import com.bankscene.bes.welllinkbank.core.BaseFragment;
-import com.bankscene.bes.welllinkbank.core.State;
 import com.bankscene.bes.welllinkbank.core.WebViewActivity;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
-import com.bankscene.bes.welllinkbank.recyclergrid.PageIndicatorView;
-import com.bankscene.bes.welllinkbank.recyclergrid.PageRecyclerView;
-import com.bankscene.bes.welllinkbank.recyclergrid.RecyclerViewSpacesItemDecoration;
 import com.bankscene.bes.welllinkbank.view.translucent.ActionBarClickListener;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.utils.BannerUtils;
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.okhttplib.HttpInfo;
 import com.okhttplib.annotation.RequestType;
@@ -70,11 +45,9 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
 import de.greenrobot.event.ThreadMode;
-import okhttp3.Response;
 
 /**
  * Created by Nylon on 2018/1/26.10:22
@@ -285,7 +258,7 @@ public class HomeFragment extends BaseFragment{
 //        gridDataList = new FinanceMainBiz(activity).getFinanceData();
         Trace.e(TAG,"开始初始化数据");
         gridDataList=new ArrayList<>();
-        String jsonListTest= SharedPreferenceUtil.get(activity,BaseApplication.USER_INDEX,"")+"";
+        String jsonListTest= DBHelper.getDataByKey(DataKey.user_index);
         Trace.e("userindex=====",jsonListTest);
         Type type1=new TypeToken<List<MenuBiz>>(){}.getType();
         ArrayList<MenuBiz> DataList=gson.fromJson(jsonListTest, type1);

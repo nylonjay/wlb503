@@ -1,8 +1,6 @@
 package com.bankscene.bes.welllinkbank.activity.finance;
 
 import android.content.Intent;
-import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,9 +11,6 @@ import android.widget.TextView;
 
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.ShareActivity;
-import com.bankscene.bes.welllinkbank.Util.ToastUtils;
-import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.activity.LoginActivity;
 import com.bankscene.bes.welllinkbank.view.AccountSpannerItem;
 import com.bankscene.bes.welllinkbank.view.translucent.ActionBarClickListener;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
@@ -23,7 +18,6 @@ import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class TransferActivity extends ShareActivity {
     @BindView(R.id.actionBar)

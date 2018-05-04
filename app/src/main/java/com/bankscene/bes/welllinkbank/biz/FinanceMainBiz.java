@@ -39,19 +39,19 @@ public class FinanceMainBiz {
             R.string.remittance,
             R.string.my_loans,R.string.repayment_history,R.string.repayment_plan,
             R.string.repayment_query,R.string.bank_rate,R.string.exchange_rate_quotation,R.string.states_msci,
-            R.string.noble_metal_query,R.string.shares_query,
+            R.string.noble_metal_query,R.string.shares_query
 //            R.string.custom
     };
 
     static Object[] function_icons={
-            R.drawable.wlb_icon_personinfo, R.drawable.wlb_icon_history, R.drawable.wlb_icon_money,
-            R.drawable.wlb_icon_exchange,R.drawable.wlb_icon_myregular, R.drawable.wlb_icon_regular,
-            R.drawable.wlb_icon_menu,
-            R.drawable.wlb_icon_remmitance,
-            R.drawable.wlb_icon_myloan, R.drawable.wlb_icon_repay_his, R.drawable.wlb_icon_plan,
-            R.drawable.wlb_icon_repay_query,R.drawable.wlb_icon_rate, R.drawable.wlb_icon_curey,
-            R.drawable.wlb_icon_states,
-            R.drawable.wlb_noble_metal, R.drawable.wlb_shares_q ,
+            R.mipmap.wlb_icon_personinfo, R.mipmap.wlb_icon_history, R.mipmap.wlb_icon_money,
+            R.mipmap.wlb_icon_exchange,R.mipmap.wlb_icon_myregular, R.mipmap.wlb_icon_regular,
+            R.mipmap.wlb_icon_menu,
+            R.mipmap.wlb_icon_remmitance,
+            R.mipmap.wlb_icon_myloan, R.mipmap.wlb_icon_repay_his, R.mipmap.wlb_icon_plan,
+            R.mipmap.wlb_icon_repay_query,R.mipmap.wlb_icon_rate, R.mipmap.wlb_icon_curey,
+            R.mipmap.wlb_icon_states,
+            R.mipmap.wlb_noble_metal, R.mipmap.wlb_shares_q ,
 //            R.mipmap.wlb_icon_custom,
     };
 

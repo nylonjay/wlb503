@@ -3,23 +3,19 @@ package com.bankscene.bes.welllinkbank.activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.widget.ListView;
 
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.ShareActivity;
-import com.bankscene.bes.welllinkbank.Util.SharedPreferenceUtil;
 import com.bankscene.bes.welllinkbank.Util.Trace;
 import com.bankscene.bes.welllinkbank.adapter.MenuAdapter;
-import com.bankscene.bes.welllinkbank.adapter.MenuListAdapter;
 import com.bankscene.bes.welllinkbank.biz.FinanceMainBiz;
 import com.bankscene.bes.welllinkbank.biz.MenuBiz;
 import com.bankscene.bes.welllinkbank.biz.MessageEvent;
-import com.bankscene.bes.welllinkbank.common.Constant;
 import com.bankscene.bes.welllinkbank.core.BaseApplication;
 import com.bankscene.bes.welllinkbank.core.BaseFragment;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
+import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
-import com.bankscene.bes.welllinkbank.view.CustomListView;
 import com.bankscene.bes.welllinkbank.view.translucent.ActionBarClickListener;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
 import com.google.gson.Gson;
@@ -27,9 +23,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import de.greenrobot.event.EventBus;
@@ -60,7 +54,7 @@ public class MenuList extends ShareActivity {
             public void onRightClick() {
                 Type type=new TypeToken<List<MenuBiz>>(){}.getType();
                 String jsonListTest=gson.toJson(mbs, type);
-                SharedPreferenceUtil.put(MenuList.this,BaseApplication.USER_INDEX,jsonListTest);
+                DBHelper.insert(new Data(DataKey.user_index,jsonListTest));
                 EventBus.getDefault().post(new MessageEvent(BaseFragment.REFRESHGRIDVIEW));
                 MenuList.this.finish();
                 //將功能選擇信息保存在數據庫
@@ -79,7 +73,7 @@ public class MenuList extends ShareActivity {
         super.initView();
 //        map= GetUserIndexMap();
         gson=new Gson();
-        String jsonListTest=SharedPreferenceUtil.get(this,BaseApplication.USER_INDEX,"")+"";
+        String jsonListTest=DBHelper.getDataByKey(DataKey.user_index);
         if (TextUtils.isEmpty(jsonListTest)){
             mbs=new ArrayList<>();
             FinanceMainBiz fbz=new FinanceMainBiz(this);

@@ -1,20 +1,11 @@
 package com.bankscene.bes.welllinkbank.activity.NoticeInfo;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.bankscene.bes.welllinkbank.R;
-import com.bankscene.bes.welllinkbank.Util.FileUtil;
-import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.activity.LoginActivity;
-import com.bankscene.bes.welllinkbank.activity.mine.PersonInfo;
 import com.bankscene.bes.welllinkbank.common.CommDictAction;
 import com.bankscene.bes.welllinkbank.core.HttpActivity;
 import com.bankscene.bes.welllinkbank.pulltorefresh.entity.Status;

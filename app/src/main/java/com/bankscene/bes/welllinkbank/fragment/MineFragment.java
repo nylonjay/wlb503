@@ -1,18 +1,12 @@
 package com.bankscene.bes.welllinkbank.fragment;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -21,16 +15,14 @@ import android.widget.TextView;
 
 import com.bankscene.bes.welllinkbank.MainActivity;
 import com.bankscene.bes.welllinkbank.R;
-import com.bankscene.bes.welllinkbank.Util.FileUtil;
 import com.bankscene.bes.welllinkbank.Util.Trace;
 import com.bankscene.bes.welllinkbank.Util.notice.NoticeUtils;
-import com.bankscene.bes.welllinkbank.activity.LoginActivity;
+import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
 import com.bankscene.bes.welllinkbank.activity.mine.AboutUs;
 import com.bankscene.bes.welllinkbank.activity.mine.password.CodeReset;
 import com.bankscene.bes.welllinkbank.activity.mine.PersonInfo;
 import com.bankscene.bes.welllinkbank.adapter.MineAdapter;
 import com.bankscene.bes.welllinkbank.adapter.common.ImageShape;
-import com.bankscene.bes.welllinkbank.biz.ClientInfoBiz;
 import com.bankscene.bes.welllinkbank.biz.MessageEvent;
 import com.bankscene.bes.welllinkbank.common.CommDictAction;
 import com.bankscene.bes.welllinkbank.common.Constant;
@@ -41,7 +33,6 @@ import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
 import com.bankscene.bes.welllinkbank.module.User;
-import com.bankscene.bes.welllinkbank.view.CustomListView;
 import com.okhttplib.HttpInfo;
 import com.okhttplib.OkHttpUtil;
 import com.okhttplib.annotation.RequestType;
@@ -51,7 +42,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -60,7 +50,6 @@ import butterknife.BindView;
 import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
 import de.greenrobot.event.ThreadMode;
-import okhttp3.Response;
 
 /**
  * Created by Nylon on 2018/2/1.10:44
@@ -216,7 +205,7 @@ public class MineFragment extends BaseFragment{
                             activity.startActivity(in);
                         }else {
 //                    DBHelper.getInstance().clear();
-                            Intent in=new Intent(activity,LoginActivity.class);
+                            Intent in=new Intent(activity,LoginTabActivity.class);
                             in.putExtra(activity.getResources().getString(R.string.className),PersonInfo.class.getName());
                             activity.startActivity(in);
                         }
@@ -272,7 +261,7 @@ public class MineFragment extends BaseFragment{
                             activity.startActivity(in);
                         }else {
 //                    DBHelper.getInstance().clear();
-                            Intent in=new Intent(activity,LoginActivity.class);
+                            Intent in=new Intent(activity,LoginTabActivity.class);
                             in.putExtra(activity.getResources().getString(R.string.className),CodeReset.class.getName());
                             activity.startActivity(in);
                         }

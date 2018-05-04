@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bankscene.bes.welllinkbank">
-    <!--test  aqdqwdqwd-->
+    <!--test 503-->
     <!-- 读取设备状态的权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 读写SDCARD的权限 -->
@@ -77,9 +77,6 @@
             android:name=".core.WebViewActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.LoginActivity"
-            android:launchMode="singleTask" />
         <activity android:name=".activity.finance.TransferActivity" />
         <activity android:name=".activity.finance.TransferPreview" />
         <activity android:name=".activity.finance.record.TransactionRecord" />

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -14,7 +13,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -23,18 +21,15 @@ import android.widget.Toast;
 
 import com.bankscene.bes.welllinkbank.MainActivity;
 import com.bankscene.bes.welllinkbank.R;
-import com.bankscene.bes.welllinkbank.Util.SharedPreferenceUtil;
 import com.bankscene.bes.welllinkbank.Util.Trace;
 import com.bankscene.bes.welllinkbank.Util.dialog.DialogCallBack;
 import com.bankscene.bes.welllinkbank.Util.dialog.DialogUtils;
 import com.bankscene.bes.welllinkbank.Util.lock.LockUtils;
 import com.bankscene.bes.welllinkbank.Util.notice.NoticeUtils;
-import com.bankscene.bes.welllinkbank.activity.LoginActivity;
-import com.bankscene.bes.welllinkbank.activity.gesture.LoginGestureActivity;
+import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
 import com.bankscene.bes.welllinkbank.adapter.common.GlideCircleTransform;
 import com.bankscene.bes.welllinkbank.adapter.common.GlideRoundTransform;
 import com.bankscene.bes.welllinkbank.adapter.common.ImageShape;
-import com.bankscene.bes.welllinkbank.biz.FinanceMainBiz;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
@@ -43,7 +38,6 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.gyf.barlibrary.ImmersionBar;
 
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -117,13 +111,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.recreate();
     }
 
-    public Map GetUserIndexMap(){
-        Gson gson=new Gson();
-
-        Map map= gson.fromJson(SharedPreferenceUtil.get(this,BaseApplication.USER_INDEX,"").toString(),Map.class);
-        Trace.e("GETUSERINDEXMAP:",map.toString());
-        return  map;
-    }
     public void addDisposable(Disposable disposable) {
         if (compositeDisposable == null) {
             compositeDisposable = new CompositeDisposable();
@@ -446,7 +433,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 //            startActivity(new Intent(this, LoginGestureActivity.class));
 //        } else {
 //        }
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, LoginTabActivity.class));
     }
 
     public TranslucentActionBar getTranslucentActionBar() {

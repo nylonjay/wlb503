@@ -6,28 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.bankscene.bes.welllinkbank.R;
-import com.bankscene.bes.welllinkbank.Util.SharedPreferenceUtil;
-import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.biz.CerNumBiz;
-import com.bankscene.bes.welllinkbank.biz.FinanceMainBiz;
 import com.bankscene.bes.welllinkbank.biz.MenuBiz;
-import com.bankscene.bes.welllinkbank.core.BaseApplication;
-import com.bankscene.bes.welllinkbank.db1.DBHelper;
-import com.bankscene.bes.welllinkbank.db1.Data;
-import com.bankscene.bes.welllinkbank.db1.DataKey;
 import com.bankscene.bes.welllinkbank.view.togglebtn.togglebutton.ToggleButton;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Nylon on 2018/3/18.22:42

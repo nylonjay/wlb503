@@ -1,6 +1,8 @@
 package com.bankscene.bes.welllinkbank.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,7 +72,10 @@ public class GridViewAdapter extends BaseAdapter {
         }
         //计算一下位置
         int pos = position + curIndex*pageSize;
-        vh.iv.setImageResource(mDatas.get(pos).getIcon_Rsid());
+//        Drawable drawable=mContext.getResources().getDrawable(mDatas.get(pos).getIcon_Rsid());
+        Drawable drawable= ContextCompat.getDrawable(mContext,mDatas.get(pos).getIcon_Rsid());
+        vh.iv.setImageDrawable(drawable);
+//        vh.iv.setImageResource(mDatas.get(pos).getIcon_Rsid());
         vh.tv.setText(mContext.getResources().getString( mDatas.get(pos).getMenu_Name()));
 //        Trace.e("Gridview.getView",mContext.getResources().getString( mDatas.get(pos).getMenu_Name()));
         int itemWIth= BaseApplication.WIDTH/ CommDictAction.gridColumn-4;

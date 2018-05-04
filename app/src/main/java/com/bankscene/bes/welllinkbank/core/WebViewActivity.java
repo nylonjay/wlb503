@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -25,31 +24,15 @@ import android.widget.RelativeLayout;
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.ShareActivity;
 import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.activity.LoginActivity;
+import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
 import com.bankscene.bes.welllinkbank.activity.PassWordDialogActivity;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
-import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
 import com.bankscene.bes.welllinkbank.view.powerwebview.powerlib.PowerWebView;
-import com.bankscene.bes.welllinkbank.view.powerwebview.webviewbridge.CustomChromeClient;
-import com.bankscene.bes.welllinkbank.view.powerwebview.webviewutil.HostJsScope;
 import com.bankscene.bes.welllinkbank.view.translucent.ActionBarClickListener;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
-import com.okhttplib.OkHttpUtil;
-import com.okhttplib.cookie.cache.SetCookieCache;
-import com.okhttplib.cookie.persistence.SharedPrefsCookiePersistor;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import butterknife.BindView;
-import okhttp3.Cookie;
 
 /**
  * Created by tianwei on 2017/4/25.
@@ -223,7 +206,7 @@ public class WebViewActivity extends ShareActivity implements View.OnClickListen
         }
         @JavascriptInterface
         public void Back2Login(){
-            startActivity(new Intent(WebViewActivity.this, LoginActivity.class));
+            startActivity(new Intent(WebViewActivity.this, LoginTabActivity.class));
             WebViewActivity.this.finish();
         }
         @JavascriptInterface

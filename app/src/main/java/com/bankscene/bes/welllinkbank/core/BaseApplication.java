@@ -14,21 +14,15 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import com.bankscene.bes.welllinkbank.R;
-import com.bankscene.bes.welllinkbank.Util.SharedPreferenceUtil;
-import com.bankscene.bes.welllinkbank.Util.ToastUtils;
 import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.activity.MenuList;
 import com.bankscene.bes.welllinkbank.biz.FinanceMainBiz;
 import com.bankscene.bes.welllinkbank.biz.MenuBiz;
 import com.bankscene.bes.welllinkbank.biz.NameImgPair;
@@ -48,8 +42,6 @@ import com.okhttplib.annotation.Encoding;
 import com.okhttplib.cookie.PersistentCookieJar;
 import com.okhttplib.cookie.cache.SetCookieCache;
 import com.okhttplib.cookie.persistence.SharedPrefsCookiePersistor;
-import com.okhttplib.helper.SSLSocketClient;
-import com.okhttplib.util.CookieManager;
 
 import okhttp3.OkHttpClient;
 
@@ -110,9 +102,10 @@ public class BaseApplication extends Application {
 //        initOkGo();
 //        initUserIndex();
 
-        iniMenuList();
-            initOkHttp(this);
+
+        initOkHttp(this);
         DBHelper.getInstance().init(this);
+        iniMenuList();
         DBHelper.insert(new Data(DataKey.isfirstLogin,"true"));
 //        if (TextUtils.isEmpty(DBHelper.getDataByKey(DataKey.language))){
 //            //默认使用中文
@@ -161,7 +154,7 @@ public class BaseApplication extends Application {
     private void iniMenuList() {
         Trace.e("Application","iniMenuList");
         Gson gson=new Gson();
-        String jsonListTest= SharedPreferenceUtil.get(this,BaseApplication.USER_INDEX,"")+"";
+        String jsonListTest= DBHelper.getDataByKey(DataKey.user_index)+"";
         if (TextUtils.isEmpty(jsonListTest)){
             ArrayList<MenuBiz> mbs=new ArrayList<>();
             FinanceMainBiz fbz=new FinanceMainBiz(this);
@@ -183,7 +176,7 @@ public class BaseApplication extends Application {
             Type type=new TypeToken<List<MenuBiz>>(){}.getType();
             jsonListTest=gson.toJson(mbs, type);
             Trace.e("first_initMenuList",jsonListTest.toString());
-            SharedPreferenceUtil.put(this,BaseApplication.USER_INDEX,jsonListTest);
+            DBHelper.insert(new Data(DataKey.user_index,jsonListTest));
         }
 
 

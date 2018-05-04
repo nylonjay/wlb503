@@ -1,56 +1,26 @@
 package com.bankscene.bes.welllinkbank;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import android.util.Base64;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 
-import com.bankscene.bes.welllinkbank.Util.FileUtil;
-import com.bankscene.bes.welllinkbank.Util.SharedPreferenceUtil;
 import com.bankscene.bes.welllinkbank.Util.ToastUtils;
 import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.Util.dialog.DialogCallBack;
 import com.bankscene.bes.welllinkbank.adapter.MainPagerAdapter;
-import com.bankscene.bes.welllinkbank.biz.FinanceMainBiz;
-import com.bankscene.bes.welllinkbank.biz.MenuBiz;
 import com.bankscene.bes.welllinkbank.biz.MessageEvent;
-import com.bankscene.bes.welllinkbank.common.CommDictAction;
 import com.bankscene.bes.welllinkbank.common.Constant;
 import com.bankscene.bes.welllinkbank.core.BaseApplication;
-import com.bankscene.bes.welllinkbank.core.PermissionResult;
-import com.bankscene.bes.welllinkbank.fragment.MineFragment;
 import com.bankscene.bes.welllinkbank.view.CustomViewPager;
 import com.bankscene.bes.welllinkbank.view.IconFontTextView;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.gyf.barlibrary.ImmersionBar;
 
-import org.spongycastle.jcajce.provider.symmetric.ARC4;
-
-import java.io.File;
-import java.lang.reflect.Type;
-import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 

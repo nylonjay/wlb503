@@ -11,21 +11,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bankscene.bes.welllinkbank.R;
-import com.bankscene.bes.welllinkbank.Util.SharedPreferenceUtil;
 import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.activity.LoginActivity;
+import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
 import com.bankscene.bes.welllinkbank.activity.MenuList;
 import com.bankscene.bes.welllinkbank.biz.AdvertiseBiz;
-import com.bankscene.bes.welllinkbank.biz.FinanceMainBiz;
 import com.bankscene.bes.welllinkbank.biz.MenuBiz;
 import com.bankscene.bes.welllinkbank.biz.MessageEvent;
 import com.bankscene.bes.welllinkbank.common.CommDictAction;
 import com.bankscene.bes.welllinkbank.common.Constant;
 import com.bankscene.bes.welllinkbank.core.BaseApplication;
 import com.bankscene.bes.welllinkbank.core.BaseFragment;
-import com.bankscene.bes.welllinkbank.core.State;
 import com.bankscene.bes.welllinkbank.core.WebViewActivity;
-import com.bankscene.bes.welllinkbank.pulltorefresh.entity.Status;
 import com.bankscene.bes.welllinkbank.recyclergrid.PageIndicatorView;
 import com.bankscene.bes.welllinkbank.recyclergrid.PageRecyclerView;
 import com.bankscene.bes.welllinkbank.recyclergrid.RecyclerViewSpacesItemDecoration;
@@ -52,7 +48,6 @@ import butterknife.BindView;
 import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
 import de.greenrobot.event.ThreadMode;
-import okhttp3.Response;
 
 /**
  * Created by Nylon on 2018/2/2.11:03
@@ -206,7 +201,7 @@ public class MainFragment extends BaseFragment{
                     showNotice(getResources().getString(R.string.logined));
                 }else {
 //                    DBHelper.getInstance().clear();
-                    startActivity(new Intent(activity,LoginActivity.class));
+                    startActivity(new Intent(activity,LoginTabActivity.class));
                 }
 //                refreshSelf();
                 break;
@@ -338,14 +333,14 @@ public class MainFragment extends BaseFragment{
         }else {
             gridDataList=new ArrayList<>();
         }
-        String jsonListTest=SharedPreferenceUtil.get(activity,BaseApplication.USER_INDEX,"")+"";
-        Type type1=new TypeToken<List<MenuBiz>>(){}.getType();
-        ArrayList<MenuBiz> DataList=gson.fromJson(jsonListTest, type1);
-        for (int i=0;i<DataList.size();i++){
-            if (DataList.get(i).is_Checked()){
-                gridDataList.add(DataList.get(i));
-            }
-        }
+//        String jsonListTest=SharedPreferenceUtil.get(activity,BaseApplication.USER_INDEX,"")+"";
+//        Type type1=new TypeToken<List<MenuBiz>>(){}.getType();
+//        ArrayList<MenuBiz> DataList=gson.fromJson(jsonListTest, type1);
+//        for (int i=0;i<DataList.size();i++){
+//            if (DataList.get(i).is_Checked()){
+//                gridDataList.add(DataList.get(i));
+//            }
+//        }
 //        MenuBiz menuBiz=new MenuBiz();
 //        menuBiz.setIs_Checked(true);
 //        menuBiz.setIcon_Rsid(R.mipmap.wlb_icon_custom);

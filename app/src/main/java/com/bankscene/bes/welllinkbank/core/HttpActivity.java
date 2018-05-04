@@ -1,7 +1,6 @@
 package com.bankscene.bes.welllinkbank.core;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -10,22 +9,15 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
-import com.bankscene.bes.welllinkbank.MainActivity;
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.ShareActivity;
-import com.bankscene.bes.welllinkbank.Util.FileUtil;
 import com.bankscene.bes.welllinkbank.Util.ToastUtils;
 import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.activity.LoginActivity;
-import com.bankscene.bes.welllinkbank.adapter.common.ImageShape;
-import com.bankscene.bes.welllinkbank.biz.ClientInfoBiz;
 import com.bankscene.bes.welllinkbank.biz.MessageEvent;
 import com.bankscene.bes.welllinkbank.common.CommDictAction;
 import com.bankscene.bes.welllinkbank.common.Constant;
@@ -33,7 +25,6 @@ import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
 import com.kh.keyboard.CSIICypher;
-import com.kh.keyboard.KeyBoardDialogUtils;
 import com.kh.keyboard.SecurityCypherException;
 import com.okhttplib.HttpInfo;
 import com.okhttplib.OkHttpUtil;

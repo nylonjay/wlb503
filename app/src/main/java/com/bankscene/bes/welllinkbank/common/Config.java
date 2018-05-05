@@ -25,8 +25,8 @@ public class Config {
 
     //    public static final String TRANS_IP_PORT = "http://10.0.119.242/mallweb/";//A1
 //    public static final String TRANS_IP_PORT = "http://192.168.0.133:9104/portal/";//
-//    public static final String HOST_ADDRESS="http://192.168.0.155:9104";
-    public static final String HOST_ADDRESS="http://58.251.33.118:10002";//UAT测试
+    public static final String HOST_ADDRESS="http://192.168.1.167:9104";
+//    public static final String HOST_ADDRESS="http://58.251.33.118:10002";//UAT测试
 //    public static final String HOST_ADDRESS="https://embs.wlbank.com.mo";//生产
 //    public static final String HOST_ADDRESS="http://192.168.0.173:9104";//UAT本地
 //    public static final String HOST_ADDRESS="http://192.168.2.244:9104";//hyw

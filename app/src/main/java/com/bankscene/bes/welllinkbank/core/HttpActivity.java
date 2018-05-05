@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -62,7 +63,7 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
     private final int LOAD_SUCCEED = 0x003;
     private final int LOAD_FAILED = 0x004;
     protected String timestamp;
-
+    protected String publickey;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,26 +72,61 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
 
     }
 
-
-
-    Handler handle=new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what){
-                case 55:
-                    String code= (String) msg.obj;
-                    Trace.e("coode55==",code);
-                    timestamp=System.currentTimeMillis()+"";
-                    try {
-                        String encryped = new CSIICypher().encryptWithoutRemove(code, CommDictAction.SecurityPubKey,timestamp,encoding,2);
-                        Trace.e("encryped==",encryped);
-                    } catch (SecurityCypherException e) {
-                        e.printStackTrace();
+    public void RefreshTimeStamp(){
+        Map params=new HashMap();
+        params.put("_ChannelId","PMBS");
+        setProgressDisplay(false);
+        doHttpAsyncWhioutDialog(HttpInfo.Builder()
+                        .addHead("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+                        .setUrl(CommDictAction.RefreshTimeStamp)
+                        .setRequestType(RequestType.POST)//设置请求方式
+                        .addParams(params)
+                        .build(),
+                new Callback(){
+                    @Override
+                    public void onSuccess(HttpInfo info) throws IOException {
+                        String redetail=info.getRetDetail();
+                        try {
+                            JSONObject result=new JSONObject(redetail);
+                            timestamp=result.getString("Timestamp");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
-                    break;
-            }
-        }
-    };
+
+                    @Override
+                    public void onFailure(HttpInfo info) throws IOException {
+                    }
+                });
+    }
+
+    public void QueryPublicKey(){
+        Map params=new HashMap();
+        params.put("_ChannelId","PMBS");
+        setProgressDisplay(false);
+        doHttpAsyncWhioutDialog(HttpInfo.Builder()
+                        .addHead("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+                        .setUrl(CommDictAction.QryPublicKey)
+                        .setRequestType(RequestType.POST)//设置请求方式
+                        .addParams(params)
+                        .build(),
+                new Callback(){
+                    @Override
+                    public void onSuccess(HttpInfo info) throws IOException {
+                        String redetail=info.getRetDetail();
+                        try {
+                            JSONObject result=new JSONObject(redetail);
+                            publickey=result.getString("PublicKey");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(HttpInfo info) throws IOException {
+                    }
+                });
+    }
 
     /**
      * 同步请求

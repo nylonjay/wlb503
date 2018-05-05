@@ -28,4 +28,6 @@ public class CommDictAction {
     public static final String UpdatePassword=Config.TRANS_IP_PORT+"UpdatePassword.do";
     public static final String GetAdverTiseMent=Config.TRANS_IP_PORT+"AdvertListQry.do";
     public static final String ReSendSMSOTP=Config.TRANS_IP_PORT+"ReSendSMSOTP.do";
+    public static final String RefreshTimeStamp=Config.TRANS_IP_PORT+"GetTimestamp.do";
+    public static final String QryPublicKey=Config.TRANS_IP_PORT+"QryPublicKey.do";
 }

@@ -142,7 +142,6 @@ public class LoginTabActivity extends HttpActivity {
     @Override
     protected void initView() {
         gson=new Gson();
-
         ResId.connLineColorId=R.color.transparent;
         EventBus.getDefault().register(this);
         user=BaseApplication.getInstance().getUser();

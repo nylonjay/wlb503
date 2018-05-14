@@ -23,4 +23,7 @@ public class DataKey {
     public static final long login_type=15;
     public static final long isfirstLogin=16;
     public static final long nips=17;//用户名和头像地址键值对
+    public static final long dbpkey=18;
+    public static final long hmskey=19;
+    public static final long login_tab=20;
 }

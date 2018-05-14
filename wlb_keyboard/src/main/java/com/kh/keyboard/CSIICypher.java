@@ -171,7 +171,49 @@ public class CSIICypher implements Cypher {
             }
         }
     }
+    public String  encryptWithJiamiJi(String plainorname, String dbp,String hms, String timestamp, String encoding, int flag) throws SecurityCypherException {
+        String res = null;
+        String plain = plainorname;
+        if (flag == 1) {
+            if (plainorname == null) {
+                throw new SecurityCypherException("password_name_is_null");
+            }
 
+            plain = (String) plainMap.get(plainorname);
+        }
+
+        if (dbp == null) {
+            throw new SecurityCypherException("modulus_is_null");
+        } else if (plain == null) {
+            throw new SecurityCypherException("plain_is_null");
+        } else if (timestamp == null) {
+            throw new SecurityCypherException("timestamp_is_null");
+        } else {
+            try {
+                byte[] enc_rsa1_data = this.rsaEncrypt(plain.getBytes(),hms);
+
+                StringBuilder sb=new StringBuilder();
+                for (byte b:enc_rsa1_data){
+                    sb.append(String.format("%02x",b));
+                }
+                byte[] pln_rsa2_data =
+                        new StringBuilder(this.degree).append(timestamp).append("_").append(sb.toString()).toString().getBytes("iso8859-1");
+                byte[] desKey = new byte[this.rc4keyLength];
+                SecureRandom secRan = new SecureRandom();
+                secRan.nextBytes(desKey);
+                byte[] encDataBytes = this.encrypt3DES(pln_rsa2_data, desKey);
+
+                byte[] encKeyBytes = this.rsaEncrypt(desKey, dbp.substring(32));
+//                byte[] inversersacyphered = this.inverseBytes(rc4keycyphered); wudongrui
+                byte[] finaldata = this.generateFinal(encKeyBytes, encDataBytes);
+
+                res = Base64.encodeToString(finaldata, 2);
+                return res;
+            } catch (Exception var16) {
+                throw new SecurityCypherException(var16);
+            }
+        }
+    }
     public byte[] encrypt3DES(final byte[] src, final byte[] key) throws Exception {
 
         SecretKeySpec deskey= new SecretKeySpec(key, "DESede");

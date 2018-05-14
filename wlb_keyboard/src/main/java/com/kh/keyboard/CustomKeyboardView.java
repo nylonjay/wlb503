@@ -37,11 +37,14 @@ public class CustomKeyboardView extends KeyboardView {
                     Drawable dr = (Drawable) context.getResources().getDrawable(R.drawable.keyboard_word_del_layerlist);
                     dr.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
                     dr.draw(canvas);
-                } else if (key.codes[0] == -35) {
+                } else
+                    if (key.codes[0] == -35) {
                     Drawable dr = (Drawable) context.getResources().getDrawable(R.drawable.keyboard_word_del_layerlist2);
                     dr.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
                     dr.draw(canvas);
-                } else if (key.codes[0] == -1) {
+                }
+                else
+                    if (key.codes[0] == -1) {
                     Drawable dr = (Drawable) context.getResources().getDrawable(R.drawable.keyboard_word_shift_layerlist);
                     Drawable dr_da = (Drawable) context.getResources().getDrawable(R.drawable.keyboard_word_shift_layerlist_da);
                     dr.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
@@ -58,8 +61,6 @@ public class CustomKeyboardView extends KeyboardView {
                     dr.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
                     dr.draw(canvas);
                     drawText(canvas, key);
-                } else {
-
                 }
             }
         } catch (Exception e) {

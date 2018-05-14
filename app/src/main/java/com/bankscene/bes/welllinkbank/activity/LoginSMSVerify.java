@@ -102,6 +102,7 @@ public class LoginSMSVerify extends Activity {
 //        });
         tv_resend=contentView.findViewById(R.id.tv_send);
         mcu= new MessageCodeUtils(60000, tv_resend,LoginSMSVerify.this);
+        mcu.start();
         peds=new TextView[6];
         pe1= (TextView)contentView. findViewById(R.id.password_edit1);
         pe2= (TextView)contentView. findViewById(R.id.password_edit2);

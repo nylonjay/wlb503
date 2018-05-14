@@ -128,11 +128,6 @@ public class KhKeyboardView {
                     hideKeyboard();
                 } else {
                     // 输入键盘值
-//                    editable.insert(start, "●");
-//                    Message msg=new Message();
-//                    msg.obj=mEditText.getText().toString();
-//                    msg.what=55;
-//                    mHander.sendMessage(msg);
                     editable.insert(start, Character.toString((char) primaryCode));
                 }
             } catch (Exception e) {
@@ -283,10 +278,8 @@ public class KhKeyboardView {
 //            headerView.setVisibility(View.VISIBLE);
             if (isUpper){
                 isUpper=false;
-                Log.e("keyboard", "大写变小写");
                 changeKeyboart();
             }else {
-                Log.e("keyboard","是小写");
             }
             showLetterView();
 //            switch (inputText) {

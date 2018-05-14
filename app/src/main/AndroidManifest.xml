@@ -136,7 +136,6 @@
         <activity
             android:name=".activity.LoginSMSVerify"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
             android:theme="@style/dialog_style" />
         <activity android:name=".activity.mine.password.TradeCodeReset" />
         <activity android:name=".activity.LoginTabActivity"></activity>

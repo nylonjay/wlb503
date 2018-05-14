@@ -67,7 +67,7 @@ public class CodeReset2 extends HttpActivity implements View.OnClickListener{
 
     @Override
     protected void setActionBar() {
-        actionBar.setActionBar(getResources().getString(R.string.CODE_RESET), R.string.wlb_arrow_l,"", 0, "", new ActionBarClickListener() {
+        actionBar.setActionBar(getResources().getString(R.string.LOGIN_CODE_RESET), R.string.wlb_arrow_l,"", 0, "", new ActionBarClickListener() {
             @Override
             public void onLeftClick() {
            Exit2LogOUt();
@@ -208,17 +208,18 @@ public class CodeReset2 extends HttpActivity implements View.OnClickListener{
                         try {
                             JSONObject json=new JSONObject(result);
                             if (json.has(_REJCODE)&&json.opt(_REJCODE).equals("000000")){
-                                State.isFirstLogin=false;
+
                                 dialogUtils.ShowDialogOne(getResources().getString(R.string.promot), getResources().getString(R.string.update_password_ok), getResources().getString(R.string.confirm), new DialogCallBack() {
                                     @Override
                                     public void onPositive() {
-                                        startActivity(new Intent(CodeReset2.this, MainActivity.class));
+                                        startActivity(new Intent(CodeReset2.this, TradeCodeReset.class));
                                         CodeReset2.this.finish();
                                     }
 
                                     @Override
                                     public void onNegative() {
-
+                                        startActivity(new Intent(CodeReset2.this, TradeCodeReset.class));
+                                        CodeReset2.this.finish();
                                     }
                                 });
                             }else {

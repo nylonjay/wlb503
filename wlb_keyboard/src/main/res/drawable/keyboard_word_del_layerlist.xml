@@ -7,11 +7,12 @@
         </shape>
     </item>
     <item
-        android:left="35dp"
-        android:right="35dp"
-        android:top="13dp"
-        android:bottom="13dp"
+        android:top="30dp"
+        android:bottom="30dp"
+        android:left="10dp"
+        android:right="10dp"
         android:drawable="@drawable/icon_shuzi_keyboard_del_default"
-         />
+        />
 </layer-list>
+
 

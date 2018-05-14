@@ -184,7 +184,7 @@
     <string name="verify_login">普通登錄</string>
     <string name="quit">退出登錄</string>
     <string name="menu_list">菜單列表</string>
-    <string name="logined">已登陸</string>
+    <string name="logined">已登錄</string>
     <string name="custom">自定義</string>
     <string name="my_loans">我的貸款</string>
     <string name="repayment_history">還款歷史</string>
@@ -195,15 +195,15 @@
     <string name="shares_query">股票查詢</string>
     <string name="save">保存</string>
     <string name="logout_succed">登出成功</string>
-    <string name="gesture_login">手勢登陸</string>
+    <string name="gesture_login">手勢登錄</string>
     <string name="CODE_RESET">密碼設置</string>
-    <string name="change_login_code">更改登陸密碼</string>
+    <string name="change_login_code">更改登錄密碼</string>
     <string name="used_code">原登錄密碼</string>
-    <string name="reset_1">請輸入原登陸密碼</string>
+    <string name="reset_1">請輸入原登錄密碼</string>
     <string name="reset_2">請輸入新的登錄密碼</string>
     <string name="reset_3">請再次輸入新的登錄密碼</string>
     <string name="confirm_newcode">確認新密碼</string>
-    <string name="new_code">新登陸密碼</string>
+    <string name="new_code">新登錄密碼</string>
     <string name="head_img">頭像</string>
     <string name="chinese_name">中文姓名</string>
     <string name="en_name">英文姓名</string>
@@ -252,10 +252,10 @@
     <string name="finish">完成</string>
     <string name="setted">設置成功</string>
     <string name="show_tail">顯示軌跡</string>
-    <string name="use_gesture_login">使用手勢密碼登陸</string>
+    <string name="use_gesture_login">使用手勢密碼登錄</string>
     <string name="changge_gesture_code">修改手勢密碼</string>
     <string name="incorrect_gs">手勢密碼驗證錯誤</string>
-    <string name="no_gs_setted">您還未開啓手勢登陸或未設置手勢密碼</string>
+    <string name="no_gs_setted">您還未開啓手勢登錄或未設置手勢密碼</string>
     <string name="current_version">當前版本</string>
     <string name="service_call">服務熱綫</string>
     <string name="visit_eb">訪問門戶網站</string>
@@ -264,7 +264,7 @@
     <string name="share_code">分享二維碼給好友</string>
     <string name="tel">(853)2878 5222</string>
     <string name="ABOUT_US">關於我們</string>
-    <string name="others">other</string>
+    <string name="others">其他</string>
     <string name="className">className</string>
     <string name="wlb_hompage">立橋銀行官方網站</string>
     <string name="UPLOAD_SUCCEED">上傳成功</string>
@@ -273,7 +273,7 @@
     <string name="empty">--</string>
     <string name="load_data_fail">讀取公告信息失敗</string>
     <string name="get_client_info">獲取客戶信息失敗</string>
-    <string name="update_password_ok">修改密碼成功</string>
+    <string name="update_password_ok">修改登錄密碼成功</string>
     <string name="promot">提示</string>
     <string name="update_password_failed">修改密碼失敗</string>
     <string name="enter_cell_phone_code">短信驗證碼</string>
@@ -300,4 +300,7 @@
     <string name="Treset_3">請再次輸入新的交易密碼</string>
     <string name="update_Tpassword_ok">修改交易密碼成功</string>
     <string name="use_pwd_login">使用密碼登錄</string>
+    <string name="LOGIN_CODE_RESET">登錄密碼設置</string>
+    <string name="TRADE_CODE_RESET">交易密碼設置</string>
+    <string name="retry">請重試</string>
 </resources>

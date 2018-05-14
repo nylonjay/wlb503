@@ -11,6 +11,8 @@
         android:layout_height="@dimen/mine_item_height"
         android:orientation="horizontal"
         android:layout_marginLeft="10dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_marginRight="10dp"
         android:gravity="center">
         <ImageView
@@ -40,7 +42,7 @@
             android:id="@+id/login_name_cell"
             android:layout_marginLeft="5dp"
             android:hint="@string/enter_username"
-            style="@style/edit_login_style"/>
+            style="@style/edit_login_style_20"/>
 
     </LinearLayout>
 
@@ -71,7 +73,7 @@
             android:inputType="textPassword"
             android:focusableInTouchMode="false"
             android:hint="@string/enter_password"
-            style="@style/edit_login_style" />
+            style="@style/edit_login_style_20" />
 
     </LinearLayout>
 

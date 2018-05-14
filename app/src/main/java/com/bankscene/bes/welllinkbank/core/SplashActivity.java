@@ -150,8 +150,6 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
                         }
                         ActivityCompat.requestPermissions(SplashActivity.this,needPermissions,REQUEST_THREE_PERMISSION);
 
-
-
                     }
 
                     @Override

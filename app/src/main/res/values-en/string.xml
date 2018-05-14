@@ -208,7 +208,7 @@ s
     <string name="share_code">Share QR Codes to your friends</string>
     <string name="tel">8796 5388</string>
     <string name="ABOUT_US">About Us</string>
-    <string name="others">Others</string>
+    <string name="others">others</string>
     <string name="className">Class Name</string>
     <string name="wlb_hompage"> Official Website </string>
     <string name="UPLOAD_SUCCEED">Upload Succeeded</string>
@@ -234,4 +234,20 @@ s
     <string name="enter_vfc">Please enter the graphic verification code</string>
     <string name="insert_8_atleast">Please enter a minimum of 8 bit passwords</string>
     <string name="no_same_type">A password can not contain only numbers or only letters</string>
+
+    <string name="confim2logout">Whether to give up password modification？The user will log out</string>
+    <string name="trade_code_reset">Modify Payment Password</string>
+    <string name="insert_6_atleast">insert minimum of 6 bit passwords</string>
+    <string name="used_trade_code">Original Payment Password</string>
+    <string name="new_trade_code">New Payment Password</string>
+    <string name="confirm_trade_newcode">Confirm New Payment Password</string>
+
+    <string name="Treset_1">Enter Original Payment Password</string>
+    <string name="Treset_2">Enter New Payment Password</string>
+    <string name="Treset_3">Enter New Payment Password Again</string>
+    <string name="update_Tpassword_ok">Modify Payment Password Succeed</string>
+    <string name="use_pwd_login">Use Password Login</string>
+    <string name="LOGIN_CODE_RESET">LoginPassword Setting</string>
+    <string name="TRADE_CODE_RESET">Payment Password Setting</string>
+    <string name="retry">Please Try Again Later</string>
 </resources>

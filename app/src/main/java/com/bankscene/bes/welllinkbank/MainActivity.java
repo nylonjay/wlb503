@@ -1,11 +1,16 @@
 package com.bankscene.bes.welllinkbank;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -39,6 +44,8 @@ public class MainActivity extends ShareActivity {
     Intent in;
     int index=0;
     private final int REQUEST_THREE_PERMISSION=3;
+    private int REQUEST_READ_PHONE_STATE_PERMISSION;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        FitStateUI.setImmersionStateMode(this);
@@ -51,6 +58,7 @@ public class MainActivity extends ShareActivity {
             index=Integer.parseInt(ins);
         }
         initTabPager(index);
+
 
     }
 
@@ -181,8 +189,16 @@ public class MainActivity extends ShareActivity {
     protected void initData() {
         TelephonyManager TelephonyMgr = (TelephonyManager) MainActivity.this
                 .getSystemService(Context.TELEPHONY_SERVICE);
-        Trace.e("derviceID",TelephonyMgr.getDeviceId());
-        BaseApplication.deviceId=TelephonyMgr.getDeviceId();
+//        Trace.e("derviceID",TelephonyMgr.getDeviceId());
+
+        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE)== PackageManager.PERMISSION_GRANTED){
+            BaseApplication.deviceId=TelephonyMgr.getDeviceId();
+        }
+        //如果没有权限那么申请权限
+        else{
+            ActivityCompat.requestPermissions(MainActivity.this,new String[]{android.Manifest.permission.CALL_PHONE},REQUEST_READ_PHONE_STATE_PERMISSION);
+        }
+
         BaseApplication.deviceName=android.os.Build.MODEL;
     }
 

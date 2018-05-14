@@ -36,15 +36,7 @@ public class User implements Serializable {
     private String address = "";
     private String english_name="";
     private String image_base64="";
-    private int LoginType=1;
 
-    public int getLoginType() {
-        return LoginType;
-    }
-
-    public void setLoginType(int loginType) {
-        LoginType = loginType;
-    }
 
     public String getImage_base64() {
         return image_base64;

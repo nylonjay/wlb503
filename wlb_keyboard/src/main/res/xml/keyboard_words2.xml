@@ -4,7 +4,7 @@
     android:keyHeight="@dimen/keyboard_key_height"
     android:keyWidth="10%p"
 
-    android:verticalGap="4dp">
+    android:verticalGap="10dp">
 
     <Row>
         <Key
@@ -176,26 +176,26 @@
             android:keyWidth="9%p" />
         <Key
             android:codes="-5"
-            android:keyEdgeFlags="right"
             android:isRepeatable="true"
+            android:keyIcon="@drawable/icon_yingwen_fuhao_keyboard_del_default"
             android:keyWidth="13%p" />
     </Row>
 
     <Row android:rowEdgeFlags="bottom"
         >
-        <!--<Key-->
-            <!--android:codes="-2"-->
-            <!--android:keyLabel="123"-->
-            <!--android:keyWidth="19%p" />-->
+        <Key
+            android:codes="-2"
+            android:keyLabel="123"
+            android:keyWidth="19%p" />
         <Key
             android:codes="32"
             android:isRepeatable="true"
             android:keyIcon="@drawable/key_icon"
-            android:keyWidth="77%p" />
+            android:keyWidth="55%p" />
         <Key
             android:codes="90001"
             android:keyEdgeFlags="right"
             android:keyLabel="@string/close_keyboard"
-            android:keyWidth="20%p" />
+            android:keyWidth="23%p" />
     </Row>
 </Keyboard>

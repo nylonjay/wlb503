@@ -67,7 +67,7 @@ public class TradeCodeReset extends HttpActivity implements View.OnClickListener
 
     @Override
     protected void setActionBar() {
-        actionBar.setActionBar(getResources().getString(R.string.CODE_RESET), R.string.wlb_arrow_l,"", 0, "", new ActionBarClickListener() {
+        actionBar.setActionBar(getResources().getString(R.string.TRADE_CODE_RESET), R.string.wlb_arrow_l,"", 0, "", new ActionBarClickListener() {
             @Override
             public void onLeftClick() {
                 Exit2LogOUt();
@@ -206,6 +206,7 @@ public class TradeCodeReset extends HttpActivity implements View.OnClickListener
                                 dialogUtils.ShowDialogOne(getResources().getString(R.string.promot), getResources().getString(R.string.update_Tpassword_ok), getResources().getString(R.string.confirm), new DialogCallBack() {
                                     @Override
                                     public void onPositive() {
+                                        State.isFirstLogin=false;
                                         startActivity(new Intent(TradeCodeReset.this, MainActivity.class));
                                         TradeCodeReset.this.finish();
                                     }

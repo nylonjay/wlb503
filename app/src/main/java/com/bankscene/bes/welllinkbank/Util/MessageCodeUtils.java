@@ -1,6 +1,7 @@
 package com.bankscene.bes.welllinkbank.Util;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 

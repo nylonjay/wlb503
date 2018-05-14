@@ -42,6 +42,6 @@
         <Key
             android:codes="90001"
             android:keyEdgeFlags="right"
-            android:keyIcon="@drawable/keyboard_done" />
+            android:keyLabel="@string/confirm"/>
     </Row>
 </Keyboard>

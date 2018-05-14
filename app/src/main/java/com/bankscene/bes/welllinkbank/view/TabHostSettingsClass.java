@@ -22,6 +22,7 @@ public class TabHostSettingsClass {
         this.tabWidget=tabWidget;
     }
     public void setChangeTabSetting(){
+//        tabWidget.setBackgroundResource(R.drawable.login_bg_edits);
         for (int i = 0; i < tabWidget.getChildCount(); i++) {
             TextView tView = (TextView) tabWidget.getChildAt(i).findViewById(
                     android.R.id.title);

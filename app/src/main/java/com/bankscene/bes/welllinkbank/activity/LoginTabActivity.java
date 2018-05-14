@@ -1,6 +1,7 @@
 package com.bankscene.bes.welllinkbank.activity;
 
 import android.content.Intent;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -41,6 +42,7 @@ import com.bankscene.bes.welllinkbank.core.State;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
+import com.bankscene.bes.welllinkbank.exception.WLBException;
 import com.bankscene.bes.welllinkbank.module.User;
 import com.bankscene.bes.welllinkbank.view.ActionSheet;
 import com.bankscene.bes.welllinkbank.view.ClearableEditText;
@@ -48,6 +50,7 @@ import com.bankscene.bes.welllinkbank.view.IconFontTextView;
 import com.bankscene.bes.welllinkbank.view.PhonPrePopWindow;
 import com.bankscene.bes.welllinkbank.view.TabHostClass;
 import com.bankscene.bes.welllinkbank.view.TabHostSettingsClass;
+import com.bankscene.bes.welllinkbank.view.WlbEditText;
 import com.csii.gesturekeyboard.GestureContentView;
 import com.csii.gesturekeyboard.GestureDrawline;
 import com.csii.gesturekeyboard.ResId;
@@ -65,6 +68,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -124,6 +128,11 @@ public class LoginTabActivity extends HttpActivity {
         ResId.patternNodePressed = R.mipmap.wlb_circle;
     }
 
+    private String hms;
+    private String dbp;
+    int tab=1;
+    private String encryped="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,14 +151,15 @@ public class LoginTabActivity extends HttpActivity {
     @Override
     protected void initView() {
         gson=new Gson();
-        ResId.connLineColorId=R.color.transparent;
         EventBus.getDefault().register(this);
         user=BaseApplication.getInstance().getUser();
-        Trace.e("tab==",user.getLoginType()+"");
-        tabHost.setCurrentTab(user.getLoginType()-1);
-        if (user.getLoginType()==1){
+        if (!TextUtils.isEmpty(DBHelper.getDataByKey(DataKey.login_tab))){
+            tab=Integer.parseInt(DBHelper.getDataByKey(DataKey.login_tab));
+        }
+        tabHost.setCurrentTab(tab-1);
+        if (tab==1){
             InitKeyBoards();
-        }else if (user.getLoginType()==2){
+        }else if (tab==2){
             InitKeyBoards2();
         }
         RedirectclassName=getIntent().getStringExtra(getResources().getString(R.string.className));
@@ -159,7 +169,6 @@ public class LoginTabActivity extends HttpActivity {
                 getImageCode();
             }
         });
-
         TabHostClass tabHostClass=new TabHostClass(tabHost,R.id.now_update,R.id.today_choose,getResources().getString(R.string.verify_login),getResources().getString(R.string.cell_verify_login));
         tabHostClass.setTabHost();
         tabHostSettingsClass=new TabHostSettingsClass(LoginTabActivity.this,tabHost,tabs);
@@ -173,22 +182,45 @@ public class LoginTabActivity extends HttpActivity {
                     InitKeyBoards();
                     btn_login.setText(getResources().getString(R.string.verify_login));
                     LOGIN_TYPE=1;
-                    user.setLoginType(LOGIN_TYPE);
                 }else if (s.equals("2")){
                     InitKeyBoards2();
                     btn_login.setText(getResources().getString(R.string.cell_verify_login));
                     LOGIN_TYPE=2;
-                    user.setLoginType(LOGIN_TYPE);
+
                 }
 
             }
         });
-
-
+//        try {
+//            GetTimeStampAndKey();
+//        } catch (WLBException e) {
+//            e.printStackTrace();
+//            noticeUtils.showNotice(getResources().getString(R.string.network_err));
+//        }
         if (!TextUtils.isEmpty(DBHelper.getDataByKey(DataKey.gesture_code))&&"true".equals(DBHelper.getDataByKey(DataKey.login_type))){
             CastGestureLogin();
         }
     }
+
+    private void GetTimeStampAndKey() throws WLBException {
+        timestamp=System.currentTimeMillis()+"";
+        QueryPublicKey();
+        RefreshTimeStamp();
+        if (TextUtils.isEmpty(timestamp)){
+            throw new WLBException();
+        }
+
+//        editText.setDbp(dbp);
+//        editText.setHms(hms);
+//        editText.setTimestamp(timestamp);
+
+
+//        String path= Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator+"JIAMIJI/";
+//        String target=path+"rsa.txt";
+//        FileUtil.saveFile(encyped,target);
+//        FileUtil.saveFile(encyped.replace("+", "%2B"),target);
+    }
+
     public void onClickClose(View view){
         LoginTabActivity.this.finish();
     }
@@ -264,7 +296,7 @@ public class LoginTabActivity extends HttpActivity {
 
     private void OnLoginClicked(Map params) throws Exception {
         //验证码交易获取到的cookie
-
+        Trace.e("password==",pwdedit.getText().toString());
         List<Cookie> coos=
                 OkHttpUtil.getDefault().getDefaultClient().cookieJar().loadForRequest(HttpUrl.parse(CommDictAction.imageCode));
 
@@ -289,6 +321,7 @@ public class LoginTabActivity extends HttpActivity {
                     @Override
                     public void onFailure(HttpInfo info) throws IOException {
                         login_verifycode.setText("");
+                        pwdedit.setText("");
                         getImageCode();
                         noticeUtils.showNotice(info.getRetDetail());
 //                        showNotice(error);
@@ -303,6 +336,7 @@ public class LoginTabActivity extends HttpActivity {
                         try {
                             JSONObject result=new JSONObject(resultString);
                             if (result.get(_REJCODE).equals("000000")){
+                                pwdedit.setText("");
                                 DBHelper.insert(new Data(DataKey.userName,result.optString("LoginId")));
                                 DBHelper.insert(new Data(DataKey.pre,tv_pre.getText().toString()));
                                 DBHelper.insert(new Data(DataKey.isRememberUser,remerberuser.isChecked()+""));
@@ -335,6 +369,7 @@ public class LoginTabActivity extends HttpActivity {
                                 }
                             }else{
                                 State.isLogin=false;
+                                pwdedit.setText("");
                                 noticeUtils.showNotice(result.getString(_REJMSG));
                                 getImageCode();
                                 login_verifycode.setText("");
@@ -350,6 +385,7 @@ public class LoginTabActivity extends HttpActivity {
         new GlideImageLoader().displayImage(this,CommDictAction.imageCode,iv_verify);
     }
     private void QueryClientInfo() {
+        DBHelper.insert(new Data(DataKey.login_tab,LOGIN_TYPE+""));
         Map params=new HashMap();
         params.put("_ChannelId","PMBS");
         setProgressDisplay(true);
@@ -517,6 +553,15 @@ public class LoginTabActivity extends HttpActivity {
         remerberuser= (CheckBox) findViewById(R.id.remerberuser);
         iv_verify= (ImageView) findViewById(R.id.iv_verify);
         tv_pre= (TextView) findViewById(R.id.tv_pre);
+        login_name.clearFocus();
+        login_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus&&login_name.getText().toString().contains("*")){
+                    login_name.setText("");
+                }
+            }
+        });
         pwdedit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -550,10 +595,9 @@ public class LoginTabActivity extends HttpActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Trace.e("after changged==",s.toString());
             }
         });
-        if (DBHelper.getDataByKey(DataKey.isRememberUser).equals("true")&&user.getLoginType()==1) {
+        if (DBHelper.getDataByKey(DataKey.isRememberUser).equals("true")&&!TextUtils.isEmpty(DBHelper.getDataByKey(DataKey.login_tab))&&DBHelper.getDataByKey(DataKey.login_tab).equals("1")) {
             remerberuser.setChecked(true);
             String un=DBHelper.getDataByKey(DataKey.userName);
             un=un.substring(DBHelper.getDataByKey(DataKey.pre).length()-1);
@@ -585,6 +629,15 @@ public class LoginTabActivity extends HttpActivity {
         remerberuser= (CheckBox) findViewById(R.id.remerberuser_cell);
         iv_verify= (ImageView) findViewById(R.id.iv_verify_cell);
         tv_pre= (TextView) findViewById(R.id.tv_pre_cell);
+        login_name.clearFocus();
+        login_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus&&login_name.getText().toString().contains("*")){
+                    login_name.setText("");
+                }
+            }
+        });
         pwdedit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -618,10 +671,9 @@ public class LoginTabActivity extends HttpActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Trace.e("after changged==",s.toString());
             }
         });
-        if (DBHelper.getDataByKey(DataKey.isRememberUser).equals("true")&&user.getLoginType()==2) {
+        if (DBHelper.getDataByKey(DataKey.isRememberUser).equals("true")&&!TextUtils.isEmpty(DBHelper.getDataByKey(DataKey.login_tab))&&DBHelper.getDataByKey(DataKey.login_tab).equals("2")) {
             remerberuser.setChecked(true);
             String un=DBHelper.getDataByKey(DataKey.userName);
             un=un.substring(DBHelper.getDataByKey(DataKey.pre).length()-1);
@@ -658,7 +710,13 @@ public class LoginTabActivity extends HttpActivity {
                 params.put("LoginId",
                         pre+login_name.getText().toString().trim());
             }
-            String  encryped=new CSIICypher().encryptWithoutRemove(pwdedit.getText().toString().trim(),CommDictAction.SecurityPubKey,timestamp,"UTF-8",2);
+            encryped=new CSIICypher().encryptWithoutRemove(pwdedit.getText().toString().trim(),CommDictAction.SecurityPubKey,timestamp,"UTF-8",2);
+            hms=DBHelper.getDataByKey(DataKey.hmskey);
+            dbp=DBHelper.getDataByKey(DataKey.dbpkey);
+            Trace.e("hms==",DBHelper.getDataByKey(DataKey.hmskey));
+            Trace.e("dbp==",DBHelper.getDataByKey(DataKey.dbpkey));
+            Trace.e("timestamp==",timestamp);
+//            String encryped = new CSIICypher().encryptWithJiamiJi(pwdedit.getText().toString().trim(),dbp,hms,timestamp,"UTF-8",2);
             params.put("Password",encryped
                     .replace("+","%2B")
             );
@@ -682,6 +740,8 @@ public class LoginTabActivity extends HttpActivity {
             }
 
         } catch (Exception e) {
+            pwdedit.setText("");
+            noticeUtils.showNotice(getResources().getString(R.string.retry));
             e.printStackTrace();
         }
     }
@@ -701,7 +761,7 @@ public class LoginTabActivity extends HttpActivity {
             Map params = new HashMap();
             params.put("_ChannelId","PMBS");
             params.put("LoginId", DBHelper.getDataByKey(DataKey.userName));
-            String  encryped=new CSIICypher().encryptWithoutRemove(pwdedit.getText().toString().trim(),CommDictAction.SecurityPubKey,timestamp,"UTF-8",2);
+//            String  encryped=new CSIICypher().encryptWithoutRemove(pwdedit.getText().toString().trim(),CommDictAction.SecurityPubKey,timestamp,"UTF-8",2);
             params.put("Password",encryped.replace("+","%2B"));
             params.put("_vTokenName", login_verifycode.getText().toString().trim());
             params.put("LoginType","S");

@@ -10,6 +10,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -25,6 +26,7 @@ import com.bankscene.bes.welllinkbank.common.Constant;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
+import com.bankscene.bes.welllinkbank.exception.WLBException;
 import com.kh.keyboard.CSIICypher;
 import com.kh.keyboard.SecurityCypherException;
 import com.okhttplib.HttpInfo;
@@ -63,7 +65,7 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
     private final int LOAD_SUCCEED = 0x003;
     private final int LOAD_FAILED = 0x004;
     protected String timestamp;
-    protected String publickey;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -116,7 +118,8 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
                         String redetail=info.getRetDetail();
                         try {
                             JSONObject result=new JSONObject(redetail);
-                            publickey=result.getString("PublicKey");
+                           DBHelper.insert(new Data(DataKey.dbpkey,result.optString("DbpPublicKey")));
+                           DBHelper.insert(new Data(DataKey.hmskey,result.optString("HsmPublicKey")));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

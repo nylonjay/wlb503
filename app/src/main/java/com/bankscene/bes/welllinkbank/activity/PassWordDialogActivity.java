@@ -139,17 +139,13 @@ public class PassWordDialogActivity extends Activity {
         });
     }
     private void GtoGetCode(){
-        String timestamp=System.currentTimeMillis()+"";
-        try {
-            String encrpre=new CSIICypher().encryptWithoutRemove(pwdedit.getText().toString().trim(),CommDictAction.SecurityPubKey,timestamp,"UTF-8",2);
-            String engryped="'"+encrpre.replace("+","%2B")+"'";//pwTxt已经加密过l
-            Intent in=new Intent();
-            in.putExtra("engrypted",engryped);
-            setResult(RESULT_OK,in);
-            PassWordDialogActivity.this.finish();
-        } catch (SecurityCypherException e) {
-            e.printStackTrace();
-        }
+//        String timestamp=System.currentTimeMillis()+"";
+        //            String encrpre=new CSIICypher().encryptWithoutRemove(pwdedit.getText().toString().trim(),CommDictAction.SecurityPubKey,timestamp,"UTF-8",2);
+//            String engryped="'"+encrpre.replace("+","%2B")+"'";//pwTxt已经加密过l
+        Intent in=new Intent();
+        in.putExtra("engrypted",pwdedit.getText().toString());
+        setResult(RESULT_OK,in);
+        PassWordDialogActivity.this.finish();
 
     }
     public void close(View v){//点击关闭也要回调 (以后改)

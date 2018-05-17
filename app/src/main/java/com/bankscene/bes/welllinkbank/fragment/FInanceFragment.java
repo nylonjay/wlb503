@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.Util.Trace;
+import com.bankscene.bes.welllinkbank.activity.LoginSmsDialog;
 import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
 import com.bankscene.bes.welllinkbank.activity.MenuList;
 import com.bankscene.bes.welllinkbank.adapter.GridViewAdapter;
@@ -141,22 +142,6 @@ public class FInanceFragment extends BaseFragment implements View.OnClickListene
         }
     };
 
-//    @Subscribe(threadMode = ThreadMode.MainThread)
-//    public void onMessageEventMainThread(MessageEvent messageEvent){
-//        Trace.e(TAG,"MAIN_messageEvent==="+messageEvent.getMessage());
-//        switch (messageEvent.getWhat()){
-//            case QUERYLOGINSTATE:
-//                String result=messageEvent.getMessage();
-//                if (result.contains(_REJCODE)&&result.contains("000000")){
-//                    showNotice(getResources().getString(R.string.logined));
-//                }else {
-//                    startActivity(new Intent(activity,LoginTabActivity.class));
-//                }
-//                break;
-//
-//        }
-//    }
-
     @Override
     protected boolean isLazyLoad() {
         return true;
@@ -216,6 +201,8 @@ public class FInanceFragment extends BaseFragment implements View.OnClickListene
                     }else if (menuName==R.string.my_loans){
                         in   =new Intent(activity, WebViewActivity.class);
                         in.putExtra("url", Constant.MY_LOANS);
+                    }else if (menuName==R.string.shares_query){
+//                        in   =new Intent(activity, LoginSmsDialog.class);
                     }
                     if (null!=in)
                         startActivity(in);

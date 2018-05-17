@@ -30,9 +30,12 @@ import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
 import com.bankscene.bes.welllinkbank.activity.PassWordDialogActivity;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
+import com.bankscene.bes.welllinkbank.exception.WLBException;
 import com.bankscene.bes.welllinkbank.view.powerwebview.powerlib.PowerWebView;
 import com.bankscene.bes.welllinkbank.view.translucent.ActionBarClickListener;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
+import com.kh.keyboard.CSIICypher;
+import com.kh.keyboard.SecurityCypherException;
 
 import butterknife.BindView;
 
@@ -40,7 +43,7 @@ import butterknife.BindView;
  * Created by tianwei on 2017/4/25.
  */
 
-public class WebViewActivity extends ShareActivity implements View.OnClickListener, PowerWebView.Listener {
+public class WebViewActivity extends HttpActivity implements View.OnClickListener, PowerWebView.Listener {
 
     public String url="";
 
@@ -57,6 +60,7 @@ public class WebViewActivity extends ShareActivity implements View.OnClickListen
     @BindView(R.id.re_content)
     RelativeLayout re_content;
     private final int SHOW_KEYBOARD=1;
+
 
     @Override
     public int setLayoutId() {
@@ -208,7 +212,6 @@ public class WebViewActivity extends ShareActivity implements View.OnClickListen
         }
 
     }
-
     final class JavacriptInterface{
         @JavascriptInterface
         public void Back2Homepage(){
@@ -222,6 +225,7 @@ public class WebViewActivity extends ShareActivity implements View.OnClickListen
         }
         @JavascriptInterface
         public void ShowKeyBoard(String timestamp){
+            GetTimeStampAndKeyWithoutEditor();
             Intent in =new Intent(WebViewActivity.this, PassWordDialogActivity.class);
             in.putExtra("timestamp",timestamp);
             startActivityForResult(in,SHOW_KEYBOARD);
@@ -283,10 +287,15 @@ public class WebViewActivity extends ShareActivity implements View.OnClickListen
             case SHOW_KEYBOARD:
                 if (resultCode== Activity.RESULT_OK){
                     if (null!=intent){
-                        String code=intent.getStringExtra("engrypted").replace("'","");
-                        Trace.e("code==",code);
-                        String url="javascript:getPassWord(\""+code+"\")";
-                        webView.loadUrl(url);
+                        try {
+                            String code=intent.getStringExtra("engrypted");
+                            String encryped = new CSIICypher().encryptWithJiamiJi(code,dbp,hms,timestamp,"UTF-8",2);
+                            String url="javascript:getPassWord(\""+encryped.replace("'","")+"\")";
+                            webView.loadUrl(url);
+                        } catch (SecurityCypherException e) {
+                            e.printStackTrace();
+                        }
+
 
                     }
                 }

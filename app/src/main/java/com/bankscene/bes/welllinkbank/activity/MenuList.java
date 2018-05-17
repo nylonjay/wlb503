@@ -44,20 +44,20 @@ public class MenuList extends ShareActivity {
     //    Map<Integer,Boolean> map;
     @Override
     protected void setActionBar() {
-        actionBar.setActionBar(getResources().getString(R.string.menu_list), R.string.wlb_arrow_l, "", 0, getResources().getString(R.string.save), new ActionBarClickListener() {
+        actionBar.setActionBar(getResources().getString(R.string.menu_list), R.string.wlb_arrow_l, "", 0, "", new ActionBarClickListener() {
             @Override
             public void onLeftClick() {
-                MenuList.this.finish();
-            }
-
-            @Override
-            public void onRightClick() {
                 Type type=new TypeToken<List<MenuBiz>>(){}.getType();
                 String jsonListTest=gson.toJson(mbs, type);
                 DBHelper.insert(new Data(DataKey.user_index,jsonListTest));
                 EventBus.getDefault().post(new MessageEvent(BaseFragment.REFRESHGRIDVIEW));
                 MenuList.this.finish();
                 //將功能選擇信息保存在數據庫
+            }
+
+            @Override
+            public void onRightClick() {
+
             }
         });
         actionBar.setStatusBarHeight();

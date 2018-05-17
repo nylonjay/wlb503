@@ -76,7 +76,7 @@ public class LoginGestureActivity extends HttpActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_login_gesture);
 
-
+        GetTimeStampAndKeyWithoutEditor();
         mTextReset = (TextView) findViewById(R.id.text_reset);
         mLockIndicator = (LockIndicator) findViewById(R.id.lock_indicator);
         mTextTip = (TextView) findViewById(R.id.text_tip);
@@ -120,7 +120,7 @@ public class LoginGestureActivity extends HttpActivity {
 
                             try {
                                 Trace.e("inputcode==",inputCode);
-                                String encyped=new CSIICypher().encryptWithoutRemove(inputCode,CommDictAction.SecurityPubKey,timestamp,"UTF-8",2);
+                                String encyped=new CSIICypher().encryptWithJiamiJi(inputCode,dbp,hms,timestamp,"UTF-8",2);
 ////                                Trace.e("手势加密:",encyped);
 //                                String path= Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator+"Gestureencryped/";
 ////            new File(path).mkdirs();

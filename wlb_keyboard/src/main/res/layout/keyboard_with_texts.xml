@@ -60,7 +60,7 @@
         android:background="@drawable/shape_input_area"
         android:layout_below="@+id/view_line"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="30dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
@@ -148,12 +148,19 @@
             android:padding="5dp"
             android:textSize="18sp" />
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/tv_challenge"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="15sp"
+        android:layout_below="@+id/ll_tvs"
+        android:layout_marginBottom="25dp"
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/light_grey"
-        android:layout_below="@+id/ll_tvs"
+        android:layout_below="@+id/tv_challenge"
         android:orientation="vertical">
         <ImageView
             android:layout_width="match_parent"

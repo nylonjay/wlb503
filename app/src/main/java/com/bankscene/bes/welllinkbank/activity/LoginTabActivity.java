@@ -89,7 +89,7 @@ public class LoginTabActivity extends HttpActivity {
     @BindView(android.R.id.tabs)
     TabWidget tabs;
     ClearableEditText login_name;
-    EditText pwdedit;
+    WlbEditText pwdedit;
     EditText login_verifycode;
     ImageView iv_verify;
     Button btn_login;
@@ -128,8 +128,6 @@ public class LoginTabActivity extends HttpActivity {
         ResId.patternNodePressed = R.mipmap.wlb_circle;
     }
 
-    private String hms;
-    private String dbp;
     int tab=1;
     private String encryped="";
 
@@ -163,12 +161,7 @@ public class LoginTabActivity extends HttpActivity {
             InitKeyBoards2();
         }
         RedirectclassName=getIntent().getStringExtra(getResources().getString(R.string.className));
-        iv_verify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getImageCode();
-            }
-        });
+
         TabHostClass tabHostClass=new TabHostClass(tabHost,R.id.now_update,R.id.today_choose,getResources().getString(R.string.verify_login),getResources().getString(R.string.cell_verify_login));
         tabHostClass.setTabHost();
         tabHostSettingsClass=new TabHostSettingsClass(LoginTabActivity.this,tabHost,tabs);
@@ -191,35 +184,12 @@ public class LoginTabActivity extends HttpActivity {
 
             }
         });
-//        try {
-//            GetTimeStampAndKey();
-//        } catch (WLBException e) {
-//            e.printStackTrace();
-//            noticeUtils.showNotice(getResources().getString(R.string.network_err));
-//        }
+        GetTimeStampAndKeyWithoutEditor();
         if (!TextUtils.isEmpty(DBHelper.getDataByKey(DataKey.gesture_code))&&"true".equals(DBHelper.getDataByKey(DataKey.login_type))){
             CastGestureLogin();
         }
     }
 
-    private void GetTimeStampAndKey() throws WLBException {
-        timestamp=System.currentTimeMillis()+"";
-        QueryPublicKey();
-        RefreshTimeStamp();
-        if (TextUtils.isEmpty(timestamp)){
-            throw new WLBException();
-        }
-
-//        editText.setDbp(dbp);
-//        editText.setHms(hms);
-//        editText.setTimestamp(timestamp);
-
-
-//        String path= Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator+"JIAMIJI/";
-//        String target=path+"rsa.txt";
-//        FileUtil.saveFile(encyped,target);
-//        FileUtil.saveFile(encyped.replace("+", "%2B"),target);
-    }
 
     public void onClickClose(View view){
         LoginTabActivity.this.finish();
@@ -261,7 +231,7 @@ public class LoginTabActivity extends HttpActivity {
                     return;
                 }
                 try {
-                    String encryped=new CSIICypher().encryptWithoutRemove(inputCode, CommDictAction.SecurityPubKey,System.currentTimeMillis()+"","UTF-8",2);
+                    String encryped=new CSIICypher().encryptWithJiamiJi(inputCode, dbp,hms,timestamp,"UTF-8",2);
                     Map params = new HashMap();
                     params.put("_ChannelId","PMBS");
                     params.put("LoginId",
@@ -355,8 +325,9 @@ public class LoginTabActivity extends HttpActivity {
 //                                        DynPwd=result.optString("DynPwd");
                                         Challenge=result.optString("Challenge");
                                         String PrincipalSeq=result.optString("PrincipalSeq");
-                                        Intent in=new Intent(LoginTabActivity.this,LoginSMSVerify.class);
+                                        Intent in=new Intent(LoginTabActivity.this,LoginSmsDialog.class);
                                         in.putExtra("PrincipalSeq",PrincipalSeq);
+                                        in.putExtra("Challenge",Challenge);
                                         startActivityForResult(in,LOGIN_M);
                                     }
                                 }else {
@@ -537,6 +508,9 @@ public class LoginTabActivity extends HttpActivity {
             case LOGIN_M:
                 if(null!=intent){
                     String code=intent.getStringExtra("code");
+                    if (!TextUtils.isEmpty(intent.getStringExtra("Challenge"))){
+                        Challenge=intent.getStringExtra("Challenge");
+                    }
                     if (resultCode==RESULT_OK){
                         Back2Login(code);
                     }
@@ -546,12 +520,18 @@ public class LoginTabActivity extends HttpActivity {
         }
     }
     private void InitKeyBoards() {
-        pwdedit= (EditText) findViewById(R.id.login_password);
+        pwdedit= (WlbEditText) findViewById(R.id.login_password);
         login_name= (ClearableEditText) findViewById(R.id.login_name);
         login_verifycode= (EditText) findViewById(R.id.login_verifycode);
         btn_login= (Button) findViewById(R.id.btn_login);
         remerberuser= (CheckBox) findViewById(R.id.remerberuser);
         iv_verify= (ImageView) findViewById(R.id.iv_verify);
+        iv_verify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getImageCode();
+            }
+        });
         tv_pre= (TextView) findViewById(R.id.tv_pre);
         login_name.clearFocus();
         login_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -622,12 +602,18 @@ public class LoginTabActivity extends HttpActivity {
         getImageCode();
     }
     private void InitKeyBoards2() {
-        pwdedit= (EditText) findViewById(R.id.login_password_cell);
+        pwdedit= (WlbEditText) findViewById(R.id.login_password_cell);
         login_name= (ClearableEditText) findViewById(R.id.login_name_cell);
         login_verifycode= (EditText) findViewById(R.id.login_verifycode_cell);
         btn_login= (Button) findViewById(R.id.btn_login_cell);
         remerberuser= (CheckBox) findViewById(R.id.remerberuser_cell);
         iv_verify= (ImageView) findViewById(R.id.iv_verify_cell);
+        iv_verify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getImageCode();
+            }
+        });
         tv_pre= (TextView) findViewById(R.id.tv_pre_cell);
         login_name.clearFocus();
         login_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -700,7 +686,6 @@ public class LoginTabActivity extends HttpActivity {
     public void onTapLogin(View v){
         try {
             String pre=tv_pre.getText().toString().equals(getResources().getString(R.string.others))?"":tv_pre.getText().toString().substring(1);
-            String timestamp=System.currentTimeMillis()+"";
             Map params = new HashMap();
             params.put("_ChannelId","PMBS");
             if (login_name.getText().toString().contains("*")){
@@ -710,13 +695,7 @@ public class LoginTabActivity extends HttpActivity {
                 params.put("LoginId",
                         pre+login_name.getText().toString().trim());
             }
-            encryped=new CSIICypher().encryptWithoutRemove(pwdedit.getText().toString().trim(),CommDictAction.SecurityPubKey,timestamp,"UTF-8",2);
-            hms=DBHelper.getDataByKey(DataKey.hmskey);
-            dbp=DBHelper.getDataByKey(DataKey.dbpkey);
-            Trace.e("hms==",DBHelper.getDataByKey(DataKey.hmskey));
-            Trace.e("dbp==",DBHelper.getDataByKey(DataKey.dbpkey));
-            Trace.e("timestamp==",timestamp);
-//            String encryped = new CSIICypher().encryptWithJiamiJi(pwdedit.getText().toString().trim(),dbp,hms,timestamp,"UTF-8",2);
+            encryped = new CSIICypher().encryptWithJiamiJi(pwdedit.getText().toString().trim(),dbp,hms,timestamp,"UTF-8",2);
             params.put("Password",encryped
                     .replace("+","%2B")
             );

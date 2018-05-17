@@ -1,6 +1,7 @@
 package com.bankscene.bes.welllinkbank.view;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.widget.EditText;
 
 /**
@@ -8,9 +9,9 @@ import android.widget.EditText;
  */
 
 public class WlbEditText extends EditText{
-    String timestamp;//时间戳
-    String dbp;//公钥
-    String hms;
+    private String timestamp;//时间戳
+    private String dbp;//公钥
+    private String hms;
 
     public String getHms() {
         return hms;
@@ -35,7 +36,9 @@ public class WlbEditText extends EditText{
         this.hms=hms;
 
     }
-
+    public WlbEditText(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
     public WlbEditText(Context context) {
         super(context);
     }

@@ -64,10 +64,10 @@ public class GestureSetPre extends ShareActivity implements View.OnClickListener
     protected void initView() {
         super.initView();
         re_change_gs.setOnClickListener(this);
-        if ("true".equals(DBHelper.getDataByKey(DataKey.login_type)))
-            tg_use_gs.setToggleOn();
-        else
-            tg_use_gs.setToggleOff();
+        tg_use_gs.setToggleOff();
+//        if ("true".equals(DBHelper.getDataByKey(DataKey.login_type)))
+//        else
+//            tg_use_gs.setToggleOff();
 
         if (State.showTrail)
             tg_show_trail.setToggleOn();

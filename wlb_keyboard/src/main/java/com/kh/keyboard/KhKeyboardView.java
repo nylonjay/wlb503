@@ -72,8 +72,11 @@ public class KhKeyboardView {
                 mLetterView.setPreviewEnabled(false);
             } else if (primaryCode == 32) {
                 mLetterView.setPreviewEnabled(false);
-            } else {
-                mLetterView.setPreviewEnabled(true);
+            }else if (primaryCode==90001){
+                mLetterView.setPreviewEnabled(false);
+            }
+            else {
+                mLetterView.setPreviewEnabled(false);
             }
 
         }

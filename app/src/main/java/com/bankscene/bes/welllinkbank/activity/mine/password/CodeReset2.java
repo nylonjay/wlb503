@@ -25,6 +25,8 @@ import com.bankscene.bes.welllinkbank.core.HttpActivity;
 import com.bankscene.bes.welllinkbank.core.State;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
+import com.bankscene.bes.welllinkbank.exception.WLBException;
+import com.bankscene.bes.welllinkbank.view.WlbEditText;
 import com.bankscene.bes.welllinkbank.view.translucent.ActionBarClickListener;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
 import com.kh.keyboard.CSIICypher;
@@ -50,11 +52,11 @@ public class CodeReset2 extends HttpActivity implements View.OnClickListener{
     @BindView(R.id.actionBar)
     TranslucentActionBar actionBar;
     @BindView(R.id.ed_1)
-    EditText ed_1;
+    WlbEditText ed_1;
     @BindView(R.id.ed_2)
-    EditText ed_2;
+    WlbEditText ed_2;
     @BindView(R.id.ed_3)
-    EditText ed_3;
+    WlbEditText ed_3;
     @BindView(R.id.btn_confirm)
     Button btn_confirml;
     KeyBoardDialogUtils keyBoardDialogUtil1;
@@ -95,14 +97,17 @@ public class CodeReset2 extends HttpActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ed_1:
+                GetTimeStampAndKey(ed_1);
                 keyBoardDialogUtil1=new KeyBoardDialogUtils(this);
                 keyBoardDialogUtil1.show(ed_1);
                 break;
             case R.id.ed_2:
+                GetTimeStampAndKey(ed_2);
                 keyBoardDialogUtil2=new KeyBoardDialogUtils(this);
                 keyBoardDialogUtil2.show(ed_2);
                 break;
             case R.id.ed_3:
+                GetTimeStampAndKey(ed_3);
                 keyBoardDialogUtil3=new KeyBoardDialogUtils(this);
                 keyBoardDialogUtil3.show(ed_3);
                 break;
@@ -115,6 +120,7 @@ public class CodeReset2 extends HttpActivity implements View.OnClickListener{
 //        ed_1.setInputType(InputType.TYPE_NULL);
 //        ed_2.setInputType(InputType.TYPE_NULL);
 //        ed_3.setInputType(InputType.TYPE_NULL);
+//        GetTimeStampAndKey();
         ed_1.setOnClickListener(this);
         ed_2.setOnClickListener(this);
         ed_3.setOnClickListener(this);
@@ -169,20 +175,22 @@ public class CodeReset2 extends HttpActivity implements View.OnClickListener{
         return true;
     }
     private void UploadPassword() {
-        String timestamp=System.currentTimeMillis()+"";
         String ed1 = null,ed2 = null,ed3 = null;
         try {
-            ed1= new CSIICypher().encryptWithoutRemove(ed_1.getText().toString().trim(),CommDictAction.SecurityPubKey,timestamp,"UTF-8",2).replace("+","%2B");
-            ed2= new CSIICypher().encryptWithoutRemove(ed_2.getText().toString().trim(),CommDictAction.SecurityPubKey,timestamp,"UTF-8",2).replace("+","%2B");
-            ed3= new CSIICypher().encryptWithoutRemove(ed_3.getText().toString().trim(),CommDictAction.SecurityPubKey,timestamp,"UTF-8",2).replace("+","%2B");
+            Trace.e("ed1_timestamp",ed_1.getTimestamp()+"hms===="+ed_1.getHms()+"dbp==="+ed_1.getDbp());
+            Trace.e("ed2_timestamp",ed_2.getTimestamp()+"hms===="+ed_2.getHms()+"dbp==="+ed_2.getDbp());
+            Trace.e("ed3_timestamp",ed_3.getTimestamp()+"hms===="+ed_3.getHms()+"dbp==="+ed_3.getDbp());
+            ed1= new CSIICypher().encryptWithJiamiJi(ed_1.getText().toString().trim(),ed_1.getDbp(),ed_1.getHms(),ed_1.getTimestamp(),"UTF-8",2);
+            ed2= new CSIICypher().encryptWithJiamiJi(ed_2.getText().toString().trim(),ed_2.getDbp(),ed_2.getHms(),ed_2.getTimestamp(),"UTF-8",2);
+            ed3= new CSIICypher().encryptWithJiamiJi(ed_3.getText().toString().trim(),ed_3.getDbp(),ed_3.getHms(),ed_3.getTimestamp(),"UTF-8",2);
         } catch (SecurityCypherException e) {
             e.printStackTrace();
         }
         Map params=new HashMap();
         params.put("_ChannelId","PMBS");
-        params.put("OldPassword",ed1);
-        params.put("NewPassword",ed2);
-        params.put("ConfirmPassword",ed3);
+        params.put("OldPassword",ed1.replace("+","%2B"));
+        params.put("NewPassword",ed2.replace("+","%2B"));
+        params.put("ConfirmPassword",ed3.replace("+","%2B"));
         params.put("PasswordType", "01");
         if ("zh".equals(DBHelper.getDataByKey(DataKey.language))){
             params.put("_locale","zh_TW");
@@ -212,13 +220,14 @@ public class CodeReset2 extends HttpActivity implements View.OnClickListener{
                                 dialogUtils.ShowDialogOne(getResources().getString(R.string.promot), getResources().getString(R.string.update_password_ok), getResources().getString(R.string.confirm), new DialogCallBack() {
                                     @Override
                                     public void onPositive() {
-                                        startActivity(new Intent(CodeReset2.this, TradeCodeReset.class));
                                         CodeReset2.this.finish();
+                                        if (State.isFirstLogin)
+                                        startActivity(new Intent(CodeReset2.this, TradeCodeReset.class));
                                     }
 
                                     @Override
                                     public void onNegative() {
-                                        startActivity(new Intent(CodeReset2.this, TradeCodeReset.class));
+//                                        startActivity(new Intent(CodeReset2.this, TradeCodeReset.class));
                                         CodeReset2.this.finish();
                                     }
                                 });

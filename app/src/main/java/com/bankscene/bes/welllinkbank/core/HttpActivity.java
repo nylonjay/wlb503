@@ -27,6 +27,7 @@ import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
 import com.bankscene.bes.welllinkbank.exception.WLBException;
+import com.bankscene.bes.welllinkbank.view.WlbEditText;
 import com.kh.keyboard.CSIICypher;
 import com.kh.keyboard.SecurityCypherException;
 import com.okhttplib.HttpInfo;
@@ -65,15 +66,43 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
     private final int LOAD_SUCCEED = 0x003;
     private final int LOAD_FAILED = 0x004;
     protected String timestamp;
-
-
+    protected String hms;
+    protected String dbp;
+    protected WlbEditText CurrentEditext;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
     }
+    protected void GetTimeStampAndKeyWithoutEditor() {
+        QueryPublicKey();
+        RefreshTimeStamp();
+//        editText.setDbp(dbp);
+//        editText.setHms(hms);
+//        editText.setTimestamp(timestamp);
 
+
+//        String path= Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator+"JIAMIJI/";
+//        String target=path+"rsa.txt";
+//        FileUtil.saveFile(encyped,target);
+//        FileUtil.saveFile(encyped.replace("+", "%2B"),target);
+    }
+
+    protected void GetTimeStampAndKey(WlbEditText editText) {
+        CurrentEditext=editText;
+        QueryPublicKey();
+        RefreshTimeStamp();
+//        editText.setDbp(dbp);
+//        editText.setHms(hms);
+//        editText.setTimestamp(timestamp);
+
+
+//        String path= Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator+"JIAMIJI/";
+//        String target=path+"rsa.txt";
+//        FileUtil.saveFile(encyped,target);
+//        FileUtil.saveFile(encyped.replace("+", "%2B"),target);
+    }
     public void RefreshTimeStamp(){
         Map params=new HashMap();
         params.put("_ChannelId","PMBS");
@@ -91,6 +120,8 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
                         try {
                             JSONObject result=new JSONObject(redetail);
                             timestamp=result.getString("Timestamp");
+                            if (null!=CurrentEditext)
+                                CurrentEditext.setTimestamp(timestamp);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -118,8 +149,13 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
                         String redetail=info.getRetDetail();
                         try {
                             JSONObject result=new JSONObject(redetail);
-                           DBHelper.insert(new Data(DataKey.dbpkey,result.optString("DbpPublicKey")));
-                           DBHelper.insert(new Data(DataKey.hmskey,result.optString("HsmPublicKey")));
+                            dbp=result.optString("DbpPublicKey");
+                            hms=result.optString("HsmPublicKey");
+                            if (null!=CurrentEditext){
+                                CurrentEditext.setDbp(dbp);
+                                CurrentEditext.setHms(hms);
+                            }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

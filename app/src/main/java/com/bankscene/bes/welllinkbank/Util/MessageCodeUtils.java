@@ -22,6 +22,7 @@ public class MessageCodeUtils extends CountDownTimer {
     @Override
     public void onFinish() {
         button.setClickable(true);
+        button.setTextColor(Color.parseColor("#d13231"));
         button.setSelected(false);
         button.setText(context.getResources().getString(R.string.recapture));
     }
@@ -29,6 +30,7 @@ public class MessageCodeUtils extends CountDownTimer {
     @Override
     public void onTick(long millisUntilFinished) {
         button.setClickable(false);
+        button.setTextColor(Color.parseColor("#666666"));
         button.setText(context.getResources().getString(R.string.recapture) + "(" + millisUntilFinished / 1000 + ")");
         button.setSelected(true);
     }

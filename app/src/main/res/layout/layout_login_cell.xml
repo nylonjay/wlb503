@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/wlb_icon_password"/>
 
-        <EditText
+        <com.bankscene.bes.welllinkbank.view.WlbEditText
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

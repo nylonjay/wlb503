@@ -15,7 +15,7 @@
         android:gravity="center"
         android:paddingBottom="16dp"
         android:paddingTop="16dp"
-        android:text="温馨提示"
+        android:text="@string/wenxin"
         android:textColor="@color/blackText"
         android:textSize="16sp" />
 

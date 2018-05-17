@@ -34,7 +34,7 @@ public class CodeReset extends MenuListViewActivity implements AdapterView.OnIte
 
     @Override
     protected void setSubMenu() {
-        items.add(getResources().getString(R.string.code_setting));
+        items.add(getResources().getString(R.string.login_code_setting));
         items.add(getResources().getString(R.string.gesture_setting));
         items.add(getResources().getString(R.string.trade_code_reset));
 

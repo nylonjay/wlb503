@@ -250,4 +250,5 @@ s
     <string name="LOGIN_CODE_RESET">LoginPassword Setting</string>
     <string name="TRADE_CODE_RESET">Payment Password Setting</string>
     <string name="retry">Please Try Again Later</string>
+    <string name="challenge">SMS sequence number:</string>
 </resources>

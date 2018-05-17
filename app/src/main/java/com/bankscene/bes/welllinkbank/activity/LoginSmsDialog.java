@@ -2,7 +2,6 @@ package com.bankscene.bes.welllinkbank.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ChangedPackages;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
@@ -13,22 +12,21 @@ import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.Util.MessageCodeUtils;
 import com.bankscene.bes.welllinkbank.Util.ToastUtils;
-import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.biz.MessageEvent;
 import com.bankscene.bes.welllinkbank.common.CommDictAction;
-import com.bankscene.bes.welllinkbank.common.Constant;
-import com.bankscene.bes.welllinkbank.core.HttpActivity;
-import com.bankscene.bes.welllinkbank.core.State;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
-import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
+import com.bankscene.bes.welllinkbank.view.sms.OnPasswordInputFinish;
+import com.bankscene.bes.welllinkbank.view.sms.PasswordView;
+import com.bankscene.bes.welllinkbank.view.sms.PopEnterPassword;
 import com.kh.keyboard.KeyBoardWithTextDialog;
 import com.okhttplib.HttpInfo;
 import com.okhttplib.OkHttpUtil;
@@ -41,13 +39,12 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
-import de.greenrobot.event.EventBus;
+/**
+ * Created by Nylon on 2018/5/17.16:34
+ */
 
-import static com.tencent.smtt.sdk.TbsReaderView.ReaderCallback.SHOW_DIALOG;
-
-public class LoginSMSVerify extends Activity {
+public class LoginSmsDialog extends Activity implements View.OnClickListener{
     EditText ppwdedit;
     String timestamp;
     protected String pwTxt;
@@ -58,27 +55,49 @@ public class LoginSMSVerify extends Activity {
     private TextView[] peds;
     View contentView;
     private String PrincipalSeq;
-    private TextView tv_resend;
     MessageCodeUtils mcu;
     public static final String _REJCODE="_RejCode";
     public static final String _REJMSG="_RejMsg";
     private String Challenge;
     private TextView tv_challenge;
+    private TextView tv_cancle,tv_resend;
+    private PasswordView passwordView;
+    private View pwdview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_to_getpassword);
+        setContentView(R.layout.dialog_to_sms);
 //        calback=getIntent().getStringExtra("callback");
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-        keyBoardDialogUtils=new KeyBoardWithTextDialog(this);
         PrincipalSeq=getIntent().getStringExtra("PrincipalSeq");
         Challenge=getIntent().getStringExtra("Challenge");
+        InitWindouManager();
         InitView();
-//        InitWindouManager();
-        keyBoardDialogUtils.ForbiddenClose();
-        keyBoardDialogUtils.show(ppwdedit);
-        keyBoardDialogUtils.SetTitle(getResources().getString(R.string.sms_verify));
     }
+
+    private void InitView() {
+        passwordView=findViewById(R.id.pwd_view);
+        pwdview=passwordView.getRootView();
+        tv_challenge=pwdview.findViewById(R.id.tv_challenge);
+        tv_challenge.setText(getResources().getString(R.string.challenge)+" "+Challenge);
+        tv_cancle=pwdview.findViewById(R.id.cancel);
+        tv_resend=pwdview.findViewById(R.id.submit);
+        tv_cancle.setOnClickListener(this);
+        tv_resend.setOnClickListener(this);
+        mcu=new MessageCodeUtils(60000,tv_resend,this);
+        mcu.start();
+        passwordView.setOnFinishInput(new OnPasswordInputFinish() {
+            @Override
+            public void inputFinish(final String password) {
+                pwTxt=password;
+                GtoGetCode();
+            }
+        });
+    }
+
+
+
     private void InitWindouManager(){
         WindowManager m = getWindowManager();
         Display d = m.getDefaultDisplay();  //为获取屏幕宽、高
@@ -91,71 +110,10 @@ public class LoginSMSVerify extends Activity {
         getWindow().setAttributes(p);     //设置生效
         getWindow().setGravity(Gravity.CENTER);       //设置靠右对齐
     }
-    public void InitView() {
-//        initSecurityFieldsSet();
-        contentView=keyBoardDialogUtils.getContentView();
-        tv_challenge=contentView.findViewById(R.id.tv_challenge);
-        String str=getResources().getString(R.string.challenge)+"<font color='#333333'>"+" "+Challenge+"</font>";
-        tv_challenge.setTextSize(18);
-        tv_challenge.setText(Html.fromHtml(str));
-        ppwdedit = (EditText) findViewById(R.id.trans_password);
-//        freshTimestamp();
-        ppwdedit.setInputType(InputType.TYPE_DATETIME_VARIATION_NORMAL);
-        InitWindouManager();
-        ll_tvs=contentView.findViewById(R.id.ll_tvs);
-//        ll_tvs.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                keyBoardDialogUtils=new KeyBoardWithTextDialog(LoginSMSVerify.this);
-//                keyBoardDialogUtils.show(pwdedit);
-//            }
-//        });
-        tv_resend=contentView.findViewById(R.id.tv_send);
-        mcu= new MessageCodeUtils(60000, tv_resend,LoginSMSVerify.this);
-        mcu.start();
-        peds=new TextView[6];
-        pe1= (TextView)contentView. findViewById(R.id.password_edit1);
-        pe2= (TextView)contentView. findViewById(R.id.password_edit2);
-        pe3= (TextView)contentView. findViewById(R.id.password_edit3);
-        pe4= (TextView)contentView. findViewById(R.id.password_edit4);
-        pe5= (TextView)contentView. findViewById(R.id.password_edit5);
-        pe6= (TextView)contentView. findViewById(R.id.password_edit6);
-        peds[0]=pe1;
-        peds[1]=pe2;
-        peds[2]=pe3;
-        peds[3]=pe4;
-        peds[4]=pe5;
-        peds[5]=pe6;
-
-        ppwdedit.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String [] arr=s.toString().split("");
-                String[] ss = new String[arr.length-1];
-                System.arraycopy(arr, 1, ss, 0, ss.length);
-                for (int i=0;i<peds.length;i++){
-                    if (i<ss.length){
-                        peds[i].setText(ss[i]);
-                    }else{
-                        peds[i].setText("");
-                    }
-                }
-                if (s.length()>=6){
-                    pwTxt=s.toString();
-                    GtoGetCode();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 显示窗口
     }
 
     @Override
@@ -170,17 +128,14 @@ public class LoginSMSVerify extends Activity {
             in.putExtra("Challenge",Challenge);
         }
         setResult(RESULT_OK,in);
-        LoginSMSVerify.this.finish();
+        LoginSmsDialog.this.finish();
     }
     public void close(View v){//点击关闭也要回调 (以后改)
         String engryped="'"+"pwdViewRemoved"+"'";//pwTxt已经加密过l
         Intent in=new Intent();
         in.putExtra("engrypted",engryped);
         setResult(RESULT_OK,in);
-        LoginSMSVerify.this.finish();
-    }
-    public void resend(View v){
-        Resend();
+        LoginSmsDialog.this.finish();
     }
     public void Resend(){
         Map params = new HashMap();
@@ -211,16 +166,6 @@ public class LoginSMSVerify extends Activity {
                             e.printStackTrace();
                         }
 
-//                        try {
-//                            JSONObject result= new JSONObject(info.getRetDetail());
-//                            if (result.has(_REJCODE)&&result.get(_REJCODE).equals("000000")){
-//
-//                            }else {
-//
-//                            }
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
                     }
                 });
 
@@ -245,5 +190,17 @@ public class LoginSMSVerify extends Activity {
                 callback.onFailure(info);
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.cancel:
+                LoginSmsDialog.this.finish();
+                break;
+            case R.id.submit:
+                Resend();
+                break;
+        }
     }
 }

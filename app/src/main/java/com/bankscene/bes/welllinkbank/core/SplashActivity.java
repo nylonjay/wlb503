@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 
 import com.bankscene.bes.welllinkbank.MainActivity;
 import com.bankscene.bes.welllinkbank.R;
@@ -148,14 +149,16 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        ActivityCompat.requestPermissions(SplashActivity.this,needPermissions,REQUEST_THREE_PERMISSION);
-
+//                        ActivityCompat.requestPermissions(SplashActivity.this,needPermissions,REQUEST_THREE_PERMISSION);
+//                        ZbPermission.needPermission(SplashActivity.this, REQUEST_THREE_PERMISSION, needPermissions);
+                        checkPermissions(needPermissions);
                     }
 
                     @Override
                     public void onFailure(HttpInfo info) throws IOException {
 //                        ToastUtils.showShortToast(getResources().getString(R.string.load_data_fail));
-                        ActivityCompat.requestPermissions(SplashActivity.this,needPermissions,REQUEST_THREE_PERMISSION);
+//                        ZbPermission.needPermission(SplashActivity.this, REQUEST_THREE_PERMISSION, needPermissions);
+                        checkPermissions(needPermissions);
                     }
                 });
     }
@@ -165,7 +168,12 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
         SplashActivity.this.finish();
     }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        ZbPermission.onRequestPermissionsResult(SplashActivity.this, requestCode, permissions, grantResults);
+        Go();
+    }
     private void checkPermissions(String... permissions) {
         List<String> needRequestPermissonList = findDeniedPermissions(permissions);
         if (null != needRequestPermissonList
@@ -187,14 +195,6 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
             }
         }
         return needRequestPermissonList;
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case REQUEST_THREE_PERMISSION:
-                Go();
-                break;
-        }
     }
 
 

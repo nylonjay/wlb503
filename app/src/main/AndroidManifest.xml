@@ -17,7 +17,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 获取WIFI状态 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- 相机权限 -->
+     相机权限
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 震动 -->
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -25,7 +25,7 @@
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <!-- 获取精确的位置 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!-- 拨打电话权限 -->
+     拨打电话权限
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" />
@@ -37,7 +37,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission android:name="paul.permission.USE" />
+    <uses-permission android:name="paul.permission.USE"
+        />
 
     <!-- android:supportsRtl="true" -->
     <!-- android:hardwareAccelerated="true" -->
@@ -138,7 +139,11 @@
             android:launchMode="singleTask"
             android:theme="@style/dialog_style" />
         <activity android:name=".activity.mine.password.TradeCodeReset" />
-        <activity android:name=".activity.LoginTabActivity"></activity>
+        <activity android:name=".activity.LoginTabActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activity.LoginSmsDialog"
+            android:theme="@style/dialog_style"
+            />
     </application>
 
 </manifest>

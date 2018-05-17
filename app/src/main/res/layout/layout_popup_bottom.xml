@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000">
+    <!--<include layout="@layout/sms_editor_layout"/>-->
+    <LinearLayout
+        android:id="@+id/linear_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_passwordview"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:text="@string/sms_verify"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.74dp"
+            android:background="@color/background" />
+
+        <TextView
+            android:id="@+id/tv_challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="6dp"
+            android:text="@string/challenge"
+            android:textColor="#888888"
+            android:textSize="14sp" />
+
+        <!-- 6位密码框布局，需要一个圆角边框的shape作为layout的背景 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_input_area"
+            android:orientation="horizontal">
+
+            <!-- inputType设置隐藏密码明文
+                 textSize设置大一点，否则“点”太小了，不美观 -->
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_pass1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="36sp" />
+
+
+                <ImageView
+                    android:id="@+id/img_pass1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_psw_bg"
+                    android:visibility="invisible" />
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="0.66dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="0.66dp"
+                android:layout_marginTop="0.66dp"
+                android:background="#eeeeee" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_pass2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="36sp" />
+
+
+                <ImageView
+                    android:id="@+id/img_pass2"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_psw_bg"
+                    android:visibility="invisible" />
+
+            </FrameLayout>
+
+
+            <View
+                android:layout_width="0.66dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="0.66dp"
+                android:layout_marginTop="0.66dp"
+                android:background="#eeeeee" />
+
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_pass3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="36sp" />
+
+
+                <ImageView
+                    android:id="@+id/img_pass3"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_psw_bg"
+                    android:visibility="invisible" />
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="0.66dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="0.66dp"
+                android:layout_marginTop="0.66dp"
+                android:background="#eeeeee" />
+
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_pass4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="36sp" />
+
+
+                <ImageView
+                    android:id="@+id/img_pass4"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_psw_bg"
+                    android:visibility="invisible" />
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="0.66dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="0.66dp"
+                android:layout_marginTop="0.66dp"
+                android:background="#eeeeee" />
+
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_pass5"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="36sp" />
+
+
+                <ImageView
+                    android:id="@+id/img_pass5"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_psw_bg"
+                    android:visibility="invisible" />
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="0.66dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="0.66dp"
+                android:layout_marginTop="0.66dp"
+                android:background="#eeeeee" />
+
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_pass6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="36sp" />
+
+
+                <ImageView
+                    android:id="@+id/img_pass6"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_psw_bg"
+                    android:visibility="invisible" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/background"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp">
+
+            <TextView
+                android:id="@+id/cancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/_selector_dialog_button_left"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/cancle_1"
+                android:layout_marginRight="0.5dp"
+                android:textColor="@color/redText"
+                android:textSize="16sp" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/background"/>
+
+            <TextView
+                android:id="@+id/submit"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/_selector_dialog_button_right"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/resend_sms"
+                android:layout_marginLeft="0.5dp"
+                android:textColor="@color/redText"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.bankscene.bes.welllinkbank.view.sms.VirtualKeyboardView
+        android:id="@+id/virtualKeyboardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom" />
+
+    <!-- &lt;!&ndash; 输入键盘 &ndash;&gt;
+     <GridView
+         android:id="@+id/gv_keybord"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:background="#bdbdbd"
+         android:horizontalSpacing="1px"
+         android:numColumns="3"
+         android:verticalSpacing="1px" />
+
+     <View
+         android:id="@+id/line"
+         android:layout_width="match_parent"
+         android:layout_height="1px"
+         android:layout_above="@id/gv_keybord"
+         android:background="#bdbdbd" />
+
+     <RelativeLayout
+         android:id="@+id/layoutBack"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_above="@id/line"
+         android:background="#f5f5f5"
+         android:padding="9.5dp">
+
+         <ImageView
+             android:id="@+id/imgBack"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+             android:src="@mipmap/keyboard_back_img" />
+
+     </RelativeLayout>
+
+     <View
+         android:layout_width="match_parent"
+         android:layout_height="1px"
+         android:layout_above="@id/layoutBack"
+         android:layout_marginTop="1dp"
+         android:background="#bdbdbd" />-->
+
+</RelativeLayout>

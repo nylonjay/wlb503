@@ -147,7 +147,7 @@
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:src="@drawable/icon_close2"
+            android:src="@drawable/keyboard_icon_close2"
             android:layout_centerInParent="true"
            />
 

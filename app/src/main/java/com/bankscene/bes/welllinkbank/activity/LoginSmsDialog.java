@@ -140,6 +140,17 @@ public class LoginSmsDialog extends Activity implements View.OnClickListener{
     public void Resend(){
         Map params = new HashMap();
         params.put("_ChannelId","PMBS");
+        if ("zh".equals(DBHelper.getDataByKey(DataKey.language))){
+
+            params.put("_locale","zh_TW");
+        }else {
+            params.put("_locale","en_US");
+        } if ("zh".equals(DBHelper.getDataByKey(DataKey.language))){
+
+            params.put("_locale","zh_TW");
+        }else {
+            params.put("_locale","en_US");
+        }
         params.put("PrincipalSeq",PrincipalSeq);
         doHttpAsync(HttpInfo.Builder()
                         .addHead("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
@@ -162,6 +173,7 @@ public class LoginSmsDialog extends Activity implements View.OnClickListener{
                             mcu.start();
                             // {"PrincipalSeq":"44","_ChannelId":"PMBS","Challenge":"0242"}
                             Challenge=result.optString("Challenge");
+                            tv_challenge.setText(getResources().getString(R.string.challenge)+" "+Challenge);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

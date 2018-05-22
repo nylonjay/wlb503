@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/light_grey"
+    android:background="@color/keyboard_light_grey"
     android:id="@+id/rl_key"
     android:orientation="vertical">
 
@@ -16,13 +16,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/light_grey"
+        android:background="@color/keyboard_light_grey"
         android:orientation="vertical">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/greyText"/>
+            android:background="@color/keyboard_greyText"/>
 
         <FrameLayout
             android:id="@+id/keyboard_layer"
@@ -38,7 +38,7 @@
                 android:keyBackground="@drawable/keyboard_number_selector_bg"
                 android:keyTextColor="#000000"
                 android:keyPreviewLayout="@null"
-                android:background="@color/light_grey"
+                android:background="@color/keyboard_light_grey"
                 android:visibility="gone" />
 
             <com.kh.keyboard.CustomKeyboardView
@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="true"
-                android:background="@color/light_grey"
+                android:background="@color/keyboard_light_grey"
                 android:focusableInTouchMode="true"
                 android:keyPreviewHeight="90dp"
                 android:keyBackground="@drawable/keyboard_selector_bg"

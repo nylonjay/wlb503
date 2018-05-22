@@ -36,7 +36,24 @@ public class User implements Serializable {
     private String address = "";
     private String english_name="";
     private String image_base64="";
+    private boolean isGestureOpen=false;
+    private boolean isGestureSetted=false;
 
+    public boolean isGestureOpen() {
+        return isGestureOpen;
+    }
+
+    public void setGestureOpen(boolean gestureOpen) {
+        isGestureOpen = gestureOpen;
+    }
+
+    public boolean isGestureSetted() {
+        return isGestureSetted;
+    }
+
+    public void setGestureSetted(boolean gestureSetted) {
+        isGestureSetted = gestureSetted;
+    }
 
     public String getImage_base64() {
         return image_base64;
@@ -197,5 +214,10 @@ public class User implements Serializable {
 
     public String getAddress() {
         return address;
+    }
+
+    @Override
+    public String toString() {
+        return "UserId=="+getUserId()+"-------------isOpen"+isGestureOpen()+"-------------isSetted"+isGestureSetted();
     }
 }

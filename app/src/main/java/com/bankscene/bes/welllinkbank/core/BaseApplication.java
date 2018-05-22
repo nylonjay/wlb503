@@ -69,6 +69,7 @@ public class BaseApplication extends Application {
     public static String USER_INDEX="user_index";
     public static String baseImagePath="";
     public static List<NameImgPair> nips=new ArrayList<>();
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -182,17 +183,6 @@ public class BaseApplication extends Application {
 
     }
 
-//    private void initUserIndex() {
-//        //初始化功能列表
-//        if (null== SharedPreferenceUtil.get(this, USER_INDEX,"")){
-//            Map m=new HashMap();
-//            for (int i=0;i<new FinanceMainBiz(this).getAllIcons().length-1;i++){
-//                m.put(i+"",true+"");
-//            }
-//            SharedPreferenceUtil.put(this,USER_INDEX,m.toString());
-//        }
-//        Trace.e("map",SharedPreferenceUtil.get(this,USER_INDEX,"").toString());
-//    }
 
     void initOkHttp(Context context) {
         String downloadFileDir = Environment.getExternalStorageDirectory().getPath()+"/okHttp_download/";

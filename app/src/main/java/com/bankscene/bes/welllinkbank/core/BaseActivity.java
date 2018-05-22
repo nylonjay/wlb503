@@ -16,6 +16,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -38,12 +39,17 @@ import com.bankscene.bes.welllinkbank.adapter.common.ImageShape;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
+import com.bankscene.bes.welllinkbank.module.User;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.gyf.barlibrary.ImmersionBar;
 import com.lzy.imagepicker.view.SystemBarTintManager;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -79,6 +85,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected TranslucentActionBar actionBar;
     protected View rootView;
     LocaleChangeReceiver lcr;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +118,68 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         setListener();
     }
+
+    protected void saveUserState(String loginid,boolean open, boolean setted) {
+        Trace.e("saveUserState","loginid===="+loginid+"open===="+open+"setted==="+setted);
+        Gson gson=new Gson();
+        List<User> nips;
+        Type type=new TypeToken<List<User>>(){}.getType();
+        String Nips=DBHelper.getDataByKey(DataKey.userState);
+        User nip;
+        if (TextUtils.isEmpty(Nips)){//之前没有用户登陆过  添加
+            nips=new ArrayList<>();
+            nip=new User();
+            nip.setUserId(loginid);
+            nip.setGestureSetted(setted);
+            nip.setGestureOpen(open);
+            nips.add(nip);
+        }else {
+            nips=gson.fromJson(Nips,type);
+            if (!Nips.contains(loginid)){
+                nip=new User();
+                nip.setGestureOpen(open);
+                nip.setGestureSetted(setted);
+                nip.setUserId(loginid);
+                nips.add(nip);
+            }else{
+                for (User u:nips){
+                    if (u.getUserId().equals(loginid)){
+                        u.setGestureSetted(setted);
+                        u.setGestureOpen(open);
+                    }
+                }
+            }
+        }
+
+        String FinalNipstr=gson.toJson(nips,type);
+        DBHelper.insert(new Data(DataKey.userState,FinalNipstr));
+    }
+    protected User getUserState(String loginid){
+        Gson gson=new Gson();
+        List<User> nips;
+        User user = null;
+        Type type=new TypeToken<List<User>>(){}.getType();
+        String Nips=DBHelper.getDataByKey(DataKey.userState);
+        Trace.e("userstate==",Nips);
+        nips=gson.fromJson(Nips,type);
+        if (null!=nips&&nips.size()>=0){
+            for (User u : nips) {
+                if (u.getUserId().equals(loginid)) {
+                    user=u;
+                    break;
+                }
+            }
+        }
+        if (null==user){
+            Trace.e("new User","---------------");
+            user=new User();
+            user.setUserId(loginid);
+        }
+
+        return user;
+    }
+
+
     public static void setStatusBarColor(Activity activity, int colorId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = activity.getWindow();

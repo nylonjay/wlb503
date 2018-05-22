@@ -1,52 +1,52 @@
 <resources>
     <string name="app_name">立橋銀行</string>
 
-    <!--<string name="icons_back">&#xe6c9;</string>-->
-    <!--<string name="icons_search">&#xe6c3;</string>-->
-    <!--<string name="icons_set">&#xe6c6;</string>-->
-    <!--<string name="icons_location">&#xe6b8;</string>-->
-    <!--<string name="icons_home">&#xe6d8;</string>-->
-    <!--<string name="icons_more">&#xe6dc;</string>-->
-    <!--<string name="icons_date">&#xe6dd;</string>-->
-    <!--<string name="icons_quit">&#xe6bf;</string>-->
-    <!--<string name="icons_star">&#xe6cc;</string>-->
-    <!--<string name="icons_add">&#xe6bb;</string>-->
-    <!--<string name="icons_share">&#xe6cb;</string>-->
-    <!--<string name="icons_keep">&#xe6cf;</string>-->
+    <string name="icons_back">&#xe6c9;</string>
+    <string name="icons_search">&#xe6c3;</string>
+    <string name="icons_set">&#xe6c6;</string>
+    <string name="icons_location">&#xe6b8;</string>
+    <string name="icons_home">&#xe6d8;</string>
+    <string name="icons_more">&#xe6dc;</string>
+    <string name="icons_date">&#xe6dd;</string>
+    <string name="icons_quit">&#xe6bf;</string>
+    <string name="icons_star">&#xe6cc;</string>
+    <string name="icons_add">&#xe6bb;</string>
+    <string name="icons_share">&#xe6cb;</string>
+    <string name="icons_keep">&#xe6cf;</string>
 
-    <!--<string name="icons_scan">&#xe6fe;</string>-->
-    <!--<string name="icons_pay">&#xe6ff;</string>-->
-    <!--<string name="icons_collect">&#xe700;</string>-->
-    <!--<string name="icons_searchBold">&#xe727;</string>-->
-    <!--<string name="icons_up">&#xe6d3;</string>-->
-    <!--<string name="icons_hide">&#xe702;</string>-->
-    <!--<string name="icons_noInfo">&#xe6fd;</string>-->
-    <!--<string name="icons_down">&#xe6d4;</string>-->
+    <string name="icons_scan">&#xe6fe;</string>
+    <string name="icons_pay">&#xe6ff;</string>
+    <string name="icons_collect">&#xe700;</string>
+    <string name="icons_searchBold">&#xe727;</string>
+    <string name="icons_up">&#xe6d3;</string>
+    <string name="icons_hide">&#xe702;</string>
+    <string name="icons_noInfo">&#xe6fd;</string>
+    <string name="icons_down">&#xe6d4;</string>
 
-    <!--<string name="icons_pointRight">&#xe6ca;</string>-->
-    <!--<string name="icons_phone">&#xe6e6;</string>-->
-    <!--<string name="icons_success">&#xe6f7;</string>-->
-    <!--<string name="icons_right">&#xe6b6;</string>-->
-    <!--<string name="icons_icon">&#xe703;</string>-->
+    <string name="icons_pointRight">&#xe6ca;</string>
+    <string name="icons_phone">&#xe6e6;</string>
+    <string name="icons_success">&#xe6f7;</string>
+    <string name="icons_right">&#xe6b6;</string>
+    <string name="icons_icon">&#xe703;</string>
 
-    <!--<string name="icons_warn">&#xe73b;</string>-->
-    <!--<string name="icons_clear">&#xe73c;</string>-->
+    <string name="icons_warn">&#xe73b;</string>
+    <string name="icons_clear">&#xe73c;</string>
 
 
-    <!--<string name="icons_main0">&#xe6d8;</string>-->
-    <!--<string name="icons_main1">&#xe6f3;</string>-->
+    <string name="icons_main0">&#xe6d8;</string>
+    <string name="icons_main1">&#xe6f3;</string>
 
-    <!--<string name="icons_loan0">&#xe6eb;</string>-->
-    <!--<string name="icons_loan1">&#xe6f2;</string>-->
+    <string name="icons_loan0">&#xe6eb;</string>
+    <string name="icons_loan1">&#xe6f2;</string>
 
-    <!--<string name="icons_finance0">&#xe6ec;</string>-->
-    <!--<string name="icons_finance1">&#xe6f1;</string>-->
+    <string name="icons_finance0">&#xe6ec;</string>
+    <string name="icons_finance1">&#xe6f1;</string>
 
-    <!--<string name="icons_life0">&#xe6ed;</string>-->
-    <!--<string name="icons_life1">&#xe6f0;</string>-->
+    <string name="icons_life0">&#xe6ed;</string>
+    <string name="icons_life1">&#xe6f0;</string>
 
-    <!--<string name="icons_user0">&#xe6ee;</string>-->
-    <!--<string name="icons_user1">&#xe6f4;</string>-->
+    <string name="icons_user0">&#xe6ee;</string>
+    <string name="icons_user1">&#xe6f4;</string>
 
     <string name="wait">請稍後…</string>
 
@@ -136,47 +136,45 @@
     <string name="amount">金額</string>
     <string name="preview">預覽</string>
 
-    <string name="notice">1.金額輸入分為整數和小數兩部分；#2.澳門元及港元轉賬：24小時服務； #3.人民幣/外幣買賣交易時間：星期壹至五上午7:00-翌日淩晨3:30(個別幣別至下午6:00)； 星期六、日及特殊情況不提供服務，銀行不另行通知； #4.凡於銀行假期內所做的交易，有關您所應付的利息均以緊接假期後首個工作日為起息日。</string>
     <string name="account_list">賬戶列表</string>
     <string name="trans_cofirm">確認</string>
 
-    <string name="start_date">起始時間</string>
-    <string name="end_date">結束日期</string>
-    <string name="query_7_day">查詢最近7天</string>
-    <string name="query_60_day">查詢最近60天</string>
-    <string name="query_record">查詢</string>
-    <string name="query_text">1.您可查閱近12個月的交易記錄。</string>
-    <string name="query_accout_trans_record">查詢賬戶交易記錄</string>
-    <string name="account">賬號</string>
-    <string name="currency">貨幣</string>
-    <string name="currency_type">幣別</string>
-    <string name="trade_amount">交易金额</string>
-    <string name="buss_type">業務類型</string>
-    <string name="next_month">下個月</string>
-    <string name="last_pape">上一頁</string>
-    <string name="client_name">客戶名稱</string>
-    <string name="account_num">賬號</string>
-    <string name="usable_balance">可用餘額</string>
-    <string name="query_date">查詢日期</string>
-    <string name="query_trade_in_date">查詢期內交易筆數</string>
-    <string name="query_acc_balance">查詢賬戶餘額</string>
-    <string name="acc_type">賬戶類型：</string>
-    <string name="acnum">賬號</string>
-    <string name="curbla">現時餘額</string>
-    <string name="useful_bla">可用余額</string>
-    <string name="excel_update_time">表格更新時間</string>
-    <string name="oof_in_price">現鈔買入價</string>
-    <string name="oof_out_price">現鈔賣出價</string>
-    <string name="tel_out_price">電匯賣出價</string>
-    <string name="tel_in_price">電匯買入價</string>
-    <string name="query_certi_num">查詢存單編號</string>
-    <string name="certi_num">存單號</string>
-    <string name="out_date">到期日</string>
-    <string name="state">狀態</string>
-    <string name="certi_type">存單類型</string>
+    <!--<string name="start_date">起始時間</string>-->
+    <!--<string name="end_date">結束日期</string>-->
+    <!--<string name="query_7_day">查詢最近7天</string>-->
+    <!--<string name="query_60_day">查詢最近60天</string>-->
+    <!--<string name="query_record">查詢</string>-->
+    <!--<string name="query_text">1.您可查閱近12個月的交易記錄。</string>-->
+    <!--<string name="query_accout_trans_record">查詢賬戶交易記錄</string>-->
+    <!--<string name="account">賬號</string>-->
+    <!--<string name="currency">貨幣</string>-->
+    <!--<string name="currency_type">幣別</string>-->
+    <!--<string name="trade_amount">交易金额</string>-->
+    <!--<string name="buss_type">業務類型</string>-->
+    <!--<string name="next_month">下個月</string>-->
+    <!--<string name="last_pape">上一頁</string>-->
+    <!--<string name="client_name">客戶名稱</string>-->
+    <!--<string name="account_num">賬號</string>-->
+    <!--<string name="usable_balance">可用餘額</string>-->
+    <!--<string name="query_date">查詢日期</string>-->
+    <!--<string name="query_trade_in_date">查詢期內交易筆數</string>-->
+    <!--<string name="query_acc_balance">查詢賬戶餘額</string>-->
+    <!--<string name="acc_type">賬戶類型：</string>-->
+    <!--<string name="acnum">賬號</string>-->
+    <!--<string name="curbla">現時餘額</string>-->
+    <!--<string name="useful_bla">可用余額</string>-->
+    <!--<string name="excel_update_time">表格更新時間</string>-->
+    <!--<string name="oof_in_price">現鈔買入價</string>-->
+    <!--<string name="oof_out_price">現鈔賣出價</string>-->
+    <!--<string name="tel_out_price">電匯賣出價</string>-->
+    <!--<string name="tel_in_price">電匯買入價</string>-->
+    <!--<string name="query_certi_num">查詢存單編號</string>-->
+    <!--<string name="certi_num">存單號</string>-->
+    <!--<string name="out_date">到期日</string>-->
+    <!--<string name="state">狀態</string>-->
+    <!--<string name="certi_type">存單類型</string>-->
     <string name="back">返回</string>
     <string name="remerber_usename">記住用戶名</string>
-    <string name="forget_pass">忘記密碼?</string>
     <string name="languagelist">語言/Language</string>
 
 

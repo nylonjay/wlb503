@@ -182,6 +182,8 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
                     needRequestPermissonList.toArray(
                             new String[needRequestPermissonList.size()]),
                     PERMISSON_REQUESTCODE);
+        }else {
+            Go();
         }
     }
     private List<String> findDeniedPermissions(String[] permissions) {

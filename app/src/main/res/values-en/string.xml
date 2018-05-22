@@ -47,7 +47,6 @@
 
     <string name="icons_user0">&#xe6ee;</string>
     <string name="icons_user1">&#xe6f4;</string>
-s
     <string name="wait">Please Wait…</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -57,8 +56,28 @@ s
     <string name="accountRecordAll">All Records &#xe6d4;"</string>
     <string name="accountRecordIn">Recharge Records &#xe6d4;"</string>
     <string name="accountRecordOut">Withdraw Records &#xe6d4;"</string>
+    <string name="wlb_close">&#xe78c;</string>
+    <string name="wlb_username">&#xe797;</string>
+    <string name="wlb_arrow_r">&#xe796;</string>
+    <string name="wlb_verifycode">&#xe795;</string>
+    <string name="wlb_setting">&#xe794;</string>
+    <string name="wlb_add">&#xe793;</string>
+    <string name="wlb_arrow_d">&#xe792;</string>
+    <string name="wlb_date">&#xe791;</string>
+    <string name="wlb_code">&#xe790;</string>
+    <string name="wlb_login">&#xe78f;</string>
+    <string name="wlb_delete">&#xe78e;</string>
+    <string name="wlb_arrow_l">&#xe78d;</string>
+    <string name="wlb_arrow">&#xe798;</string>
+    <string name="wlb_home_nomal">&#xe79f;</string>
+    <string name="wlb_finance_nomal">&#xe7a0;</string>
+    <string name="wlb_notice_normal">&#xe79e;</string>
+    <string name="wlb_mine_normal">&#xe79d;</string>
 
-
+    <string name="wlb_home_selected">&#xe79b;</string>
+    <string name="wlb_finance_selected">&#xe799;</string>
+    <string name="wlb_notice_selected">&#xe79c;</string>
+    <string name="wlb_mine_selected">&#xe79a;</string>
     //功能列表
     <string name="account_query">Account Inquiry</string>
     <string name="transaction_history">Transaction History</string>
@@ -92,7 +111,6 @@ s
     <string name="bank_rate">Interest Rates</string>
     <string name="reimbursement_enquiries">Reimbursement Inquiry</string>
     <string name="transfer">Transfer Account</string>
-    <string name="remittances">Remittance</string>
     <string name="personal_info">Personal Information</string>
     <string name="code_setting">Password setting</string>
     <string name="language">語言/Language</string>
@@ -117,10 +135,8 @@ s
     <string name="trans_cofirm">Confirm</string>
 
 
-    <string name="acnum">Account Number</string>
     <string name="back">Back</string>
     <string name="remerber_usename">Remember User Name</string>
-    <string name="forget_pass">Forget Password?</string>
     <string name="languagelist">語言/Language</string>
 
 
@@ -251,4 +267,6 @@ s
     <string name="TRADE_CODE_RESET">Payment Password Setting</string>
     <string name="retry">Please Try Again Later</string>
     <string name="challenge">SMS sequence number:</string>
+    <string name="login_code_setting">Modify Login PassWord</string>
+    <string name="portal_site">Portals</string>
 </resources>

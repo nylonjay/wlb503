@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <solid android:color="@color/greyText" />
+            <solid android:color="@color/keyboard_greyText" />
             <corners android:radius="5dp"/>
         </shape>
     </item>
@@ -11,7 +11,7 @@
         android:bottom="30dp"
         android:left="10dp"
         android:right="10dp"
-        android:drawable="@drawable/icon_shuzi_keyboard_del_default"
+        android:drawable="@drawable/keyboard_icon_shuzi_keyboard_del_default"
         />
 </layer-list>
 

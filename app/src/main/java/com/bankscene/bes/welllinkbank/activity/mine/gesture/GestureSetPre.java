@@ -10,14 +10,17 @@ import android.widget.Toolbar;
 
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.ShareActivity;
+import com.bankscene.bes.welllinkbank.Util.Trace;
 import com.bankscene.bes.welllinkbank.activity.gesture.LoginGestureActivity;
 import com.bankscene.bes.welllinkbank.activity.mine.password.CodeReset2;
 import com.bankscene.bes.welllinkbank.adapter.CommonListAdapter;
+import com.bankscene.bes.welllinkbank.core.BaseApplication;
 import com.bankscene.bes.welllinkbank.core.MenuListViewActivity;
 import com.bankscene.bes.welllinkbank.core.State;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
+import com.bankscene.bes.welllinkbank.module.User;
 import com.bankscene.bes.welllinkbank.view.togglebtn.togglebutton.ToggleButton;
 import com.bankscene.bes.welllinkbank.view.translucent.ActionBarClickListener;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
@@ -35,6 +38,8 @@ public class GestureSetPre extends ShareActivity implements View.OnClickListener
     ToggleButton tg_show_trail;
     @BindView(R.id.re_show_trail)
     RelativeLayout re_show_trail;
+
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,11 +68,15 @@ public class GestureSetPre extends ShareActivity implements View.OnClickListener
     @Override
     protected void initView() {
         super.initView();
+        Trace.e("username==",DBHelper.getDataByKey(DataKey.userName));
+        user= getUserState(DBHelper.getDataByKey(DataKey.userName));
+        Trace.e("userOpen?",user.toString());
         re_change_gs.setOnClickListener(this);
-        tg_use_gs.setToggleOff();
-//        if ("true".equals(DBHelper.getDataByKey(DataKey.login_type)))
-//        else
-//            tg_use_gs.setToggleOff();
+
+        if (user.isGestureOpen())
+            tg_use_gs.setToggleOn();
+        else
+            tg_use_gs.setToggleOff();
 
         if (State.showTrail)
             tg_show_trail.setToggleOn();
@@ -77,11 +86,15 @@ public class GestureSetPre extends ShareActivity implements View.OnClickListener
         tg_use_gs.setOnToggleChanged(new ToggleButton.OnToggleChanged() {
             @Override
             public void onToggle(boolean on) {
-//                State.gestureLoginOpen=on;
-                if (on)
+                if (on){
+                    user.setGestureOpen(true);
                     DBHelper.insert(new Data(DataKey.login_type,"true"));
-                else
+                }
+                else{
+                    user.setGestureOpen(false);
                     DBHelper.insert(new Data(DataKey.login_type,"false"));
+                }
+                saveUserState(DBHelper.getDataByKey(DataKey.userName),user.isGestureOpen(),user.isGestureSetted());
             }
         });
 

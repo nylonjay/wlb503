@@ -23,7 +23,7 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">false</item>
-        <item name="android:windowEnterAnimation">@anim/slide_in_from_bottom</item>
+        <item name="android:windowEnterAnimation">@anim/keyboard_slide_in_from_bottom</item>
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
         <!-- 是否半透明 -->
     </style>
@@ -297,8 +297,8 @@
     </style>
 
     <style name="BottomAnimation" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/slide_in_from_bottom</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_to_bottom</item>
+        <item name="android:windowEnterAnimation">@anim/keyboard_slide_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/keyboard_slide_out_to_bottom</item>
     </style>
     <style name="Matisse.Zhihu" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/zhihu_primary</item>

@@ -184,8 +184,8 @@ public class LoginTabActivity extends HttpActivity {
 
             }
         });
-        GetTimeStampAndKeyWithoutEditor();
-        if (!TextUtils.isEmpty(DBHelper.getDataByKey(DataKey.gesture_code))&&"true".equals(DBHelper.getDataByKey(DataKey.login_type))){
+        User u=getUserState(DBHelper.getDataByKey(DataKey.userName));
+        if (u.isGestureOpen()&&u.isGestureSetted()){
             CastGestureLogin();
         }
     }
@@ -308,6 +308,7 @@ public class LoginTabActivity extends HttpActivity {
                             if (result.get(_REJCODE).equals("000000")){
                                 pwdedit.setText("");
                                 DBHelper.insert(new Data(DataKey.userName,result.optString("LoginId")));
+                                BaseApplication.getInstance().getUser().setUserId(result.optString("LoginId"));
                                 DBHelper.insert(new Data(DataKey.pre,tv_pre.getText().toString()));
                                 DBHelper.insert(new Data(DataKey.isRememberUser,remerberuser.isChecked()+""));
 
@@ -557,6 +558,7 @@ public class LoginTabActivity extends HttpActivity {
             @Override
             public void onClick(View v) {
                 Trace.e("onclick","pwd");
+                GetTimeStampAndKeyWithoutEditor();
                 keyBoardDialogUtils=new KeyBoardDialogUtils(LoginTabActivity.this);
                 keyBoardDialogUtils.hideSystemSofeKeyboard(pwdedit);
                 keyBoardDialogUtils.show(pwdedit);
@@ -639,6 +641,7 @@ public class LoginTabActivity extends HttpActivity {
             @Override
             public void onClick(View v) {
                 Trace.e("onclick","pwd");
+                GetTimeStampAndKeyWithoutEditor();
                 keyBoardDialogUtils=new KeyBoardDialogUtils(LoginTabActivity.this);
                 keyBoardDialogUtils.hideSystemSofeKeyboard(pwdedit);
                 keyBoardDialogUtils.show(pwdedit);
@@ -684,6 +687,7 @@ public class LoginTabActivity extends HttpActivity {
     }
 
     public void onTapLogin(View v){
+
         try {
             String pre=tv_pre.getText().toString().equals(getResources().getString(R.string.others))?"":tv_pre.getText().toString().substring(1);
             Map params = new HashMap();
@@ -770,6 +774,7 @@ public class LoginTabActivity extends HttpActivity {
         return true;
     }
     public void CastGestureLogin(){
+        GetTimeStampAndKeyWithoutEditor();
         if (TextUtils.isEmpty(DBHelper.getDataByKey(DataKey.gesture_code))||!"true".equals(DBHelper.getDataByKey(DataKey.login_type))){
             noticeUtils.showNotice(getResources().getString(R.string.no_gs_setted));
             return;

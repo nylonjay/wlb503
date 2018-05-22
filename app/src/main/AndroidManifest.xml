@@ -78,13 +78,9 @@
             android:name=".core.WebViewActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.finance.TransferActivity" />
-        <activity android:name=".activity.finance.TransferPreview" />
         <activity android:name=".activity.finance.record.TransactionRecord" />
         <activity android:name=".activity.finance.record.TransactionQueryResult" />
-        <activity android:name=".activity.finance.balance.QueryBalance" />
         <activity android:name=".activity.finance.quoteprice.ForeignQuotePrice" />
-        <activity android:name=".activity.finance.query.QueryCertificateNum" />
         <activity android:name=".activity.MenuList" />
         <!-- <activity android:name=".activity.mine.CodeReset" /> -->
         <activity

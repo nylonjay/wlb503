@@ -24,6 +24,7 @@ import com.bankscene.bes.welllinkbank.core.HttpActivity;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
+import com.bankscene.bes.welllinkbank.module.User;
 import com.bankscene.bes.welllinkbank.view.translucent.ActionBarClickListener;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
 import com.csii.gesturekeyboard.GestureContentView;
@@ -60,9 +61,8 @@ public class LoginGestureActivity extends HttpActivity {
     private boolean mIsFirst = true;
     private String mFirstPwd;
     private boolean isEncrypt = false;
-
     String timestamp;
-
+    User user;
     static{
         ResId.connLineColorId = R.color.main_theme_color;
         ResId.gestureNodeNormalResId = R.mipmap.oval_select_nomal;
@@ -75,8 +75,8 @@ public class LoginGestureActivity extends HttpActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_login_gesture);
-
         GetTimeStampAndKeyWithoutEditor();
+        user=getUserState(DBHelper.getDataByKey(DataKey.userName));
         mTextReset = (TextView) findViewById(R.id.text_reset);
         mLockIndicator = (LockIndicator) findViewById(R.id.lock_indicator);
         mTextTip = (TextView) findViewById(R.id.text_tip);
@@ -121,14 +121,6 @@ public class LoginGestureActivity extends HttpActivity {
                             try {
                                 Trace.e("inputcode==",inputCode);
                                 String encyped=new CSIICypher().encryptWithJiamiJi(inputCode,dbp,hms,timestamp,"UTF-8",2);
-////                                Trace.e("手势加密:",encyped);
-//                                String path= Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator+"Gestureencryped/";
-////            new File(path).mkdirs();
-//                                String target=path+"rsa.txt";
-//                                FileUtil.saveFile(encyped,target);
-//                                FileUtil.saveFile(encyped.replace("+", "%2B"),target);
-                                //以上代码用于调试
-
                                 SaveGestureCode(encyped.replace("+","%2B"));
 
                             } catch (SecurityCypherException e) {
@@ -263,6 +255,8 @@ public class LoginGestureActivity extends HttpActivity {
                             JSONObject json=new JSONObject(result);
                             if (json.opt(_REJCODE).equals("000000")){
                                 DBHelper.insert(new Data(DataKey.gesture_code,encryped));
+                                user.setGestureSetted(true);
+                                saveUserState(DBHelper.getDataByKey(DataKey.userName),user.isGestureOpen(),user.isGestureSetted());
                                 startActivity(new Intent(LoginGestureActivity.this,GestureSetResult.class));
                                 LoginGestureActivity.this.finish();
                             }

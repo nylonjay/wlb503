@@ -143,7 +143,7 @@
             android:isModifier="true"
             android:isSticky="true"
             android:keyEdgeFlags="left"
-            android:keyIcon="@drawable/icon_keyboard_capital_default"
+            android:keyIcon="@drawable/keyboard_icon_keyboard_capital_default"
             android:keyWidth="13%p" />
         <Key
             android:codes="122"
@@ -177,7 +177,7 @@
         <Key
             android:codes="-5"
             android:isRepeatable="true"
-            android:keyIcon="@drawable/icon_yingwen_fuhao_keyboard_del_default"
+            android:keyIcon="@drawable/keyboard_icon_yingwen_fuhao_keyboard_del_default"
             android:keyWidth="13%p" />
     </Row>
 
@@ -190,12 +190,12 @@
         <Key
             android:codes="32"
             android:isRepeatable="true"
-            android:keyIcon="@drawable/key_icon"
+            android:keyIcon="@drawable/keyboard_key_icon"
             android:keyWidth="55%p" />
         <Key
             android:codes="90001"
             android:keyEdgeFlags="right"
-            android:keyLabel="@string/close_keyboard"
+            android:keyLabel="@string/keyboard_close_keyboard"
             android:keyWidth="23%p" />
     </Row>
 </Keyboard>

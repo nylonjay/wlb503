@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="please_enter_transcode">請輸入交易密碼</string>
-    <string name="resend_sms">重發短信</string>
-    <string name="confirm">確定</string>
+    <string name="keyboard_please_enter_transcode">請輸入交易密碼</string>
+    <string name="keyboard_resend_sms">重發短信</string>
+    <string name="keyboard_confirm">確定</string>
 </resources>

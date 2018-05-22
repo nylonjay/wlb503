@@ -16,7 +16,7 @@
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:src="@drawable/icon_close2"
+            android:src="@drawable/keyboard_icon_close2"
             android:layout_centerInParent="true"
             />
     </RelativeLayout>
@@ -25,10 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_margin="6dp"
-        android:text="@string/resend_sms"
+        android:text="@string/keyboard_resend_sms"
         android:gravity="center"
         android:onClick="resend"
-        android:textColor="@color/black"
+        android:textColor="@color/keyboard_black"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"/>
 
@@ -37,9 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="@string/please_enter_transcode"
+        android:text="@string/keyboard_please_enter_transcode"
         android:textSize="18sp"
-        android:textColor="@color/text_color"
+        android:textColor="@color/keyboard_text_color"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="15dp"/>
@@ -47,7 +47,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5px"
-        android:background="@color/light_grey"
+        android:background="@color/keyboard_light_grey"
         android:layout_below="@id/tv_intro"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -57,13 +57,13 @@
         android:id="@+id/ll_tvs"
         android:layout_width="265dp"
         android:layout_height="44dp"
-        android:background="@drawable/shape_input_area"
+        android:background="@drawable/keyboard_shape_input_area"
         android:layout_below="@+id/view_line"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/keyboard_activity_horizontal_margin"
+        android:layout_marginRight="@dimen/keyboard_activity_horizontal_margin"
         android:orientation="horizontal">
 
         <TextView
@@ -72,7 +72,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
-            android:textColor="@color/black"
+            android:textColor="@color/keyboard_black"
             android:padding="5dp"
             android:textStyle="bold"
             android:textSize="18sp" />
@@ -85,7 +85,7 @@
             android:layout_width="0dip"
             android:gravity="center"
             android:layout_weight="1"
-            android:textColor="@color/black"
+            android:textColor="@color/keyboard_black"
             android:textStyle="bold"
             android:layout_height="match_parent"
             android:padding="5dp"
@@ -98,7 +98,7 @@
             android:id="@+id/password_edit3"
             android:layout_width="0dip"
             android:layout_weight="1"
-            android:textColor="@color/black"
+            android:textColor="@color/keyboard_black"
             android:textStyle="bold"
             android:gravity="center"
             android:layout_height="match_parent"
@@ -115,7 +115,7 @@
             android:textStyle="bold"
             android:gravity="center"
             android:layout_height="match_parent"
-            android:textColor="@color/black"
+            android:textColor="@color/keyboard_black"
             android:padding="5dp"
             android:textSize="18sp" />
         <View
@@ -128,7 +128,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/keyboard_black"
             android:layout_height="match_parent"
             android:padding="5dp"
             android:textSize="18sp" />
@@ -141,7 +141,7 @@
             android:layout_width="0dip"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/keyboard_black"
             android:textStyle="bold"
             android:layout_height="match_parent"
             android:maxLength="1"
@@ -159,14 +159,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/light_grey"
+        android:background="@color/keyboard_light_grey"
         android:layout_below="@+id/tv_challenge"
         android:orientation="vertical">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/greyText"/>
+            android:background="@color/keyboard_greyText"/>
 
         <FrameLayout
             android:id="@+id/keyboard_layer"
@@ -183,7 +183,7 @@
                 android:keyTextColor="#000000"
                 android:keyPreviewLayout="@null"
                 android:shadowRadius="0"
-                android:background="@color/light_grey"
+                android:background="@color/keyboard_light_grey"
                 android:visibility="gone" />
 
             <com.kh.keyboard.CustomKeyboardView
@@ -191,7 +191,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="true"
-                android:background="@color/light_grey"
+                android:background="@color/keyboard_light_grey"
                 android:focusableInTouchMode="true"
                 android:keyPreviewHeight="90dp"
                 android:keyBackground="@drawable/keyboard_selector_bg"

@@ -47,7 +47,7 @@
         <Key android:keyWidth="9%p" android:codes="125" android:keyLabel="}" />
         <Key android:horizontalGap="3.5%p" android:keyWidth="13%p" android:codes="-5"
               android:isRepeatable="true"
-             android:keyIcon="@drawable/img_edit_clear" />
+             android:keyIcon="@drawable/keyboard_img_edit_clear" />
     </Row>
 
     <Row android:rowEdgeFlags="bottom">

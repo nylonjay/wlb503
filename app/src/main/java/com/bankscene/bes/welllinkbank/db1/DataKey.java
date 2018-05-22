@@ -26,4 +26,5 @@ public class DataKey {
     public static final long dbpkey=18;
     public static final long hmskey=19;
     public static final long login_tab=20;
+    public static final long userState=21;//用于保存登陆过用户的手势密码开启状态和是否设置手势密码
 }

@@ -52,7 +52,7 @@
             android:textColor="@color/lightText"
             android:gravity="center"
             android:textSize="14sp"
-            android:text="@string/resend_sms"/>
+            android:text="@string/keyboard_resend_sms"/>
 
     </LinearLayout>
     <View

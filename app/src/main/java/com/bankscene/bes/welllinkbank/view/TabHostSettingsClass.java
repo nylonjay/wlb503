@@ -39,7 +39,7 @@ public class TabHostSettingsClass {
                         R.color.blackText));
             } else {
                 tabWidget.getChildAt(i).setBackgroundResource(
-                        R.color.light_grey);
+                        R.color.keyboard_light_grey);
                 tView.setTextColor(context.getResources().getColorStateList(
                         android.R.color.white));
             }

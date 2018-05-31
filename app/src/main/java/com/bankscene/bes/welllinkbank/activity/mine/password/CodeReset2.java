@@ -183,7 +183,7 @@ public class CodeReset2 extends HttpActivity implements View.OnClickListener{
             ed1= new CSIICypher().encryptWithJiamiJi(ed_1.getText().toString().trim(),ed_1.getDbp(),ed_1.getHms(),ed_1.getTimestamp(),"UTF-8",2);
             ed2= new CSIICypher().encryptWithJiamiJi(ed_2.getText().toString().trim(),ed_2.getDbp(),ed_2.getHms(),ed_2.getTimestamp(),"UTF-8",2);
             ed3= new CSIICypher().encryptWithJiamiJi(ed_3.getText().toString().trim(),ed_3.getDbp(),ed_3.getHms(),ed_3.getTimestamp(),"UTF-8",2);
-        } catch (SecurityCypherException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Map params=new HashMap();

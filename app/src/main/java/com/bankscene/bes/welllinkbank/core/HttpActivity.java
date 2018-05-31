@@ -1,5 +1,6 @@
 package com.bankscene.bes.welllinkbank.core;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -34,6 +35,7 @@ import com.okhttplib.HttpInfo;
 import com.okhttplib.OkHttpUtil;
 import com.okhttplib.annotation.RequestType;
 import com.okhttplib.callback.Callback;
+import com.okhttplib.callback.ProgressCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,6 +70,7 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
     protected String timestamp;
     protected String hms;
     protected String dbp;
+    private final String requestTag = "download-tag-1001";//请求标识
     protected WlbEditText CurrentEditext;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -407,6 +410,34 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
                         }
                     }
                 });
+
+    }
+
+    protected void downloadFile(final ProgressDialog downloadProgress, final Handler handler, String fileURL) {
+        final HttpInfo info = HttpInfo.Builder()
+                .addDownloadFile(fileURL,CommDictAction.appFileName, new ProgressCallback() {
+                    @Override
+                    public void onProgressMain(int percent, long bytesWritten, long contentLength, boolean done) {
+                        downloadProgress.setProgress(percent);
+                    }
+
+                    @Override
+                    public void onResponseMain(String filePath, HttpInfo info) {
+                        downloadProgress.cancel();
+                        Trace.e("filename==",filePath+"");
+                        Trace.e("info===",info.getRetDetail()+"");
+//                        ToastUtils.showShortToast(info.getRetDetail());
+                        Message msg=new Message();
+                        msg.what=2;
+                        msg.obj=info.getRetDetail();
+                        handler.sendMessage(msg);
+                    }
+                })
+                .build();
+        OkHttpUtil.Builder()
+                .setReadTimeout(120)
+                .build(requestTag)//绑定请求标识
+                .doDownloadFileAsync(info);
 
     }
 

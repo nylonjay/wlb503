@@ -11,7 +11,8 @@ public class CommDictAction {
     //    public static final int gridRow = 30;
     public static final int gridColumn = 3;
     public static final int gridItemCount = gridRow * gridColumn;
-
+    public static final String appFileName="appdebug.apk";
+    public static final String AppDownloadPath=Config.HOST_ADDRESS+"/static/androidApk/";
 
 //    // produce key
 //    public static final String SecurityPubKey = "8EC0A4B77DD65720A3FC566B2245E0985ADCC8180D9E5E25C318F610D9ABE6380D8DD59CB624246C87BCA2673036E4F8DEE3E5625FD7A0A265E05878ED142F387BD94B98A45FA76067D8F58813C438211A35FC922533E517ADE7D61C22C3A1C45FE031C50F0D71D6FCB6D69286946F93B591E73C642514E56566811367C3C289";
@@ -30,4 +31,5 @@ public class CommDictAction {
     public static final String ReSendSMSOTP=Config.TRANS_IP_PORT+"ReSendSMSOTP.do";
     public static final String RefreshTimeStamp=Config.TRANS_IP_PORT+"GetTimestamp.do";
     public static final String QryPublicKey=Config.TRANS_IP_PORT+"QryPublicKey.do";
+    public static final String GetVersionInfo=Config.HOST_ADDRESS+"/static/androidApk/androidApkUpdInfo.json";
 }

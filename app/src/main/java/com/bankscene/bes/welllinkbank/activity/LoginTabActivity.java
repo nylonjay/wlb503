@@ -130,6 +130,8 @@ public class LoginTabActivity extends HttpActivity {
 
     int tab=1;
     private String encryped="";
+    private boolean clicked=false;
+    private boolean clicked2=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -546,11 +548,13 @@ public class LoginTabActivity extends HttpActivity {
         pwdedit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
+                Trace.e("focusechanged",hasFocus+"");
+                if (hasFocus&&clicked){
                     Trace.e("onfocus","pwd");
                     keyBoardDialogUtils=new KeyBoardDialogUtils(LoginTabActivity.this);
                     keyBoardDialogUtils.hideSystemSofeKeyboard(pwdedit);
-//                    keyBoardDialogUtils.show(pwdedit);
+                    keyBoardDialogUtils.show(pwdedit);
+                    Trace.e("focusechanged","focus2show");
                 }
             }
         });
@@ -558,10 +562,13 @@ public class LoginTabActivity extends HttpActivity {
             @Override
             public void onClick(View v) {
                 Trace.e("onclick","pwd");
+
                 GetTimeStampAndKeyWithoutEditor();
                 keyBoardDialogUtils=new KeyBoardDialogUtils(LoginTabActivity.this);
                 keyBoardDialogUtils.hideSystemSofeKeyboard(pwdedit);
                 keyBoardDialogUtils.show(pwdedit);
+                clicked=true;
+                Trace.e("focusechanged","click2show");
             }
         });
         pwdedit.addTextChangedListener(new TextWatcher() {
@@ -629,11 +636,11 @@ public class LoginTabActivity extends HttpActivity {
         pwdedit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
+                if (hasFocus&&clicked2){
                     Trace.e("onfocus","pwd");
                     keyBoardDialogUtils=new KeyBoardDialogUtils(LoginTabActivity.this);
                     keyBoardDialogUtils.hideSystemSofeKeyboard(pwdedit);
-//                    keyBoardDialogUtils.show(pwdedit);
+                    keyBoardDialogUtils.show(pwdedit);
                 }
             }
         });
@@ -645,6 +652,7 @@ public class LoginTabActivity extends HttpActivity {
                 keyBoardDialogUtils=new KeyBoardDialogUtils(LoginTabActivity.this);
                 keyBoardDialogUtils.hideSystemSofeKeyboard(pwdedit);
                 keyBoardDialogUtils.show(pwdedit);
+                clicked2=true;
             }
         });
         pwdedit.addTextChangedListener(new TextWatcher() {

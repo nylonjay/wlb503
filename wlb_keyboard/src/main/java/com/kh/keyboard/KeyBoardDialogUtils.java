@@ -132,9 +132,9 @@ public class KeyBoardDialogUtils implements View.OnClickListener {
         editText.setFocusableInTouchMode(true);
         editText.requestFocus();
         hideSystemSofeKeyboard(editText);
-
         popWindow.show();
         keyboardUtil.showKeyboard(editText);
+
     }
 
     public void dismiss() {

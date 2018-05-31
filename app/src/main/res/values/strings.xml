@@ -108,7 +108,7 @@
     <string name="my_account">我的賬戶</string>
     <string name="deposits_product">存款產品</string>
     <string name="my_regular">我的定期</string>
-    <string name="regular_withdrawal">定期結算</string>
+    <string name="regular_withdrawal">定期結清</string>
     <string name="live_rotation">定活互轉</string>
     <string name="regular_history">定期交易歷史</string>
     <string name="loan_enquiries">貸款查詢</string>
@@ -303,4 +303,5 @@
     <string name="TRADE_CODE_RESET">交易密碼設置</string>
     <string name="retry">請重試</string>
     <string name="challenge">短信序号:</string>
+    <string name="details">詳情</string>
 </resources>

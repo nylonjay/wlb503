@@ -159,10 +159,10 @@
     <string name="gesture_login">Gesture Log In</string>
     <string name="CODE_RESET">Reset Password</string>
     <string name="change_login_code">Reset Log-In Password</string>
-    <string name="reset_1">Please enter original log-in password</string>
+    <string name="reset_1">original log-in password</string>
     <string name="used_code">Original Log-In Password</string>
-    <string name="reset_2">Please enter new log-in password</string>
-    <string name="reset_3">Please enter new log-in password again</string>
+    <string name="reset_2">new log-in password</string>
+    <string name="reset_3">new log-in password Again</string>
     <string name="confirm_newcode">Confirm the new password</string>
     <string name="new_code">New Log-In Password</string>
     <string name="head_img">Profile Photo</string>
@@ -258,9 +258,9 @@
     <string name="new_trade_code">New Payment Password</string>
     <string name="confirm_trade_newcode">Confirm New Payment Password</string>
 
-    <string name="Treset_1">Enter Original Payment Password</string>
-    <string name="Treset_2">Enter New Payment Password</string>
-    <string name="Treset_3">Enter New Payment Password Again</string>
+    <string name="Treset_1">Original Payment Password</string>
+    <string name="Treset_2">New Payment Password</string>
+    <string name="Treset_3">New Payment Password</string>
     <string name="update_Tpassword_ok">Modify Payment Password Succeed</string>
     <string name="use_pwd_login">Use Password Login</string>
     <string name="LOGIN_CODE_RESET">LoginPassword Setting</string>
@@ -269,4 +269,6 @@
     <string name="challenge">SMS sequence number:</string>
     <string name="login_code_setting">Modify Login PassWord</string>
     <string name="portal_site">Portals</string>
+
+    <string name="details">Details</string>
 </resources>

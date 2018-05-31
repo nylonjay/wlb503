@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -411,7 +412,19 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         });
     }
-
+    public static String getCurrentVersion(Context context) {
+        String currnetVersion = null;
+        try {
+            currnetVersion = context.getApplicationContext()
+                    .getPackageManager()
+                    .getPackageInfo(context.getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        Trace.e("currentVersion==",currnetVersion);
+        return currnetVersion;
+    }
     public void setImage(ImageView imageView, Object imagePath, int type) {
         try {
             switch (type) {

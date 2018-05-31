@@ -45,7 +45,6 @@ import java.util.Scanner;
 
 import de.greenrobot.event.EventBus;
 
-import static com.tencent.smtt.sdk.TbsReaderView.ReaderCallback.SHOW_DIALOG;
 
 public class LoginSMSVerify extends Activity {
     EditText ppwdedit;

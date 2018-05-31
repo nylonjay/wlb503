@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.ShareActivity;
 import com.bankscene.bes.welllinkbank.activity.mine.password.CodeReset;
+import com.bankscene.bes.welllinkbank.common.Config;
 import com.bankscene.bes.welllinkbank.core.BaseApplication;
 import com.bankscene.bes.welllinkbank.core.PermissionResult;
 import com.bankscene.bes.welllinkbank.core.WebViewActivity;
@@ -86,7 +87,7 @@ public class AboutUs extends ShareActivity {
             public void onClick(View v) {
                 Intent in=new Intent(AboutUs.this, WebViewActivity.class);
                 in.putExtra("showActionBar","true");
-                in.putExtra("url","http://58.251.33.118:10002/static/app/server.html");
+                in.putExtra("url", Config.HOST_ADDRESS+"/static/app/server.html");
                 in.putExtra("title",getResources().getString(R.string.clause));
                 startActivity(in);
             }

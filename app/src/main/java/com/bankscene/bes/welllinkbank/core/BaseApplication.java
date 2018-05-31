@@ -69,7 +69,7 @@ public class BaseApplication extends Application {
     public static String USER_INDEX="user_index";
     public static String baseImagePath="";
     public static List<NameImgPair> nips=new ArrayList<>();
-
+    public static String ver="1.0";
     @Override
     public void onCreate() {
         super.onCreate();
@@ -130,6 +130,7 @@ public class BaseApplication extends Application {
         }
 
     }
+
     private boolean isZh() {
         Locale locale = getResources().getConfiguration().locale;
         String language = locale.getLanguage();

@@ -130,7 +130,7 @@ public class HomeFragment extends BaseFragment{
         EventBus.getDefault().register(this);
         convenientBanner = BannerUtils.initImageBar(activity, convenientBanner, adImageUrlList, adMapList);
         LinearLayout.LayoutParams layoutParams =
-                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, BaseApplication.WIDTH * 4 / 13);
+                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, BaseApplication.WIDTH * 5 / 13);
         convenientBanner.setLayoutParams(layoutParams);
         iniBanner2();
         iniViewPager();
@@ -329,7 +329,9 @@ public class HomeFragment extends BaseFragment{
 //                                Map map=new HashMap();
 ////                                    map.put("url",adb.getAdvertUrl());
 //                                adImageUrlList.add("http://c.hiphotos.baidu.com/image/pic/item/d50735fae6cd7b89acbea9df032442a7d8330e9f.jpg");
-//                                map.put("url","http://c.hiphotos.baidu.com/image/pic/item/d50735fae6cd7b89acbea9df032442a7d8330e9f.jpg");
+//                                adImageUrlList.add("http://h.hiphotos.baidu.com/image/pic/item/b64543a98226cffc49721710b5014a90f603ea3c.jpg");
+//                                map.put("url","http://www.baidu.com");
+//
 //                                adMapList.add(map);
                                 convenientBanner = BannerUtils.initImageBar(activity, convenientBanner, adImageUrlList, adMapList);
                             }

@@ -292,7 +292,7 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
                             String encryped = new CSIICypher().encryptWithJiamiJi(code,dbp,hms,timestamp,"UTF-8",2);
                             String url="javascript:getPassWord(\""+encryped.replace("'","")+"\")";
                             webView.loadUrl(url);
-                        } catch (SecurityCypherException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
 

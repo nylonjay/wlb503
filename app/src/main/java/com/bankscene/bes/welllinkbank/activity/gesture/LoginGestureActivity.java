@@ -123,7 +123,7 @@ public class LoginGestureActivity extends HttpActivity {
                                 String encyped=new CSIICypher().encryptWithJiamiJi(inputCode,dbp,hms,timestamp,"UTF-8",2);
                                 SaveGestureCode(encyped.replace("+","%2B"));
 
-                            } catch (SecurityCypherException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 

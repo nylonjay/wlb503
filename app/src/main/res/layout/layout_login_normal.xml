@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/tv_pre"
-            android:text="+86"
+            android:text="+853"
             android:gravity="center"
             android:layout_width="45dp"
             android:textSize="@dimen/login_text_size"
@@ -102,6 +102,8 @@
             android:layout_marginLeft="5dp"
             android:layout_width="0dp"
             android:layout_weight="5"
+            android:inputType="number"
+            android:digits="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
             android:hint="@string/enter_verify_code"
             style="@style/edit_login_style"/>
 

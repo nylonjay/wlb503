@@ -2,13 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 android {
     buildToolsVersion "27.0.2"
+    useLibrary 'org.apache.http.legacy'
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.bankscene.bes.welllinkbank"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.02"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -50,6 +51,7 @@ dependencies {
     //    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
 //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     //相冊壓縮器
+    compile 'net.zetetic:android-database-sqlcipher:3.5.2'
     compile project(path: ':wlb_keyboard')
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.android.support:multidex:1.0.0'

@@ -1,6 +1,7 @@
 package com.bankscene.bes.welllinkbank.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.widget.TabHost;
 import android.widget.TabWidget;
@@ -34,14 +35,13 @@ public class TabHostSettingsClass {
             tView.setTypeface(Typeface.DEFAULT);
             if (tabHost.getCurrentTab() == i) {
                 tabWidget.getChildAt(i).setBackgroundResource(
-                        R.color.white);
+                        R.drawable.corners_layout_bg1);
                 tView.setTextColor(context.getResources().getColorStateList(
-                        R.color.blackText));
+                        R.color.white));
             } else {
                 tabWidget.getChildAt(i).setBackgroundResource(
-                        R.color.keyboard_light_grey);
-                tView.setTextColor(context.getResources().getColorStateList(
-                        android.R.color.white));
+                        R.drawable.corners_layout_bg);
+                tView.setTextColor(Color.parseColor("#666666"));
             }
         }
     }

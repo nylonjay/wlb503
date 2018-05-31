@@ -84,9 +84,6 @@
         <activity android:name=".activity.MenuList" />
         <!-- <activity android:name=".activity.mine.CodeReset" /> -->
         <activity
-            android:name=".core.WebDelegate"
-            android:hardwareAccelerated="false" />
-        <activity
             android:name="com.csii.powerenter.PEKbdActivity"
             android:configChanges="orientation"
             android:launchMode="singleTask"
@@ -119,16 +116,10 @@
         <activity android:name=".activity.mine.gesture.GestureSetResult" />
         <activity android:name=".activity.mine.gesture.GestureSetPre" />
         <activity android:name=".activity.mine.AboutUs" />
-        <activity
-            android:name=".activity.Dialog2GetPassWord"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/dialog_style" />
         <activity android:name=".activity.NoticeInfo.NoticeDetail" />
         <activity
             android:name=".activity.PassWordDialogActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
             android:theme="@style/dialog_style" />
         <activity
             android:name=".activity.LoginSMSVerify"

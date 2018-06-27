@@ -213,6 +213,7 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
 
                     @Override
                     public void onFailure(HttpInfo info) throws IOException {
+//                        noticeUtils.showNotice(getResources().getString(R.string.empty_network_error));
 //                        ToastUtils.showShortToast(getResources().getString(R.string.load_data_fail));
 //                        ZbPermission.needPermission(SplashActivity.this, REQUEST_THREE_PERMISSION, needPermissions);
                         checkPermissions(needPermissions);
@@ -223,10 +224,10 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
     private void showUpdateDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(android.R.drawable.ic_dialog_info);
-        builder.setTitle("请升级APP至版本" + updateinfo.getVersion());
+        builder.setTitle(getResources().getString(R.string.plz_update) + updateinfo.getVersion());
         builder.setMessage(updateinfo.getDescription());
         builder.setCancelable(false);
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (Environment.getExternalStorageState().equals(
@@ -238,7 +239,7 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
                 }
             }
         });
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.cancle_1), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 QueryNoticeInfo();
@@ -290,6 +291,7 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
                     public void onFailure(HttpInfo info) throws IOException {
 //                        ToastUtils.showShortToast(getResources().getString(R.string.load_data_fail));
 //                        ZbPermission.needPermission(SplashActivity.this, REQUEST_THREE_PERMISSION, needPermissions);
+//                        noticeUtils.showNotice(getResources().getString(R.string.empty_network_error));
                         checkPermissions(needPermissions);
                     }
                 });

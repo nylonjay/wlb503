@@ -61,7 +61,6 @@ public class LoginGestureActivity extends HttpActivity {
     private boolean mIsFirst = true;
     private String mFirstPwd;
     private boolean isEncrypt = false;
-    String timestamp;
     User user;
     static{
         ResId.connLineColorId = R.color.main_theme_color;
@@ -116,7 +115,7 @@ public class LoginGestureActivity extends HttpActivity {
                             }
 
                         }else{
-                            timestamp=System.currentTimeMillis()+"";
+//                            timestamp=System.currentTimeMillis()+"";
 
                             try {
                                 Trace.e("inputcode==",inputCode);
@@ -259,6 +258,8 @@ public class LoginGestureActivity extends HttpActivity {
                                 saveUserState(DBHelper.getDataByKey(DataKey.userName),user.isGestureOpen(),user.isGestureSetted());
                                 startActivity(new Intent(LoginGestureActivity.this,GestureSetResult.class));
                                 LoginGestureActivity.this.finish();
+                            }else {
+                                noticeUtils.showNotice(json.optString("jsonError"));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

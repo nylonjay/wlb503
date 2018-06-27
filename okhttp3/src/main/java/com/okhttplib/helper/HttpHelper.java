@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Message;
 import android.os.NetworkOnMainThreadException;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.okhttplib.HttpInfo;
 import com.okhttplib.annotation.BusinessType;

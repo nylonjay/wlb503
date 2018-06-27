@@ -75,7 +75,7 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
     }
     protected void GetTimeStampAndKeyWithoutEditor() {
@@ -292,7 +292,7 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
 
     public static File scalFile(File file, String targetPath){
         long fileSize = file.length();
-        final long fileMaxSize = 50 * 1024;//超过200K的图片需要进行压缩
+        final long fileMaxSize = 50 * 1024;//超过50K的图片需要进行压缩
         if(fileSize > fileMaxSize){
             try {
                 byte[] bytes = getBytesFromFile(file);//将文件转换为字节数组

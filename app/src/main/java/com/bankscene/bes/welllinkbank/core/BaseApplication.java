@@ -1,11 +1,17 @@
 package com.bankscene.bes.welllinkbank.core;
 
+import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -14,12 +20,16 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.Util.Trace;
@@ -102,7 +112,7 @@ public class BaseApplication extends Application {
         user = new User();
 //        initOkGo();
 //        initUserIndex();
-
+//        ForceRequestType();
 
         initOkHttp(this);
         DBHelper.getInstance().init(this);
@@ -130,6 +140,62 @@ public class BaseApplication extends Application {
         }
 
     }
+
+
+
+//    private void ForceRequestType() {
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            final ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+//            NetworkRequest.Builder builder = new NetworkRequest.Builder();
+//
+//            // 设置指定的网络传输类型(蜂窝传输) 等于手机网络
+//            builder.addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR);
+//
+//            // 设置感兴趣的网络功能
+//            // builder.addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
+//
+//            // 设置感兴趣的网络：计费网络
+//            // builder.addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED);
+//
+//            final NetworkRequest request = builder.build();
+//            final ConnectivityManager.NetworkCallback callback = new ConnectivityManager.NetworkCallback() {
+//                /**
+//                 * Called when the framework connects and has declared a new network ready for use.
+//                 * This callback may be called more than once if the {@link Network} that is
+//                 * satisfying the request changes.
+//                 */
+//                @TargetApi(Build.VERSION_CODES.M)
+//                @Override
+//                public void onAvailable(Network network) {
+//                    super.onAvailable(network);
+//                    Log.i("test", "已根据功能和传输类型找到合适的网络");
+//
+//                    // 可以通过下面代码将app接下来的请求都绑定到这个网络下请求
+//                    if (Build.VERSION.SDK_INT >= 23) {
+//                        connectivityManager.bindProcessToNetwork(network);
+//                    } else {
+//                        // 23后这个方法舍弃了
+//                        ConnectivityManager.setProcessDefaultNetwork(network);
+//                    }
+//
+//                    // 也可以在将来某个时间取消这个绑定网络的设置
+//                    // if (Build.VERSION.SDK_INT >= 23) {
+//                    //      onnectivityManager.bindProcessToNetwork(null);
+//                    //} else {
+//                    //     ConnectivityManager.setProcessDefaultNetwork(null);
+//                    //}
+//
+//                    // 只要一找到符合条件的网络就注销本callback
+//                    // 你也可以自己进行定义注销的条件
+//                    connectivityManager.unregisterNetworkCallback(this);
+//
+//                }
+//
+////connectivityManager.requestNetwork(request,callback);
+//            };
+//        }
+//
+//    }
 
     private boolean isZh() {
         Locale locale = getResources().getConfiguration().locale;
@@ -167,7 +233,7 @@ public class BaseApplication extends Application {
                 MenuBiz menuBiz=new MenuBiz();
                 menuBiz.setIcon_Rsid((Integer) icons[i]);
                 menuBiz.setMenu_Name((Integer) names[i]);
-                if (i<11||menuBiz.getMenu_Name()==(R.string.custom)){
+                if (i<12||menuBiz.getMenu_Name()==(R.string.custom)){
                     menuBiz.setIs_Checked(true);
                 }
                 else{
@@ -188,7 +254,52 @@ public class BaseApplication extends Application {
     void initOkHttp(Context context) {
         String downloadFileDir = Environment.getExternalStorageDirectory().getPath()+"/okHttp_download/";
         String cacheDir = Environment.getExternalStorageDirectory().getPath()+"/okHttp_cache";
-        OkHttpClient okc= OkHttpUtil.init(context)
+        OkHttpClient okc= null;
+        try {
+            okc = OkHttpUtil.init(context)
+                    .setConnectTimeout(15)//连接超时时间
+                    .setWriteTimeout(15)//写超时时间
+                    .setReadTimeout(15)//读超时时间
+                    .setMaxCacheSize(10 * 1024 * 1024)//缓存空间大小
+                    .setCacheType(CacheType.FORCE_NETWORK)//缓存类型
+    //                .setCacheType(CacheType.FORCE_NETWORK)//缓存类型
+                    .setHttpLogTAG("HttpLog")//设置请求日志标识
+                    .setIsGzip(false)//Gzip压缩，需要服务端支持
+                    .setShowHttpLog(true)//显示请求日志
+                    .setShowLifecycleLog(true)//显示Activity销毁日志
+                    .setRetryOnConnectionFailure(false)//失败后不自动重连
+                    .setCachedDir(new File(cacheDir))//设置缓存目录
+                    .setDownloadFileDir(downloadFileDir)//文件下载保存目录
+                    .setResponseEncoding(Encoding.UTF_8)//设置全局的服务器响应编码
+                    .setRequestEncoding(Encoding.UTF_8)//设置全局的请求参数编码
+                    .setHttpsCertificate(getAssets().open("mbs.cer"))//设置全局Https证书
+                    .addResultInterceptor(HttpInterceptor.ResultInterceptor)//请求结果拦截器
+                    .addExceptionInterceptor(HttpInterceptor.ExceptionInterceptor)//请求链路异常拦截器
+                    .setCookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(context)))//持久化cookie
+    //                .setCookieJar(new CookieManager())
+                    .build().getDefaultClient();
+
+
+            Log.d("BaseProvider","OkHttp已初始化");
+            Glide.get(this)
+                    .register(          //使用okhttp作为图片请求
+                            GlideUrl.class
+                            ,InputStream.class
+                            ,new OkHttpUrlLoader.Factory(okc));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        okc=okc.newBuilder().sslSocketFactory(SSLSocketClient.getSSLSocketFactory()).hostnameVerifier(SSLSocketClient.getHostnameVerifier()).build();
+
+//        new OkHttpClient.Builder().sslSocketFactory(SSLSocketClient.getSSLSocketFactory()).hostnameVerifier(SSLSocketClient.getHostnameVerifier()).build();
+
+
+    }
+
+    void initOkHttp3(Context context){
+        String downloadFileDir = Environment.getExternalStorageDirectory().getPath()+"/okHttp_download/";
+        String cacheDir = Environment.getExternalStorageDirectory().getPath()+"/okHttp_cache";
+        OkHttpUtil.init(context)
                 .setConnectTimeout(30)//连接超时时间
                 .setWriteTimeout(30)//写超时时间
                 .setReadTimeout(30)//读超时时间
@@ -203,23 +314,15 @@ public class BaseApplication extends Application {
                 .setDownloadFileDir(downloadFileDir)//文件下载保存目录
                 .setResponseEncoding(Encoding.UTF_8)//设置全局的服务器响应编码
                 .setRequestEncoding(Encoding.UTF_8)//设置全局的请求参数编码
-//                .setHttpsCertificate(getAssets().open("embs_fotinet_test.cer"))//设置全局Https证书
+//                .setHttpsCertificate("12306.cer")//设置全局Https证书
                 .addResultInterceptor(HttpInterceptor.ResultInterceptor)//请求结果拦截器
                 .addExceptionInterceptor(HttpInterceptor.ExceptionInterceptor)//请求链路异常拦截器
                 .setCookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(context)))//持久化cookie
-//                .setCookieJar(new CookieManager())
-                .build().getDefaultClient();
-//        okc=okc.newBuilder().sslSocketFactory(SSLSocketClient.getSSLSocketFactory()).hostnameVerifier(SSLSocketClient.getHostnameVerifier()).build();
-
-//        new OkHttpClient.Builder().sslSocketFactory(SSLSocketClient.getSSLSocketFactory()).hostnameVerifier(SSLSocketClient.getHostnameVerifier()).build();
+                .build();
         Log.d("BaseProvider","OkHttp已初始化");
-        Glide.get(this)
-                .register(          //使用okhttp作为图片请求
-                        GlideUrl.class
-                        ,InputStream.class
-                        ,new OkHttpUrlLoader.Factory(okc));
-
     }
+
+
 
     public static BaseApplication getInstance() {
         return instance;

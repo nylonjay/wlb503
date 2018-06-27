@@ -17,7 +17,7 @@ import com.bankscene.bes.welllinkbank.MainActivity;
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.Util.Trace;
 import com.bankscene.bes.welllinkbank.Util.notice.NoticeUtils;
-import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
+import com.bankscene.bes.welllinkbank.activity.LoginTablayoutActivity;
 import com.bankscene.bes.welllinkbank.activity.mine.AboutUs;
 import com.bankscene.bes.welllinkbank.activity.mine.password.CodeReset;
 import com.bankscene.bes.welllinkbank.activity.mine.PersonInfo;
@@ -205,7 +205,7 @@ public class MineFragment extends BaseFragment{
                             activity.startActivity(in);
                         }else {
 //                    DBHelper.getInstance().clear();
-                            Intent in=new Intent(activity,LoginTabActivity.class);
+                            Intent in=new Intent(activity,LoginTablayoutActivity.class);
                             in.putExtra(activity.getResources().getString(R.string.className),PersonInfo.class.getName());
                             activity.startActivity(in);
                         }
@@ -261,7 +261,7 @@ public class MineFragment extends BaseFragment{
                             activity.startActivity(in);
                         }else {
 //                    DBHelper.getInstance().clear();
-                            Intent in=new Intent(activity,LoginTabActivity.class);
+                            Intent in=new Intent(activity,LoginTablayoutActivity.class);
                             in.putExtra(activity.getResources().getString(R.string.className),CodeReset.class.getName());
                             activity.startActivity(in);
                         }

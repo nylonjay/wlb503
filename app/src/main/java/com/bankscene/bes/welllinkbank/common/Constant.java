@@ -34,4 +34,5 @@ public class Constant {
     public static final String InitClientInfo="InitClientInfo";
     public static final String ImgName="head.png";
     public static final String LOGOUT_SUCCEED="LOGOUT_SUCCEED";
+    public static final String  STOCK_TRANS=PAGE_HEAD+"/account/stockTransferPre";
 }

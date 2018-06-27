@@ -54,6 +54,7 @@ public abstract class BaseFragment extends Fragment {
     public String TAG="";
     private DialogUtils dialogUtils;
     public Gson gson;
+    protected static String StockFlag="";
     public NoticeUtils noticeUtils;
     @Override
     public void onAttach(Context context) {

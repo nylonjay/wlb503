@@ -329,7 +329,7 @@ public class CSIICypher implements Cypher {
             }
 
             finalbytes[k++] = 0x57; //1
-            finalbytes[k++] = 0x57; //2
+            finalbytes[k++] = 0x00; //2
             finalbytes[k++] = 0;
             finalbytes[k++] = 0;
             finalbytes[k++] = 1;

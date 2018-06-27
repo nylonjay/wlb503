@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:id="@+id/ll_pwd_edits"
     android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
@@ -103,12 +102,12 @@
             android:layout_width="0dp"
             android:layout_weight="5"
             android:hint="@string/enter_verify_code"
-            android:inputType="number"
+            android:inputType="text"
             android:digits="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
             style="@style/edit_login_style"/>
 
         <ImageView
-            android:id="@+id/iv_verify_cell"
+            android:id="@+id/iv_verify_celll"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:scaleType="fitXY"
@@ -151,7 +150,6 @@
         style="@style/RoundButton_NoMargin"
         android:layout_marginTop="30dp"
         android:text="@string/cell_verify_login"
-        android:onClick="onTapLogin"
         android:background="@drawable/selector_button_login"/>
 
 </LinearLayout>

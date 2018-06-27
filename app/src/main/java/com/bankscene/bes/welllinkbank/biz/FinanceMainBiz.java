@@ -40,8 +40,10 @@ public class FinanceMainBiz {
             R.string.my_loans,
 //            ,R.string.repayment_history,R.string.repayment_plan,
 //            R.string.repayment_query,
-            R.string.bank_rate,R.string.exchange_rate_quotation,R.string.states_msci,
-            R.string.noble_metal_query,R.string.shares_query
+            R.string.bank_rate,R.string.exchange_rate_quotation
+            ,R.string.shares_query
+//            ,R.string.states_msci,
+//            R.string.noble_metal_query,
 //            R.string.custom
     };
 
@@ -53,14 +55,15 @@ public class FinanceMainBiz {
             R.mipmap.wlb_icon_myloan,
 //            R.mipmap.wlb_icon_repay_his, R.mipmap.wlb_icon_plan,
 //            R.mipmap.wlb_icon_repay_query,
-            R.mipmap.wlb_icon_rate, R.mipmap.wlb_icon_curey,
-            R.mipmap.wlb_icon_states,
-            R.mipmap.wlb_noble_metal, R.mipmap.wlb_shares_q ,
+            R.mipmap.wlb_icon_rate, R.mipmap.wlb_icon_curey
+            , R.mipmap.wlb_shares_q
+//            R.mipmap.wlb_icon_states,
+//            R.mipmap.wlb_noble_metal,
 //            R.mipmap.wlb_icon_custom,
     };
 
 
-//    static Object[] financeBiz={R.string.my_loans,R.string.repayment_history,R.string.repayment_plan,
+    //    static Object[] financeBiz={R.string.my_loans,R.string.repayment_history,R.string.repayment_plan,
 //            R.string.repayment_query,R.string.bank_rate,R.string.exchange_rate_quotation,R.string.states_msci,
 //            R.string.noble_metal_query,R.string.shares_query};
 //
@@ -72,7 +75,7 @@ public class FinanceMainBiz {
 //    };
     static Object[] financeBiz={
 //        R.string.deposits_product,
-        R.string.my_regular,R.string.regular_billing,
+            R.string.my_regular,R.string.regular_billing,
             R.string.regular_withdrawal,R.string.live_rotation,R.string.regular_history,R.string.loan_inquiry,
             R.string.bank_rate,R.string.exchange_rate_quotation,
             R.string.reimbursement_enquiries

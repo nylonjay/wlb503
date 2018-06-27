@@ -130,6 +130,7 @@ public class MainActivity extends ShareActivity {
     protected int setLayoutId() {
         return R.layout.activity_main;
     }
+
     private void changeIcon(int position) {
         if (MainPagerAdapter.previous != -1) {
             View view = tabLayout.getTabAt(MainPagerAdapter.previous).getCustomView();

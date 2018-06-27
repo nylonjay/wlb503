@@ -2,11 +2,16 @@ package com.bankscene.bes.welllinkbank.core;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.net.http.SslCertificate;
 import android.net.http.SslError;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,6 +22,7 @@ import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -24,20 +30,29 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.bankscene.bes.welllinkbank.R;
-import com.bankscene.bes.welllinkbank.ShareActivity;
 import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
+import com.bankscene.bes.welllinkbank.Util.dialog.DialogCallBack;
+import com.bankscene.bes.welllinkbank.activity.LoginTablayoutActivity;
 import com.bankscene.bes.welllinkbank.activity.PassWordDialogActivity;
+import com.bankscene.bes.welllinkbank.activity.mine.password.CodeReset2;
+import com.bankscene.bes.welllinkbank.activity.mine.password.TradeCodeReset;
+import com.bankscene.bes.welllinkbank.common.Config;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
-import com.bankscene.bes.welllinkbank.exception.WLBException;
 import com.bankscene.bes.welllinkbank.view.powerwebview.powerlib.PowerWebView;
 import com.bankscene.bes.welllinkbank.view.translucent.ActionBarClickListener;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
 import com.kh.keyboard.CSIICypher;
-import com.kh.keyboard.SecurityCypherException;
+
+import java.io.ByteArrayInputStream;
+import java.security.MessageDigest;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.util.Arrays;
 
 import butterknife.BindView;
+
 
 /**
  * Created by tianwei on 2017/4/25.
@@ -45,7 +60,8 @@ import butterknife.BindView;
 
 public class WebViewActivity extends HttpActivity implements View.OnClickListener, PowerWebView.Listener {
 
-    public String url="";
+    private static int VERSION_CODES_LOLLIPOP = 21;
+    public String url = "";
 
     private String title = "";
 
@@ -59,16 +75,18 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
     ProgressBar progressBar;
     @BindView(R.id.re_content)
     RelativeLayout re_content;
-    private final int SHOW_KEYBOARD=1;
+    private final int SHOW_KEYBOARD = 1;
 
 
     @Override
     public int setLayoutId() {
         return R.layout.activity_webview;
     }
-    public void Close2Home(View v){
+
+    public void Close2Home(View v) {
         WebViewActivity.this.finish();
     }
+
     @Override
     public void setActionBar() {
 //        actionBar.setActionBar(title, TranslucentActionBar.ICON_BACK, "",
@@ -88,7 +106,7 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
 
     }
 
-    public void IninActionBar(String title){
+    public void IninActionBar(String title) {
         actionBar.setVisibility(View.VISIBLE);
         actionBar.setActionBar(title, R.string.wlb_arrow_l, "",
                 0, "",
@@ -114,12 +132,12 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
     @Override
     protected void initView() {
 //        rootView = findViewById(R.id.root);
-        String showActionBar=getIntent().getStringExtra("showActionBar");
-        String title=getIntent().getStringExtra("title");
-        String localHtml=getIntent().getStringExtra("localHtml");
-        if (!TextUtils.isEmpty(showActionBar)){
+        String showActionBar = getIntent().getStringExtra("showActionBar");
+        String title = getIntent().getStringExtra("title");
+        String localHtml = getIntent().getStringExtra("localHtml");
+        if (!TextUtils.isEmpty(showActionBar)) {
             IninActionBar(title);
-        }else{
+        } else {
             actionBar.setStatusBarHeight();
         }
 
@@ -155,47 +173,72 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
         webView.addJavascriptInterface(new JavacriptInterface(), "android");
 //        webView.setListener(this, this);
 //        webView.setWebChromeClient(new CustomChromeClient("App", HostJsScope.class, progressBar, WebViewActivity.this));
-        webView.setWebChromeClient(new WebChromeClient(){
+        webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-                if (null!=progressBar){
+                Trace.e("progress==", newProgress + "");
+                if (null != progressBar) {
+                    if (newProgress == 100) {
+                        progressBar.setVisibility(View.GONE);
+                    }
                     progressBar.setProgress(newProgress);
                 }
             }
+
+
         });
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            public boolean shouldOverrideUrlLoading(final WebView view, String url) {
                 if (url.startsWith("http://") || url.startsWith("https://")) {
+
                     view.loadUrl(url);
                     webView.stopLoading();
                     return true;
                 }
+
                 return false;
             }
 
             @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                handler.proceed();
-//                super.onReceivedSslError(view, handler, error);
+                Trace.e("error","205");
+                 if (error.getPrimaryError() == SslError.SSL_INVALID||error.getPrimaryError()==SslError.SSL_UNTRUSTED) {
+                // 如果手动校验sha256成功就允许加载页面
+                if (isSSLCertOk(error.getCertificate(), Config.CERHASHCODE)) {
+                    handler.proceed();
+                } else {
+                    try {
+                        new AlertDialog.Builder(WebViewActivity.this)
+                                .setTitle(WebViewActivity.this.getResources().getString(R.string.promot))
+                                .setMessage(WebViewActivity.this.getResources().getString(R.string.ssl_error))
+                                .setPositiveButton(WebViewActivity.this.getResources().getString(R.string.back), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                       WebViewActivity.this.finish();
+                                    }
+                                }).show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else{
+                handler.cancel();
             }
 
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                if (null!=progressBar){
-                    progressBar.setVisibility(View.GONE);
-                }
-            }
+        }
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
 //                super.onReceivedError(view, request, error);
+                Trace.e("error","235");
+                actionBar.setVisibility(View.GONE);
                 setStatusBarColor(WebViewActivity.this,R.color.error_404);
                 findViewById(R.id.ll_error).setVisibility(View.VISIBLE);
             }
         });
+
 
         if (!TextUtils.isEmpty(localHtml)){
             Trace.e("loclahtml:",localHtml);
@@ -206,11 +249,62 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
         if (!TextUtils.isEmpty(address))
             url = address;
         Trace.e(TAG, "will load page: " + url);
-        webView.loadUrl(url);
         if (State.isLogin){
             synCookies(url, webView);
+//            syncCookie4WebView(this,DBHelper.getDataByKey(DataKey.cookie),url);
         }
 
+//        Trace.e("sdoul================",url);
+//        if (!url.startsWith(Config.HOST_ADDRESS)){
+//
+//            dialogUtils.ShowDialogOne(getResources().getString(R.string.promot), getResources().getString(R.string.ssl_error), getResources().getString(R.string.confirm), new DialogCallBack() {
+//                @Override
+//                public void onPositive() {
+//                    WebViewActivity.this.finish();
+//                }
+//
+//                @Override
+//                public void onNegative() {
+////                                        startActivity(new Intent(CodeReset2.this, TradeCodeReset.class));
+//                }
+//            });
+//        }else {
+//        }
+        webView.loadUrl(url);
+
+
+    }
+
+    public static void syncCookie4WebView(Context context, String cookie, String url) {
+        removeCookie4WebView(context);
+        if (Build.VERSION.SDK_INT < VERSION_CODES_LOLLIPOP) {
+            CookieSyncManager.createInstance(context);
+        }
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.setAcceptCookie(true);
+
+//        NylonLogUtil.I("oldcookie=="+cookie);
+        cookieManager.setCookie(url, cookie);// 如果没有特殊需求，这里只需要将session JSESSIONID=C80ADB46B3F92AE07210E5D680C32355
+        // id以"key=value"形式作为cookie即可
+        String newCookie = cookieManager.getCookie(url);
+//        NylonLogUtil.E("new cookie："+newCookie);
+        if (Build.VERSION.SDK_INT < VERSION_CODES_LOLLIPOP) {
+            CookieSyncManager.getInstance().sync();
+        } else {
+            CookieManager.getInstance().flush();
+        }
+    }
+    public static void removeCookie4WebView(Context context) {
+        CookieSyncManager.createInstance(context);
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.removeSessionCookie();
+        cookieManager.removeAllCookie();// Removes all cookies.
+
+        if (Build.VERSION.SDK_INT < VERSION_CODES_LOLLIPOP) {
+            CookieSyncManager.getInstance().sync();
+        } else {
+            // CookieManager.getInstance().flush();
+        }
     }
     final class JavacriptInterface{
         @JavascriptInterface
@@ -220,7 +314,7 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
         }
         @JavascriptInterface
         public void Back2Login(){
-            startActivity(new Intent(WebViewActivity.this, LoginTabActivity.class));
+            startActivity(new Intent(WebViewActivity.this, LoginTablayoutActivity.class));
             WebViewActivity.this.finish();
         }
         @JavascriptInterface
@@ -269,7 +363,7 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
     public void destroyWebView() {
 
 //        re_content.removeAllViews();
-
+        removeCookie4WebView(this);
         if (webView != null) {
             webView.clearHistory();
             webView.clearCache(true);
@@ -414,5 +508,52 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
         startActivity(intent);
     }
 
+    public static boolean isSSLCertOk(SslCertificate cert, String sha256Str) {
+        byte[] SSLSHA256 = hexToBytes(sha256Str);
+        Bundle bundle = SslCertificate.saveState(cert);
+        if (bundle != null) {
+            byte[] bytes = bundle.getByteArray("x509-certificate");
+            if (bytes != null) {
+                try {
+                    CertificateFactory cf = CertificateFactory.getInstance("X.509");
+                    Certificate ca = cf.generateCertificate(new ByteArrayInputStream(bytes));
+                    MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
+                    byte[] key = sha256.digest(((X509Certificate) ca).getEncoded());
+                    return Arrays.equals(key, SSLSHA256);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
 
+    /**
+     * hexString转byteArr
+     * <p>例如：</p>
+     * hexString2Bytes("00A8") returns { 0, (byte) 0xA8 }
+     *
+     * @param hexString
+     * @return 字节数组
+     */
+    public static byte[] hexToBytes(String hexString) {
+
+        if (hexString == null || hexString.trim().length() == 0)
+            return null;
+
+        int length = hexString.length() / 2;
+        char[] hexChars = hexString.toCharArray();
+        byte[] bytes = new byte[length];
+        String hexDigits = "0123456789abcdef";
+        for (int i = 0; i < length; i++) {
+            int pos = i * 2; // 两个字符对应一个byte
+            int h = hexDigits.indexOf(hexChars[pos]) << 4; // 注1
+            int l = hexDigits.indexOf(hexChars[pos + 1]); // 注2
+            if (h == -1 || l == -1) { // 非16进制字符
+                return null;
+            }
+            bytes[i] = (byte) (h | l);
+        }
+        return bytes;
+    }
 }

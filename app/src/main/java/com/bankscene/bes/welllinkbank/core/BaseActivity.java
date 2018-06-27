@@ -33,7 +33,7 @@ import com.bankscene.bes.welllinkbank.Util.dialog.DialogCallBack;
 import com.bankscene.bes.welllinkbank.Util.dialog.DialogUtils;
 import com.bankscene.bes.welllinkbank.Util.lock.LockUtils;
 import com.bankscene.bes.welllinkbank.Util.notice.NoticeUtils;
-import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
+import com.bankscene.bes.welllinkbank.activity.LoginTablayoutActivity;
 import com.bankscene.bes.welllinkbank.adapter.common.GlideCircleTransform;
 import com.bankscene.bes.welllinkbank.adapter.common.GlideRoundTransform;
 import com.bankscene.bes.welllinkbank.adapter.common.ImageShape;
@@ -52,7 +52,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -551,7 +550,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 //            startActivity(new Intent(this, LoginGestureActivity.class));
 //        } else {
 //        }
-        startActivity(new Intent(this, LoginTabActivity.class));
+        startActivity(new Intent(this, LoginTablayoutActivity.class));
     }
 
     public TranslucentActionBar getTranslucentActionBar() {

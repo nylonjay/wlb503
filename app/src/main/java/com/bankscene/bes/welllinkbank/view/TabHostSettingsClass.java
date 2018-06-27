@@ -32,6 +32,7 @@ public class TabHostSettingsClass {
 //                    R.color.main_theme_color);
             tView.setTextSize(13);
             //字体
+            tabHost.setBackgroundResource(R.drawable.corners_layout_bg);
             tView.setTypeface(Typeface.DEFAULT);
             if (tabHost.getCurrentTab() == i) {
                 tabWidget.getChildAt(i).setBackgroundResource(

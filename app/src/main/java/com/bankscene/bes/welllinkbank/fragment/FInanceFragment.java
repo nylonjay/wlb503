@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,8 +17,7 @@ import android.widget.TextView;
 
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.activity.LoginSmsDialog;
-import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
+import com.bankscene.bes.welllinkbank.activity.LoginTablayoutActivity;
 import com.bankscene.bes.welllinkbank.activity.MenuList;
 import com.bankscene.bes.welllinkbank.adapter.GridViewAdapter;
 import com.bankscene.bes.welllinkbank.adapter.ViewPagerAdapter;
@@ -135,7 +135,7 @@ public class FInanceFragment extends BaseFragment implements View.OnClickListene
                     if (result.contains(_REJCODE)&&result.contains("000000")){
                         showNotice(getResources().getString(R.string.logined));
                     }else {
-                        startActivity(new Intent(activity,LoginTabActivity.class));
+                        startActivity(new Intent(activity,LoginTablayoutActivity.class));
                     }
                     break;
             }
@@ -203,6 +203,13 @@ public class FInanceFragment extends BaseFragment implements View.OnClickListene
                         in.putExtra("url", Constant.MY_LOANS);
                     }else if (menuName==R.string.shares_query){
 //                        in   =new Intent(activity, LoginSmsDialog.class);
+                    }else if (menuName==R.string.shares_query){
+                        if (TextUtils.isEmpty(StockFlag)||"0".equals(StockFlag)){
+                            noticeUtils.showNotice(getResources().getString(R.string.stock_closed));
+                        }else {
+                            in   =new Intent(activity, WebViewActivity.class);
+                            in.putExtra("url", Constant.STOCK_TRANS);
+                        }
                     }
                     if (null!=in)
                         startActivity(in);

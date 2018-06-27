@@ -11,8 +11,9 @@ import android.widget.LinearLayout;
 
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
+import com.bankscene.bes.welllinkbank.activity.LoginTablayoutActivity;
 import com.bankscene.bes.welllinkbank.activity.MenuList;
+import com.bankscene.bes.welllinkbank.activity.Webview.Html5Activity;
 import com.bankscene.bes.welllinkbank.adapter.GridViewAdapter;
 import com.bankscene.bes.welllinkbank.adapter.ViewPagerAdapter;
 import com.bankscene.bes.welllinkbank.biz.AdvertiseBiz;
@@ -118,7 +119,7 @@ public class HomeFragment extends BaseFragment{
 
                     @Override
                     public void onFailure(HttpInfo info) throws IOException {
-                        noticeUtils.showNotice(info.getRetDetail());
+                        noticeUtils.showNotice(activity.getResources().getString(R.string.empty_network_error));
                     }
                 });
     }
@@ -191,6 +192,13 @@ public class HomeFragment extends BaseFragment{
                     }else if (menuName==R.string.my_loans){
                         in   =new Intent(activity, WebViewActivity.class);
                         in.putExtra("url", Constant.MY_LOANS);
+                    }else if (menuName==R.string.shares_query){
+                        if (TextUtils.isEmpty(StockFlag)||"0".equals(StockFlag)){
+                            noticeUtils.showNotice(getResources().getString(R.string.stock_closed));
+                        }else {
+                            in   =new Intent(activity, WebViewActivity.class);
+                            in.putExtra("url", Constant.STOCK_TRANS);
+                        }
                     }
                     if (null!=in)
                         startActivity(in);
@@ -272,6 +280,14 @@ public class HomeFragment extends BaseFragment{
         menuBiz.setIs_Checked(true);
         menuBiz.setIcon_Rsid(R.mipmap.wlb_icon_custom);
         menuBiz.setMenu_Name(R.string.custom);
+
+//        if (!TextUtils.isEmpty(StockFlag)){
+//            MenuBiz sq=new MenuBiz();
+//            sq.setIs_Checked(true);
+//            sq.setIcon_Rsid(R.mipmap.wlb_shares_q);
+//            sq.setMenu_Name(R.string.shares_query);
+//            gridDataList.add(sq);
+//        }
         gridDataList.add(menuBiz);
 
     }
@@ -291,7 +307,8 @@ public class HomeFragment extends BaseFragment{
                 if (result.contains(_REJCODE)&&result.contains("000000")){
                     showNotice(getResources().getString(R.string.logined));
                 }else {
-                    startActivity(new Intent(activity,LoginTabActivity.class));
+                    startActivity(new Intent(activity, LoginTablayoutActivity.class));
+//                    startActivity(new Intent(activity,LoginTabActivity.class));
                 }
                 break;
 
@@ -344,7 +361,7 @@ public class HomeFragment extends BaseFragment{
 
                     @Override
                     public void onFailure(HttpInfo info) throws IOException {
-                        noticeUtils.showNotice(info.getRetDetail());
+                        noticeUtils.showNotice(activity.getResources().getString(R.string.empty_network_error));
                     }
                 });
     }

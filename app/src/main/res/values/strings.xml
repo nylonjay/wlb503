@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">立橋銀行</string>
+    <string name="app_name">立橋智慧理財</string>
 
     <string name="icons_back">&#xe6c9;</string>
     <string name="icons_search">&#xe6c3;</string>
@@ -65,7 +65,7 @@
     <string name="loan_inquiry">第三方轉賬</string>
     <string name="synonym_transfer">同名轉賬/兌換</string>
     <string name="remittance">匯款</string>
-    <string name="exchange_rate_quotation">外匯牌價</string>
+    <string name="exchange_rate_quotation">牌價查詢</string>
     <string name="subscribe_exchange_foreign_currency">預約兌換外匯</string>
     <string name="regular_billing">定期開單</string>
     <string name="add">添加</string>
@@ -104,7 +104,7 @@
     <string name="brvah_load_end">沒有更多數據</string>
     <string name="network_err">網絡錯誤</string>
     <string name="empty_no_data">暫無數據，點擊重試</string>
-    <string name="empty_network_error">網絡錯誤，點擊重試</string>
+    <string name="empty_network_error">請檢查網絡連接是否正常</string>
     <string name="my_account">我的賬戶</string>
     <string name="deposits_product">存款產品</string>
     <string name="my_regular">我的定期</string>
@@ -191,7 +191,7 @@
     <string name="repayment_query">應還款查詢</string>
     <string name="states_msci">各國指數查詢</string>
     <string name="noble_metal_query">貴金屬查詢</string>
-    <string name="shares_query">股票查詢</string>
+    <string name="shares_query">股票轉賬</string>
     <string name="save">保存</string>
     <string name="logout_succed">登出成功</string>
     <string name="gesture_login">手勢登錄</string>
@@ -304,4 +304,9 @@
     <string name="retry">請重試</string>
     <string name="challenge">短信序号:</string>
     <string name="details">詳情</string>
+    <string name="sync_login">動態密碼登陸</string>
+    <string name="enter_dynamic">輸入動態密碼</string>
+    <string name="ssl_error">當前網絡存在風險，請檢查后再使用。</string>
+    <string name="plz_update">請升級App版本至:</string>
+    <string name="stock_closed">您還未開通股票轉賬</string>
 </resources>

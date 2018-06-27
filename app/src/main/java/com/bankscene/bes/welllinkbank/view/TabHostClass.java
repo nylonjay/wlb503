@@ -38,6 +38,6 @@ public class TabHostClass {
         tabHost.setup();
         tabHost.addTab(tabHost.newTabSpec("1").setContent(v1).setIndicator(one));
         tabHost.addTab(tabHost.newTabSpec("2").setContent(v2).setIndicator(two));
-//        tabHost.addTab(tabHost.newTabSpec("3").setContent(v3).setIndicator(three));
+        tabHost.addTab(tabHost.newTabSpec("3").setContent(v3).setIndicator(three));
     }
 }

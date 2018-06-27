@@ -100,7 +100,7 @@
     <string name="brvah_load_end">No more information</string>
     <string name="network_err">Network error</string>
     <string name="empty_no_data">No information is found, click to retry</string>
-    <string name="empty_network_error">Network error, click to retry</string>
+    <string name="empty_network_error">Please check whether the network connection is OK</string>
     <string name="my_account">My Account</string>
     <string name="deposits_product">Deposit Products</string>
     <string name="my_regular">My Time Deposits</string>
@@ -153,7 +153,7 @@
     <string name="repayment_query">Repayment Inquiry</string>
     <string name="states_msci">Indexes Inquiry </string>
     <string name="noble_metal_query">Noble Metal Inquiry</string>
-    <string name="shares_query">Shares Inquiry</string>
+    <string name="shares_query">Stock Transfer</string>
     <string name="save">Save</string>
     <string name="logout_succed">Log Out Succeeded</string>
     <string name="gesture_login">Gesture Log In</string>
@@ -271,4 +271,10 @@
     <string name="portal_site">Portals</string>
 
     <string name="details">Details</string>
+    <string name="sync_login">Dynamics Code</string>
+    <string name="enter_dynamic">enter Dynamic Code</string>
+
+    <string name="ssl_error">The current network has a risk，Please try again after checking.</string>
+    <string name="plz_update">Please update App Version to:</string>
+    <string name="stock_closed">You have not yet opened the stock transfer</string>
 </resources>

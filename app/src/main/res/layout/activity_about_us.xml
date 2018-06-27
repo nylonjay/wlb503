@@ -164,6 +164,6 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_marginTop="15dp"
-            android:src="@mipmap/wlb_erweima"/>
+            android:src="@mipmap/wlb_weixin_qrcode"/>
     </LinearLayout>
 </LinearLayout>

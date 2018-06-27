@@ -4,16 +4,14 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_marginTop="-30dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:id="@+id/ll_pwd_edits"
     android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/mine_item_height"
         android:orientation="horizontal"
         android:layout_marginLeft="10dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_marginRight="10dp"
         android:gravity="center">
         <ImageView
@@ -22,8 +20,8 @@
             android:src="@mipmap/wlb_icon_loginname"/>
 
         <TextView
-            android:id="@+id/tv_pre"
-            android:text="+86"
+            android:id="@+id/tv_pre_dyna"
+            android:text="+853"
             android:gravity="center"
             android:layout_width="45dp"
             android:textSize="@dimen/login_text_size"
@@ -40,10 +38,10 @@
             app:fontFile="welllbk.ttf" />
 
         <com.bankscene.bes.welllinkbank.view.ClearableEditText
-            android:id="@+id/login_name"
+            android:id="@+id/login_name_dyna"
             android:layout_marginLeft="5dp"
             android:hint="@string/enter_username"
-            style="@style/edit_login_style"/>
+            style="@style/edit_login_style_20"/>
 
     </LinearLayout>
 
@@ -65,16 +63,16 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/wlb_icon_password"/>
 
-        <EditText
+        <com.bankscene.bes.welllinkbank.view.WlbEditText
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
-            android:id="@+id/login_password"
+            android:id="@+id/login_password_dyna"
             android:inputType="textPassword"
             android:focusableInTouchMode="false"
             android:hint="@string/enter_password"
-            style="@style/edit_login_style" />
+            style="@style/edit_login_style_20" />
 
     </LinearLayout>
 
@@ -99,58 +97,62 @@
             android:src="@mipmap/wlb_icon_verifycode"/>
 
         <EditText
-            android:id="@+id/login_verifycode"
+            android:id="@+id/login_verifycode_dyna"
             android:layout_marginLeft="5dp"
             android:layout_width="0dp"
             android:layout_weight="5"
             android:hint="@string/enter_verify_code"
+            android:inputType="text"
+            android:digits="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
             style="@style/edit_login_style"/>
 
         <ImageView
-            android:id="@+id/iv_verify"
+            android:id="@+id/iv_verify_dyna"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:scaleType="fitXY"
             android:layout_height="44dp"/>
 
     </LinearLayout>
-    <!-- 动态密码验证-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/dark_grey"
+        />
     <LinearLayout
-        android:id="@+id/ll_otp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mine_item_height"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:orientation="horizontal"
-        android:visibility="gone"
         android:gravity="center">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/wlb_icon_verifycode"/>
+            android:src="@mipmap/wlb_icon_password"/>
 
-        <EditText
+        <com.bankscene.bes.welllinkbank.view.ClearableEditText
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="0dp"
-            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/otp_verify"
-            android:hint="@string/otp_login"
-            style="@style/edit_login_style"
-            android:inputType="text"
-            android:maxLength="6"/>
-        <!--<TextView-->
-            <!--android:id="@+id/mobileCode"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:background="@drawable/_button_round_white"-->
-            <!--android:textSize="@dimen/login_text_size_min"-->
-            <!--android:text="@string/get_cell_code"-->
-            <!--android:gravity="center"-->
-            <!--android:textColor="@drawable/_selector_color_code"/>-->
+            android:id="@+id/dynamic_pwd_dyna"
+            android:inputType="number"
+            android:hint="@string/enter_dynamic"
+            style="@style/edit_login_style_20" />
+
     </LinearLayout>
+    <!--<TextView-->
+    <!--android:id="@+id/mobileCode"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:layout_height="30dp"-->
+    <!--android:background="@drawable/_button_round_white"-->
+    <!--android:textSize="@dimen/login_text_size_min"-->
+    <!--android:text="@string/get_cell_code"-->
+    <!--android:gravity="center"-->
+    <!--android:textColor="@drawable/_selector_color_code"/>-->
 
     <View
         android:layout_width="match_parent"
@@ -163,7 +165,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="3dp">
         <CheckBox
-            android:id="@+id/remerberuser"
+            android:id="@+id/remerberuser_dyna"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/greyText"
@@ -173,10 +175,10 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_login_dyna"
         style="@style/RoundButton_NoMargin"
         android:layout_marginTop="30dp"
-        android:text="@string/login"
+        android:text="@string/sync_login"
         android:onClick="onTapLogin"
         android:background="@drawable/selector_button_login"/>
 

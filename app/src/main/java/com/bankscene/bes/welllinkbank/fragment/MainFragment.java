@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.Util.Trace;
-import com.bankscene.bes.welllinkbank.activity.LoginTabActivity;
+import com.bankscene.bes.welllinkbank.activity.LoginTablayoutActivity;
 import com.bankscene.bes.welllinkbank.activity.MenuList;
 import com.bankscene.bes.welllinkbank.biz.AdvertiseBiz;
 import com.bankscene.bes.welllinkbank.biz.MenuBiz;
@@ -201,7 +201,7 @@ public class MainFragment extends BaseFragment{
                     showNotice(getResources().getString(R.string.logined));
                 }else {
 //                    DBHelper.getInstance().clear();
-                    startActivity(new Intent(activity,LoginTabActivity.class));
+                    startActivity(new Intent(activity,LoginTablayoutActivity.class));
                 }
 //                refreshSelf();
                 break;

@@ -112,23 +112,23 @@ abstract class BaseHelper {
         if(helperInfo.isGzip()){
             clientBuilder.addInterceptor(new GzipRequestInterceptor());
         }
-        setDefaultSslSocketFactory(clientBuilder);
-//        if(httpInfo == null || httpInfo.getUrl() == null)
-//            return clientBuilder.build();
-//        try {
-//            URI uri = new URL(httpInfo.getUrl()).toURI();
-//            if("https".equals(uri.getScheme())){
-//                if(helperInfo.getHttpsCertificateStream() == null){
-//                    setDefaultSslSocketFactory(clientBuilder);
-//                }else{
-//                    setSslSocketFactory(clientBuilder);
-//                }
-//            }
-//        } catch (URISyntaxException e) {
-//            e.printStackTrace();
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        }
+//        setDefaultSslSocketFactory(clientBuilder);
+        if(httpInfo == null || httpInfo.getUrl() == null)
+            return clientBuilder.build();
+        try {
+            URI uri = new URL(httpInfo.getUrl()).toURI();
+            if("https".equals(uri.getScheme())){
+                if(helperInfo.getHttpsCertificateStream() == null){
+                    setDefaultSslSocketFactory(clientBuilder);
+                }else{
+                    setSslSocketFactory(clientBuilder);
+                }
+            }
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         return clientBuilder.build();
     }
 
@@ -332,7 +332,8 @@ abstract class BaseHelper {
         }
         @Override
         public X509Certificate[] getAcceptedIssuers() {
-            return new X509Certificate[0];
+//            return new X509Certificate[0];
+            return null;
         }
     };
 

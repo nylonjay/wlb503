@@ -196,11 +196,11 @@ public class PersonInfo extends HttpActivity {
                 .captureStrategy(
                         new CaptureStrategy(true, "com.zhihu.matisse.wlllbk.fileprovider"))
                 .maxSelectable(1)
-                .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
+                .addFilter(new GifSizeFilter(320, 320, 100 * Filter.K))
                 .gridExpectedSize(
                         getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
                 .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-                .thumbnailScale(0.85f)
+                .thumbnailScale(0.55f)
                 .imageEngine(new GlideEngine())
                 .forAddResult(REQUEST_CODE_CHOOSE);
     }
@@ -343,7 +343,7 @@ public class PersonInfo extends HttpActivity {
 
                     @Override
                     public void onFailure(HttpInfo info) throws IOException {
-
+                        noticeUtils.showNotice(info.getRetDetail()+"");
                     }
                 });
     }

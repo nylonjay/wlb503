@@ -292,7 +292,8 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
 
     public static File scalFile(File file, String targetPath){
         long fileSize = file.length();
-        final long fileMaxSize = 50 * 1024;//超过50K的图片需要进行压缩
+        Trace.e("filesize===================",fileSize+"");
+        final long fileMaxSize = 10* 1024;//超过50K的图片需要进行压缩
         if(fileSize > fileMaxSize){
             try {
                 byte[] bytes = getBytesFromFile(file);//将文件转换为字节数组
@@ -320,12 +321,18 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
                 Bitmap resizeBitmap=Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, false);
                 if(resizeBitmap != null){
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                    int quality = 100;
                     int quality = 100;
                     resizeBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                    //限制压缩后图片最大为200K，否则继续压缩
-                    while (baos.toByteArray().length > fileMaxSize) {
+                    //限制压缩后图片最大为200K，否则继续压缩  直接压缩成1%是因为公司的破服务器只让上传10k以下的图片
+                    while (baos.toByteArray().length > fileMaxSize&&quality>1) {
                         baos.reset();
-                        quality -= 10;
+                        quality -=33;
+                        if (quality<0){
+                            quality=1;
+
+                        }
+                        Trace.e("quality===================",quality+"");
                         resizeBitmap.compress(Bitmap.CompressFormat.JPEG, quality, baos);
                     }
                     baos.close();

@@ -1,9 +1,11 @@
 package com.bankscene.bes.welllinkbank.pulltorefresh.entity;
 
+import java.io.Serializable;
+
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
  */
-public class Status {
+public class Status implements Serializable{
     private String Mkey;
     private String Mtitle;
     private String Mimg;

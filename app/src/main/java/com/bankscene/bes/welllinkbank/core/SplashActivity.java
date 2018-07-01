@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by tianwei on 2017/5/12.
@@ -181,6 +182,7 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
                         .setRequestType(RequestType.GET)//设置请求方式
 //                        .setNeedResponse(true)
                         .addParams(params)
+                        .setDelayExec(1, TimeUnit.SECONDS)
                         .build(),
                 new Callback(){
                     @Override
@@ -202,8 +204,9 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
                                 updateInfoService = new UpdateInfoService(SplashActivity.this);
                                 updateinfo=new Gson().fromJson(info.getRetDetail(),UpdateInfo.class);
                                 showUpdateDialog();
-                            }else {
-                                QueryNoticeInfo();
+                            }
+                            else {
+                                Go();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -242,7 +245,8 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
         builder.setNegativeButton(getResources().getString(R.string.cancle_1), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                QueryNoticeInfo();
+//                QueryNoticeInfo();
+                Go();
             }
         });
         builder.create().show();
@@ -317,7 +321,7 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
                             new String[needRequestPermissonList.size()]),
                     PERMISSON_REQUESTCODE);
         }else {
-            Go();
+            CheckVersionInfo();
         }
     }
     private List<String> findDeniedPermissions(String[] permissions) {

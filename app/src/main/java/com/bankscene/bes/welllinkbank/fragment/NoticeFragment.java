@@ -106,7 +106,6 @@ class Request extends Thread {
         String noticejson= DBHelper.getDataByKey(DataKey.notice);
         Type type=new TypeToken<List<Status>>(){}.getType();
         nbs=gson.fromJson(noticejson,type);
-
         return nbs;
 
     }
@@ -164,9 +163,12 @@ public class NoticeFragment extends BaseFragment{
         notice_list.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(final BaseQuickAdapter adapter, final View view, final int position) {
-               String key= ((Status)adapter.getItem(position)).getMkey();
+//               String key= ((Status)adapter.getItem(position)).getMkey();
+                Status status= (Status) adapter.getItem(position);
                 Intent in=new Intent(activity, NoticeDetail.class);
-                in.putExtra("key",key);
+//                in.putExtra("key",key);
+                in.putExtra("title",status.getMtitle()+"");
+                in.putExtra("content",status.getMcontent()+"");
                 startActivity(in);
             }
         });

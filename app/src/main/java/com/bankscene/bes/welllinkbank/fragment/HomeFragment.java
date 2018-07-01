@@ -131,7 +131,7 @@ public class HomeFragment extends BaseFragment{
         EventBus.getDefault().register(this);
         convenientBanner = BannerUtils.initImageBar(activity, convenientBanner, adImageUrlList, adMapList);
         LinearLayout.LayoutParams layoutParams =
-                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, BaseApplication.WIDTH * 5 / 13);
+                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, BaseApplication.WIDTH * 6 / 13);
         convenientBanner.setLayoutParams(layoutParams);
         iniBanner2();
         iniViewPager();

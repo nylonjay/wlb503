@@ -292,7 +292,9 @@ public class LoginTablayoutActivity extends HttpActivity {
                             if (result.get(_REJCODE).equals("000000")){
                                 State.isLogin=true;
                                 for (Cookie cookie:cookies){
-                                    DBHelper.insert(new Data(DataKey.cookie,cookie.toString()));
+                                    if (!cookie.toString().startsWith("cookiesession1")){
+                                        DBHelper.insert(new Data(DataKey.cookie,cookie.toString()));
+                                    }
                                 }
                                 QueryClientInfo();
                             }else{

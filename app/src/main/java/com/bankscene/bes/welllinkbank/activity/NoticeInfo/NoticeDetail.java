@@ -31,7 +31,6 @@ import butterknife.BindView;
 public class NoticeDetail extends HttpActivity {
     @BindView(R.id.actionBar)
     TranslucentActionBar actionBar;
-    String key="";
     @BindView(R.id.tv_title)
     TextView tv_title;
 //    @BindView(R.id.iv_main)
@@ -39,13 +38,26 @@ public class NoticeDetail extends HttpActivity {
     @BindView(R.id.tv_mcontent)
     TextView tv_mcontent;
     List<Status> stas;
-    Gson gson;
+    Status status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        key=getIntent().getStringExtra("key");
-        gson=new Gson();
-        getDetail(key);
+
+//        getDetail(key);
+//        Message message=new Message();
+//        message.what=1;
+//        message.obj=status;
+//        handler.sendMessage(message);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String title=getIntent().getStringExtra("title");
+        String content=getIntent().getStringExtra("content");
+        tv_title.setText(title);
+//                        iv_main.setImageBitmap(FileUtil.base64ReturnBitmap(status.getMimg()));
+        tv_mcontent.setText(content);
     }
 
     @Override
@@ -87,7 +99,7 @@ public class NoticeDetail extends HttpActivity {
                             JSONObject jsonObject=new JSONObject(info.getRetDetail());
                             String list=jsonObject.getString("List");
                             Type type=new TypeToken<List<Status>>(){}.getType();
-                            stas=gson.fromJson(list,type);
+//                            stas=gson.fromJson(list,type);
                             Status status=stas.get(0);
                             Message message=new Message();
                             message.what=1;

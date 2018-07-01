@@ -2,6 +2,7 @@ package com.bigkoo.convenientbanner.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -61,7 +62,9 @@ public class NetworkImageHolderView implements CBPageAdapter.Holder<String>{
                 {
                     Map<String, String> temp = imageInfoMapList.get(position);
                     String url=temp.get("url");
-                    Trace.e("跳转到",url);
+                    if (TextUtils.isEmpty(url)){
+                        return;
+                    }
                     Intent in=new Intent(fContext, WebViewActivity.class);
 //                    if (url.endsWith("/")){
 //                        url=url.substring(0,url.length()-1);

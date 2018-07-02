@@ -218,8 +218,9 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
                     public void onFailure(HttpInfo info) throws IOException {
 //                        noticeUtils.showNotice(getResources().getString(R.string.empty_network_error));
 //                        ToastUtils.showShortToast(getResources().getString(R.string.load_data_fail));
+                        Go();
 //                        ZbPermission.needPermission(SplashActivity.this, REQUEST_THREE_PERMISSION, needPermissions);
-                        checkPermissions(needPermissions);
+//                        checkPermissions(needPermissions);
                     }
                 });
     }

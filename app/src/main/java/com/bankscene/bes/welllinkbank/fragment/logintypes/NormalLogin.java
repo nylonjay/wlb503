@@ -388,7 +388,7 @@ public class NormalLogin extends BaseTabFragment implements View.OnClickListener
         }
 
         doHttpAsync(HttpInfo.Builder()
-                        .addHead("Accept","text/mobilejson")
+                        .addHead("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
                         .addHead("cookie",DBHelper.getDataByKey(DataKey.cookie))
 //                        .addHead("connection","keep-alive")
                         .setUrl(CommDictAction.loginNormal)

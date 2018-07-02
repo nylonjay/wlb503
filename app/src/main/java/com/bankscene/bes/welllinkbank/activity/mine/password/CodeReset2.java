@@ -236,6 +236,7 @@ public class CodeReset2 extends HttpActivity implements View.OnClickListener{
                                     JSONArray jsonError=json.getJSONArray("jsonError");
                                     JSONObject f1=jsonError.getJSONObject(0);
                                     noticeUtils.showNotice(f1.optString("_exceptionFieldName"));
+                                    ed_1.setText(""); ed_2.setText(""); ed_3.setText("");
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

@@ -38,6 +38,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <!-- 允许一个程序获取信息有关当前或最近运行的任务，一个缩略的任务状态，是否活动等等 -->
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.READ_LOGS" />
@@ -91,6 +92,17 @@
         <activity android:name=".activity.mine.password.CodeReset2" />
         <!-- android:theme="@style/activity_switch_translate_right_left" -->
         <activity android:name=".activity.mine.PersonInfo" />
+
+        <provider
+            android:name="com.bankscene.bes.welllinkbank.provider.WLBProvider"
+            android:authorities="com.bankscene.bes.welllinkbank.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
 
         <provider
             android:name="android.support.v4.content.FileProvider"

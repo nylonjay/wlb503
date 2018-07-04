@@ -138,7 +138,7 @@ public class CodeReset2 extends HttpActivity implements View.OnClickListener{
 
     public void onTapConfirm(View v){
 //        确认修改
-        if (checkPassword1()&&checkPassword2()&&checkPassword3())
+        if (checkPassword1()&&checkPassword2()&&checkPassword3()&&checkPassword4())
         UploadPassword();
     }
     private boolean checkPassword1() {
@@ -174,6 +174,15 @@ public class CodeReset2 extends HttpActivity implements View.OnClickListener{
 
         return true;
     }
+    private boolean checkPassword4() {
+        if (!ed_2.getText().toString().equals(ed_3.getText().toString())) {
+            showNotice(getResources().getString(R.string.not_same_pwd));
+            return false;
+        }
+        return true;
+    }
+
+
     private void UploadPassword() {
         String ed1 = null,ed2 = null,ed3 = null;
         try {

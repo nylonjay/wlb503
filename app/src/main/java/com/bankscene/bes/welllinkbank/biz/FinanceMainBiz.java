@@ -41,7 +41,7 @@ public class FinanceMainBiz {
 //            ,R.string.repayment_history,R.string.repayment_plan,
 //            R.string.repayment_query,
             R.string.bank_rate,R.string.exchange_rate_quotation
-//            ,R.string.shares_query
+            ,R.string.shares_query
 //            ,R.string.states_msci,
 //            R.string.noble_metal_query,
 //            R.string.custom
@@ -56,7 +56,7 @@ public class FinanceMainBiz {
 //            R.mipmap.wlb_icon_repay_his, R.mipmap.wlb_icon_plan,
 //            R.mipmap.wlb_icon_repay_query,
             R.mipmap.wlb_icon_rate, R.mipmap.wlb_icon_curey
-//            , R.mipmap.wlb_shares_q
+            , R.mipmap.wlb_shares_q
 //            R.mipmap.wlb_icon_states,
 //            R.mipmap.wlb_noble_metal,
 //            R.mipmap.wlb_icon_custom,

@@ -59,7 +59,7 @@ public class NoticeUtils {
 //            toastList.add(toast);
             final AlertDialog dialog = new AlertDialog.Builder(context).create();
             dialog.setCancelable(false);
-            new TimeCount(2500,3000,dialog).start();
+            new TimeCount(2800,3000,dialog).start();
             dialog.show();
             Window window = dialog.getWindow();
             window.setBackgroundDrawableResource(android.R.color.transparent);

@@ -434,10 +434,16 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
                         Trace.e("filename==",filePath+"");
                         Trace.e("info===",info.getRetDetail()+"");
 //                        ToastUtils.showShortToast(info.getRetDetail());
-                        Message msg=new Message();
-                        msg.what=2;
-                        msg.obj=info.getRetDetail();
-                        handler.sendMessage(msg);
+
+                        if (info.getRetDetail().equals("连接中断")){
+                            handler.sendEmptyMessage(404);
+                        }else {
+                            Message msg=new Message();
+                            msg.what=2;
+                            msg.obj=info.getRetDetail();
+                            handler.sendMessage(msg);
+                        }
+
                     }
                 })
                 .build();

@@ -8,14 +8,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -144,27 +148,79 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
         super.onDestroy();
     }
     Handler handler1=new Handler(){
+        @RequiresApi(api = 26)
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case 2:
-                    String filepath= (String) msg.obj;
+                    String fileUri= (String) msg.obj;
 //                    Intent intent = new Intent(Intent.ACTION_VIEW);
 //                    intent.setDataAndType(Uri.fromFile(new File("/storage/emulated/0/okHttp_download/",filepath.substring(filepath.lastIndexOf("/")))),
 //                            "application/vnd.android.package-archive");
 //                    SplashActivity.this.startActivity(intent);
-                    String[] arr=filepath.split("/");
-                    File apkfile = new File("/storage/emulated/0/okHttp_download/",arr[arr.length-1]);
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setDataAndType(Uri.parse("file://" + apkfile.toString()),
-                            "application/vnd.android.package-archive");
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-                    startActivity(i);
+//                    String[] arr=filepath.split("/");
+//                    File apkfile = new File("/storage/emulated/0/okHttp_download/",arr[arr.length-1]);
+//
+//
+//                    Intent i = new Intent(Intent.ACTION_VIEW);
+//                    i.setDataAndType(Uri.parse("file://" + apkfile.toString()),
+//                            "application/vnd.android.package-archive");
+//                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+//                    startActivity(i);
+//                    Go();
+//                    System.exit(0);
+                    DBHelper.getInstance().clear();//清除所有缓存
+                    if (null != fileUri) {
+                        try {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            File apkFile = new File(fileUri);
+                            //兼容7.0
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                Uri contentUri = FileProvider.getUriForFile(SplashActivity.this, "com.bankscene.bes.welllinkbank.fileprovider", apkFile);
+                                intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);//这里加入flag
+                                //兼容8.0
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    boolean hasInstallPermission = BaseApplication.getInstance().getPackageManager().canRequestPackageInstalls();
+                                    if (!hasInstallPermission) {
+//                                        ToastUtil.makeText(MyApplication.getContext(), MyApplication.getContext().getString(R.string.string_install_unknow_apk_note), false);
+                                        startInstallPermissionSettingActivity();
+                                        return;
+                                    }
+                                }
+                            } else {
+                                intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            }
+                            if (BaseApplication.getInstance().getPackageManager().queryIntentActivities(intent, 0).size() > 0) {
+                                BaseApplication.getInstance().startActivity(intent);
+                            }
+                        } catch (Throwable e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                    break;
+                case 404:
+                    Toast.makeText(BaseApplication.getInstance(),SplashActivity.this.getResources().getString(R.string.update_failed),Toast.LENGTH_SHORT).show();
+                    Go();
                     break;
             }
+
         }
+
     };
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void startInstallPermissionSettingActivity() {
+        //注意这个是8.0新API
+        Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        this.startActivity(intent);
+    }
+
     void update() {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.fromFile(new File(Environment
@@ -255,8 +311,8 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
     void downFile(final String url) {
         progressDialog = new ProgressDialog(SplashActivity.this);    //进度条，在下载的时候实时更新进度，提高用户友好度
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressDialog.setTitle("正在下载");
-        progressDialog.setMessage("请稍候...");
+        progressDialog.setTitle(getResources().getString(R.string.downloading));
+        progressDialog.setMessage(getResources().getString(R.string.wait));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setProgress(0);
         progressDialog.show();

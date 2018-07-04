@@ -110,4 +110,14 @@
         android:text="@string/confirm"
         android:onClick="onTapConfirm"
         android:background="@drawable/selector_button_login"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        style="@style/TextWrapLight"
+        android:layout_marginTop="16dp"
+        android:text="@string/codereset_warn2"/>
+
 </LinearLayout>

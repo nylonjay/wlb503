@@ -17,6 +17,7 @@ import com.bankscene.bes.welllinkbank.activity.Webview.Html5Activity;
 import com.bankscene.bes.welllinkbank.adapter.GridViewAdapter;
 import com.bankscene.bes.welllinkbank.adapter.ViewPagerAdapter;
 import com.bankscene.bes.welllinkbank.biz.AdvertiseBiz;
+import com.bankscene.bes.welllinkbank.biz.FinanceMainBiz;
 import com.bankscene.bes.welllinkbank.biz.MenuBiz;
 import com.bankscene.bes.welllinkbank.biz.MessageEvent;
 import com.bankscene.bes.welllinkbank.common.CommDictAction;
@@ -25,6 +26,7 @@ import com.bankscene.bes.welllinkbank.core.BaseApplication;
 import com.bankscene.bes.welllinkbank.core.BaseFragment;
 import com.bankscene.bes.welllinkbank.core.WebViewActivity;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
+import com.bankscene.bes.welllinkbank.db1.Data;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
 import com.bankscene.bes.welllinkbank.view.translucent.ActionBarClickListener;
 import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
@@ -263,11 +265,61 @@ public class HomeFragment extends BaseFragment{
     }
 
     private void iniBanner2() {
+        if (null!=gridDataList){
+            gridDataList.clear();
+        }else {
+            gridDataList=new ArrayList<>();
+        }
 //        gridDataList = new FinanceMainBiz(activity).getFinanceData();
         Trace.e(TAG,"开始初始化数据");
+        FinanceMainBiz fbz=new FinanceMainBiz(activity);
+
+        Object[] icons=fbz.getAllIcons();
+        Object[] names=fbz.GetAllMenuNames();
+        if (DBHelper.getDataByKey(DataKey.user_index).equals("")){//第一次初始化
+            int menuLength=icons.length;
+            for (int i=0;i<menuLength;i++){
+                MenuBiz menuBiz=new MenuBiz();
+                menuBiz.setIcon_Rsid((Integer) icons[i]);
+                menuBiz.setMenu_Name((Integer) names[i]);
+                menuBiz.setIs_Checked(true);
+                gridDataList.add(menuBiz);
+            }
+
+            Type type=new TypeToken<List<MenuBiz>>(){}.getType();
+            String jsonListTest=gson.toJson(gridDataList, type);
+            DBHelper.insert(new Data(DataKey.user_index,jsonListTest));
+
+        }else {
+            String jsonListTest= DBHelper.getDataByKey(DataKey.user_index);
+            Type type1=new TypeToken<List<MenuBiz>>(){}.getType();
+            ArrayList<MenuBiz> Datalist=gson.fromJson(jsonListTest, type1);
+            for (int i=0;i<Datalist.size();i++){
+                if (Datalist.get(i).is_Checked()){
+                    gridDataList.add(Datalist.get(i));
+                }
+            }
+//            Type type=new TypeToken<List<MenuBiz>>(){}.getType();
+//            String jsonListTest1=gson.toJson(Datalist, type);
+//            DBHelper.insert(new Data(DataKey.user_index,jsonListTest1));
+        }
+        MenuBiz menuBiz=new MenuBiz();
+        menuBiz.setIs_Checked(true);
+        menuBiz.setIcon_Rsid(R.mipmap.wlb_icon_custom);
+        menuBiz.setMenu_Name(R.string.custom);
+        gridDataList.add(menuBiz);
+
+
+    }
+    private void RefeshBanner2() {
+        if (null!=gridDataList){
+            gridDataList.clear();
+        }else {
+            gridDataList=new ArrayList<>();
+        }
+//        gridDataList = new FinanceMainBiz(activity).getFinanceData();
         gridDataList=new ArrayList<>();
         String jsonListTest= DBHelper.getDataByKey(DataKey.user_index);
-        Trace.e("userindex=====",jsonListTest);
         Type type1=new TypeToken<List<MenuBiz>>(){}.getType();
         ArrayList<MenuBiz> DataList=gson.fromJson(jsonListTest, type1);
         for (int i=0;i<DataList.size();i++){
@@ -275,12 +327,24 @@ public class HomeFragment extends BaseFragment{
                 gridDataList.add(DataList.get(i));
             }
         }
-        Trace.e("mbs.size==",""+DataList.size());
+
+//        FinanceMainBiz fbz=new FinanceMainBiz(activity);
+//        Object[] icons=fbz.getAllIcons();
+//        Object[] names=fbz.GetAllMenuNames();
+//        int menuLength=icons.length;
+//        for (int i=0;i<menuLength;i++){
+//            MenuBiz menuBiz=new MenuBiz();
+//            menuBiz.setIcon_Rsid((Integer) icons[i]);
+//            menuBiz.setMenu_Name((Integer) names[i]);
+//            menuBiz.setIs_Checked(true);
+//            gridDataList.add(menuBiz);
+//        }
+//        Trace.e("mbs.size==",""+DataList.size());
         MenuBiz menuBiz=new MenuBiz();
         menuBiz.setIs_Checked(true);
         menuBiz.setIcon_Rsid(R.mipmap.wlb_icon_custom);
         menuBiz.setMenu_Name(R.string.custom);
-
+        gridDataList.add(menuBiz);
 //        if (!TextUtils.isEmpty(StockFlag)){
 //            MenuBiz sq=new MenuBiz();
 //            sq.setIs_Checked(true);
@@ -288,9 +352,9 @@ public class HomeFragment extends BaseFragment{
 //            sq.setMenu_Name(R.string.shares_query);
 //            gridDataList.add(sq);
 //        }
-        gridDataList.add(menuBiz);
 
     }
+
     @Subscribe(threadMode = ThreadMode.MainThread)
     public void onMessageEventMainThread(MessageEvent messageEvent){
         Trace.e(TAG,"MAIN_messageEvent==="+messageEvent.getMessage());
@@ -299,7 +363,7 @@ public class HomeFragment extends BaseFragment{
                 Trace.e(TAG,"EVENT_RELOAD_FRAGMENTS");
                 mLlDot.removeAllViews();
                 curIndex=0;
-                iniBanner2();
+                RefeshBanner2();
                 iniViewPager();
                 break;
             case QUERYLOGINSTATE:

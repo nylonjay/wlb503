@@ -286,6 +286,7 @@
     <string name="enter_opt">請輸入動態驗證碼</string>
     <string name="enter_vfc">請輸入圖形驗證碼</string>
     <string name="insert_8_atleast">請最少輸入8位密碼</string>
+    <string name="not_same_pwd">新密碼不一致</string>
     <string name="no_same_type">密碼不能為純數字或純字母</string>
     <string name="confim2logout">是否放棄密碼修改？用戶將登出</string>
     <string name="trade_code_reset">修改交易密碼</string>
@@ -309,4 +310,8 @@
     <string name="ssl_error">當前網絡存在風險，請檢查后再使用。</string>
     <string name="plz_update">請升級App版本至:</string>
     <string name="stock_closed">您還未開通股票轉賬</string>
+    <string name="codereset_warn">溫馨提示:登錄密碼必須為非純數字或非純字母的8位密碼</string>
+    <string name="downloading">下載中...</string>
+    <string name="codereset_warn2" >溫馨提示:交易密碼必須為6位英文或者字母</string>
+    <string name="update_failed">更新失敗</string>
 </resources>

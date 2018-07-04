@@ -32,6 +32,7 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import com.bankscene.bes.welllinkbank.R;
+import com.bankscene.bes.welllinkbank.Util.ToastUtils;
 import com.bankscene.bes.welllinkbank.Util.Trace;
 import com.bankscene.bes.welllinkbank.biz.FinanceMainBiz;
 import com.bankscene.bes.welllinkbank.biz.MenuBiz;
@@ -116,7 +117,8 @@ public class BaseApplication extends Application {
 
         initOkHttp(this);
         DBHelper.getInstance().init(this);
-        iniMenuList();
+        ToastUtils.init(true);
+//        iniMenuList();
         DBHelper.insert(new Data(DataKey.isfirstLogin,"true"));
 //        if (TextUtils.isEmpty(DBHelper.getDataByKey(DataKey.language))){
 //            //默认使用中文
@@ -220,10 +222,10 @@ public class BaseApplication extends Application {
 
 
     private void iniMenuList() {
-        Trace.e("Application","iniMenuList");
         Gson gson=new Gson();
         String jsonListTest= DBHelper.getDataByKey(DataKey.user_index)+"";
         if (TextUtils.isEmpty(jsonListTest)){
+            Trace.e("Application","iniMenuList");
             ArrayList<MenuBiz> mbs=new ArrayList<>();
             FinanceMainBiz fbz=new FinanceMainBiz(this);
             Object[] icons=fbz.getAllIcons();

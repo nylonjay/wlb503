@@ -9,8 +9,17 @@ public class Status implements Serializable{
     private String Mkey;
     private String Mtitle;
     private String Mimg;
+    private String Mimgurl;
     private String Mcontent;
     private static final long serialVersionUID = 12L;
+
+    public String getMimgurl() {
+        return Mimgurl;
+    }
+
+    public void setMimgurl(String mimgurl) {
+        Mimgurl = mimgurl;
+    }
 
     public String getMkey() {
         return Mkey;

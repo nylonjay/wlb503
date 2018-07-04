@@ -224,7 +224,7 @@
     <string name="share_code">Share QR Codes to your friends</string>
     <string name="tel">8796 5388</string>
     <string name="ABOUT_US">About Us</string>
-    <string name="others">others</string>
+    <string name="others">Others</string>
     <string name="className">Class Name</string>
     <string name="wlb_hompage"> Official Website </string>
     <string name="UPLOAD_SUCCEED">Upload Succeeded</string>
@@ -249,11 +249,12 @@
     <string name="enter_opt">Please enter a dynamic password</string>
     <string name="enter_vfc">Please enter the graphic verification code</string>
     <string name="insert_8_atleast">Please enter a minimum of 8 bit passwords</string>
+    <string name="not_same_pwd">New Password not same</string>
     <string name="no_same_type">A password can not contain only numbers or only letters</string>
 
     <string name="confim2logout">Whether to give up password modification？The user will log out</string>
     <string name="trade_code_reset">Modify Payment Password</string>
-    <string name="insert_6_atleast">insert minimum of 6 bit passwords</string>
+    <string name="insert_6_atleast">Insert minimum of 6 bit passwords</string>
     <string name="used_trade_code">Original Payment Password</string>
     <string name="new_trade_code">New Payment Password</string>
     <string name="confirm_trade_newcode">Confirm New Payment Password</string>
@@ -272,9 +273,14 @@
 
     <string name="details">Details</string>
     <string name="sync_login">Dynamics Code</string>
-    <string name="enter_dynamic">enter Dynamic Code</string>
+    <string name="enter_dynamic">Enter Dynamic Code</string>
 
     <string name="ssl_error">The current network has a risk，Please try again after checking.</string>
     <string name="plz_update">Please update App Version to:</string>
     <string name="stock_closed">You have not yet opened the stock transfer</string>
+
+    <string name="codereset_warn">Warm reminder: the login password must be 8 digit password, which can not contain only numbers or only letters</string>
+    <string name="downloading">Downloading...</string>
+    <string name="codereset_warn2" >Warm reminder: the transaction password must be 6 digit numbers or letters</string>
+    <string name="update_failed">Update Failed</string>
 </resources>

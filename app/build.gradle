@@ -8,8 +8,8 @@ android {
         applicationId "com.bankscene.bes.welllinkbank"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 5
-        versionName "1.04"
+        versionCode 10
+        versionName "1.09"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -72,6 +72,7 @@ dependencies {
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     compile 'it.sephiroth.android.library.imagezoom:library:1.0.4'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+//    compile  'com.github.barteksc:android-pdf-viewer:2.6.1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

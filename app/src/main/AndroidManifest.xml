@@ -142,6 +142,7 @@
             android:launchMode="singleInstance"></activity>
         <activity android:name=".activity.Webview.Html5Activity"/>
         <activity android:name=".activity.MenuList"/>
+        <activity android:name=".activity.pdf.PDFActivity"/>
     </application>
 
 </manifest>

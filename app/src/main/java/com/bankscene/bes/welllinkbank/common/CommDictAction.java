@@ -32,4 +32,6 @@ public class CommDictAction {
     public static final String RefreshTimeStamp=Config.TRANS_IP_PORT+"GetTimestamp.do";
     public static final String QryPublicKey=Config.TRANS_IP_PORT+"QryPublicKey.do";
     public static final String GetVersionInfo=Config.HOST_ADDRESS+"/static/androidApk/androidApkUpdInfo.json";
+    public static final String DownLoadPDF=Config.TRANS_IP_PORT+"DownMonthStatement.do?_ChannelId=PMBS";
+    public static final String pdfName="Monthlystatement.pdf";
 }

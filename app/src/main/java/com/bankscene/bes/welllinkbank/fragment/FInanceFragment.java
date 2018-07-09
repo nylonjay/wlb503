@@ -210,6 +210,9 @@ public class FInanceFragment extends BaseFragment implements View.OnClickListene
                             in   =new Intent(activity, WebViewActivity.class);
                             in.putExtra("url", Constant.STOCK_TRANS);
                         }
+                    }else if (menuName==R.string.download_monthy_list){
+                        in   =new Intent(activity, WebViewActivity.class);
+                        in.putExtra("url", Constant.MY_LOANS);
                     }
                     if (null!=in)
                         startActivity(in);

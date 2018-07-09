@@ -201,6 +201,9 @@ public class HomeFragment extends BaseFragment{
                             in   =new Intent(activity, WebViewActivity.class);
                             in.putExtra("url", Constant.STOCK_TRANS);
                         }
+                    }else if (menuName==R.string.download_monthy_list){
+                        in   =new Intent(activity, WebViewActivity.class);
+                        in.putExtra("url", Constant.MONTHY_STATEMENT);
                     }
                     if (null!=in)
                         startActivity(in);

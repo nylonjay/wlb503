@@ -3,6 +3,7 @@ package com.bankscene.bes.welllinkbank.core;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,9 @@ import android.net.http.SslCertificate;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -28,6 +32,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.bankscene.bes.welllinkbank.R;
 import com.bankscene.bes.welllinkbank.Util.Trace;
@@ -36,6 +41,8 @@ import com.bankscene.bes.welllinkbank.activity.LoginTablayoutActivity;
 import com.bankscene.bes.welllinkbank.activity.PassWordDialogActivity;
 import com.bankscene.bes.welllinkbank.activity.mine.password.CodeReset2;
 import com.bankscene.bes.welllinkbank.activity.mine.password.TradeCodeReset;
+import com.bankscene.bes.welllinkbank.activity.pdf.PDFActivity;
+import com.bankscene.bes.welllinkbank.common.CommDictAction;
 import com.bankscene.bes.welllinkbank.common.Config;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
 import com.bankscene.bes.welllinkbank.db1.DataKey;
@@ -50,6 +57,8 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 
@@ -76,6 +85,7 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
     @BindView(R.id.re_content)
     RelativeLayout re_content;
     private final int SHOW_KEYBOARD = 1;
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -331,9 +341,44 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
             return DBHelper.getDataByKey(DataKey.language);
 
         }
+        @JavascriptInterface
+        public void DownLoadPDF(String account,String date){
+            downFile(account,date);
+        }
 
     }
+    void downFile(String account,String date) {
+        progressDialog = new ProgressDialog(WebViewActivity.this);    //进度条，在下载的时候实时更新进度，提高用户友好度
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.setTitle(getResources().getString(R.string.downloading));
+        progressDialog.setMessage(getResources().getString(R.string.wait));
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setProgress(0);
+        progressDialog.show();
+//        updateInfoService.downLoadFile(url, progressDialog,handler1);
+        HashMap params=new HashMap();
+        params.put("_ChannelId","PMBS");
+//        params.put()
+        downloadPDF(progressDialog,handler1, CommDictAction.DownLoadPDF,params);
+    }
 
+    Handler handler1=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 2:
+                    String url= (String) msg.obj;
+//                    noticeUtils.showNotice(getResources().getString(R.string.download_succeed));
+                    Intent in=new Intent(WebViewActivity.this, PDFActivity.class);
+                    in.putExtra("pdf",url);
+                    startActivity(in);
+                    break;
+                case 404:
+                    noticeUtils.showNotice(getResources().getString(R.string.download_failed));
+                    break;
+            }
+        }
+    };
     @Override
     protected void setListener() {
     }

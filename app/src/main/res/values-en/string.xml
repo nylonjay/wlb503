@@ -112,7 +112,7 @@
     <string name="reimbursement_enquiries">Reimbursement Inquiry</string>
     <string name="transfer">Transfer Account</string>
     <string name="personal_info">Personal Information</string>
-    <string name="code_setting">Password setting</string>
+    <string name="code_setting">Password Setting</string>
     <string name="language">語言/Language</string>
     <string name="client_service">Customer Services</string>
     <string name="about_us">About Us</string>
@@ -222,7 +222,7 @@
     <string name="visit_eb">Visit Our Official Website</string>
     <string name="clause">Terms and Conditions</string>
     <string name="share_code">Share QR Codes to your friends</string>
-    <string name="tel">8796 5388</string>
+    <string name="tel">(853)2878 5222</string>
     <string name="ABOUT_US">About Us</string>
     <string name="others">Others</string>
     <string name="className">Class Name</string>
@@ -241,7 +241,7 @@
     <string name="get_cell_code">Getting SMS code</string>
     <string name="recapture">Recapture</string>
 
-    <string name="cell_verify_login">SMS authentication code login</string>
+    <string name="cell_verify_login">SMS Code Login</string>
     <string name="sms_verify">Please enter SMS authentication code</string>
 
     <string name="please_enter_transcode">Please enter the transaction password</string>
@@ -283,4 +283,8 @@
     <string name="downloading">Downloading...</string>
     <string name="codereset_warn2" >Warm reminder: the transaction password must be 6 digit numbers or letters</string>
     <string name="update_failed">Update Failed</string>
+    <string name="download_monthy_list">Monthly StateMent</string>
+    <string name="download_failed">Download failed</string>
+    <string name="download_succeed">Download succeed</string>
+    <string name="monthy_statement">Monthly statement</string>
 </resources>

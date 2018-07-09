@@ -24,6 +24,7 @@ public class Constant {
     public static final String APPLY_TRANSFER=PAGE_HEAD+"/ApplyTransfer/ApplyTransferUnRegisterInput";//汇款.
     public static final String testdwdw=Config.HOST_ADDRESS+"/account/myaccountList";
     public static final String MY_LOANS=PAGE_HEAD+"/loan/loanRecord";
+    public static final String MONTHY_STATEMENT=PAGE_HEAD+"queryExchange/getMonthStatement";
 
 
     public static final String EVENT_RELOAD_FRAGMENTS="EVENT_RELOAD_FRAGMENTS";

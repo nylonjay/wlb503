@@ -454,4 +454,42 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
 
     }
 
+
+    protected void downloadPDF(final ProgressDialog downloadProgress, final Handler handler, String fileURL,HashMap params) {
+
+        final HttpInfo info = HttpInfo.Builder()
+                .addParams(params)
+//                .setRequestType(RequestType.POST)
+                .addDownloadFile(fileURL,CommDictAction.pdfName, new ProgressCallback() {
+                    @Override
+                    public void onProgressMain(int percent, long bytesWritten, long contentLength, boolean done) {
+                        downloadProgress.setProgress(percent);
+                    }
+
+                    @Override
+                    public void onResponseMain(String filePath, HttpInfo info) {
+                        downloadProgress.cancel();
+                        Trace.e("filename==",filePath+"");
+                        Trace.e("info===",info.getRetDetail()+"");
+//                        ToastUtils.showShortToast(info.getRetDetail());
+
+                        if (info.getRetDetail().equals("连接中断")){
+                            handler.sendEmptyMessage(404);
+                        }else {
+                            Message msg=new Message();
+                            msg.what=2;
+                            msg.obj=info.getRetDetail();
+                            handler.sendMessage(msg);
+                        }
+
+                    }
+                })
+                .build();
+        OkHttpUtil.Builder()
+                .setReadTimeout(120)
+                .build(requestTag)//绑定请求标识
+                .doDownloadFileAsync(info);
+
+    }
+
 }

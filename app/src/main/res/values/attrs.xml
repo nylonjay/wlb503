@@ -19,7 +19,15 @@
         <attr name="spinner_tyle" format="string" />
         <attr name="title" format="string"/>
     </declare-styleable>
+    <declare-styleable name="PDFViewPager">
+        <attr name="assetFileName" format="string" /> <!-- Load PDF from Asset -->
+        <attr name="pdfUrl" format="string" /> <!-- Load PDF from remote URL -->
+        <attr name="scale" format="float" /> <!-- Set initial scale for PDF -->
+    </declare-styleable>
 
+    <declare-styleable name="LegacyPDFView">
+
+    </declare-styleable>
 
     <attr name="toolbar" format="reference"/>
     <attr name="album.dropdown.title.color" format="reference|color"/>

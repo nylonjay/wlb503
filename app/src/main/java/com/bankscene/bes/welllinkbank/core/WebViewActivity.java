@@ -41,7 +41,7 @@ import com.bankscene.bes.welllinkbank.activity.LoginTablayoutActivity;
 import com.bankscene.bes.welllinkbank.activity.PassWordDialogActivity;
 import com.bankscene.bes.welllinkbank.activity.mine.password.CodeReset2;
 import com.bankscene.bes.welllinkbank.activity.mine.password.TradeCodeReset;
-import com.bankscene.bes.welllinkbank.activity.pdf.PDFActivity;
+import com.bankscene.bes.welllinkbank.activity.pdf.AssetOnSDActivity;
 import com.bankscene.bes.welllinkbank.common.CommDictAction;
 import com.bankscene.bes.welllinkbank.common.Config;
 import com.bankscene.bes.welllinkbank.db1.DBHelper;
@@ -369,7 +369,7 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
                 case 2:
                     String url= (String) msg.obj;
 //                    noticeUtils.showNotice(getResources().getString(R.string.download_succeed));
-                    Intent in=new Intent(WebViewActivity.this, PDFActivity.class);
+                    Intent in=new Intent(WebViewActivity.this, AssetOnSDActivity.class);
                     in.putExtra("pdf",url);
                     startActivity(in);
                     break;

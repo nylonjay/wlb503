@@ -183,6 +183,9 @@ public class SMSLogin extends BaseTabFragment implements View.OnClickListener{
         pwdedit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    GetTimeStampAndKeyWithoutEditor();
+                }
                 if (hasFocus&&clicked2){
                     Trace.e("onfocus","pwd");
                     keyBoardDialogUtils=new KeyBoardDialogUtils(activity);
@@ -195,7 +198,7 @@ public class SMSLogin extends BaseTabFragment implements View.OnClickListener{
             @Override
             public void onClick(View v) {
                 Trace.e("onclick","pwd");
-                GetTimeStampAndKeyWithoutEditor();
+
                 keyBoardDialogUtils=new KeyBoardDialogUtils(activity);
                 keyBoardDialogUtils.hideSystemSofeKeyboard(pwdedit);
                 keyBoardDialogUtils.show(pwdedit);

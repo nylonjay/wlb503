@@ -176,6 +176,9 @@ public class DynamicLogin extends BaseTabFragment implements View.OnClickListene
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Trace.e("focusechanged",hasFocus+"");
+                if (hasFocus){
+                    GetTimeStampAndKeyWithoutEditor();
+                }
                 if (hasFocus&&clicked){
                     Trace.e("onfocus","pwd");
                     keyBoardDialogUtils=new KeyBoardDialogUtils(activity);
@@ -190,7 +193,6 @@ public class DynamicLogin extends BaseTabFragment implements View.OnClickListene
             public void onClick(View v) {
                 Trace.e("onclick","pwd");
 
-                GetTimeStampAndKeyWithoutEditor();
                 keyBoardDialogUtils=new KeyBoardDialogUtils(activity);
                 keyBoardDialogUtils.hideSystemSofeKeyboard(pwdedit);
                 keyBoardDialogUtils.show(pwdedit);

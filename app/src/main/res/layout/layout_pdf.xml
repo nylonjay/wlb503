@@ -7,19 +7,19 @@
     android:orientation="vertical"
     android:background="@color/background"
     tools:context="com.bankscene.bes.welllinkbank.activity.mine.PersonInfo">
-    <com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar
-        android:id="@+id/actionBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:type="1"
-        />
+    <!--<com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar-->
+        <!--android:id="@+id/actionBar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:type="1"-->
+        <!--/>-->
     <!--<com.github.barteksc.pdfviewer.PDFView-->
         <!--android:id="@+id/pdfView"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent" />-->
-    <RelativeLayout
-        android:id="@+id/pdfView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/pdfView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
 
 </LinearLayout>

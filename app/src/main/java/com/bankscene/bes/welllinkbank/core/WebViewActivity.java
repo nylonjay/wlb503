@@ -343,6 +343,7 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
         }
         @JavascriptInterface
         public void DownLoadPDF(String account,String date){
+            Trace.e("acccc===",account+"///////////"+"date");
             downFile(account,date);
         }
 
@@ -359,7 +360,8 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
         HashMap params=new HashMap();
         params.put("_ChannelId","PMBS");
 //        params.put()
-        downloadPDF(progressDialog,handler1, CommDictAction.DownLoadPDF,params);
+        String parameters="&"+"account="+account+"&"+"date="+date;
+        downloadPDF(progressDialog,handler1, CommDictAction.DownLoadPDF+parameters,params);
     }
 
     Handler handler1=new Handler(){

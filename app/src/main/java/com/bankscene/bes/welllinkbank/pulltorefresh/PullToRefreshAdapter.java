@@ -17,6 +17,8 @@ import com.bankscene.bes.welllinkbank.Util.ToastUtils;
 import com.bankscene.bes.welllinkbank.Util.Trace;
 import com.bankscene.bes.welllinkbank.adapter.GlideImageLoader;
 import com.bankscene.bes.welllinkbank.core.BaseApplication;
+import com.bankscene.bes.welllinkbank.db1.DBHelper;
+import com.bankscene.bes.welllinkbank.db1.DataKey;
 import com.bankscene.bes.welllinkbank.pulltorefresh.entity.Status;
 import com.bankscene.bes.welllinkbank.pulltorefresh.util.SpannableStringUtils;
 import com.bankscene.bes.welllinkbank.pulltorefresh.util.Utils;
@@ -66,9 +68,16 @@ public class PullToRefreshAdapter extends BaseQuickAdapter<Status, BaseViewHolde
         }else {
             new GlideImageLoader().displayImage(BaseApplication.getInstance(),item.getMimgurl(),img);
         }
-        helper.setText(R.id.title,item.getMtitle());
-        String msg=item.getMcontent();
-        ((TextView) helper.getView(R.id.info)).setText(msg);
+        if ("zh".equals(DBHelper.getDataByKey(DataKey.language))){
+            helper.setText(R.id.title,item.getMtitle());
+            String msg=item.getMcontent();
+            ((TextView) helper.getView(R.id.info)).setText(msg);
+        }else {
+            helper.setText(R.id.title,item.getMengtitle());
+            String msg=item.getMengcontent();
+            ((TextView) helper.getView(R.id.info)).setText(msg);
+        }
+
         //        ( (TextView)helper.getView(R.id.info)).setText(SpannableStringUtils.getBuilder(msg).append("landscapes and nedes").setClickSpan(clickableSpan).create());
 //        ( (TextView)helper.getView(R.id.tweetDate)).setMovementMethod(LinkMovementMethod.getInstance());
     }

@@ -167,8 +167,14 @@ public class NoticeFragment extends BaseFragment{
                 Status status= (Status) adapter.getItem(position);
                 Intent in=new Intent(activity, NoticeDetail.class);
 //                in.putExtra("key",key);
-                in.putExtra("title",status.getMtitle()+"");
-                in.putExtra("content",status.getMcontent()+"");
+                if ("zh".equals(DBHelper.getDataByKey(DataKey.language))){
+                    in.putExtra("title",status.getMtitle()+"");
+                    in.putExtra("content",status.getMcontent()+"");
+                }else {
+                    in.putExtra("title",status.getMengtitle()+"");
+                    in.putExtra("content",status.getMengcontent()+"");
+                }
+
                 startActivity(in);
             }
         });

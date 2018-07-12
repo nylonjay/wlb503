@@ -11,6 +11,25 @@ public class Status implements Serializable{
     private String Mimg;
     private String Mimgurl;
     private String Mcontent;
+    private String Mengtitle;
+    private String Mengcontent;
+
+    public String getMengtitle() {
+        return Mengtitle;
+    }
+
+    public void setMengtitle(String mengtitle) {
+        Mengtitle = mengtitle;
+    }
+
+    public String getMengcontent() {
+        return Mengcontent;
+    }
+
+    public void setMengcontent(String mengcontent) {
+        Mengcontent = mengcontent;
+    }
+
     private static final long serialVersionUID = 12L;
 
     public String getMimgurl() {

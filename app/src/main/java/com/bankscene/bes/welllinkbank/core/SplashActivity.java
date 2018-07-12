@@ -322,6 +322,11 @@ public class SplashActivity extends HttpActivity implements ActivityCompat.OnReq
     private void QueryNoticeInfo() {
         Map params=new HashMap();
         params.put("_ChannelId","PMBS");
+        if ("zh".equals(DBHelper.getDataByKey(DataKey.language))){
+            params.put("_locale","zh_TW");
+        }else {
+            params.put("_locale","en_US");
+        }
         setProgressDisplay(false);
         doHttpAsyncWhioutDialog(HttpInfo.Builder()
                         .addHead("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")

@@ -314,7 +314,7 @@
     <string name="downloading">下載中...</string>
     <string name="codereset_warn2" >溫馨提示:交易密碼必須為6位数字或者字母</string>
     <string name="update_failed">更新失敗</string>
-    <string name="download_failed">下載失敗</string>
+    <string name="download_failed">未查詢到月結單，請與銀行聯係。</string>
     <string name="download_succeed">下載成功</string>
     <string name="download_monthy_list">下載月結單</string>
     <string name="monthy_statement">月結單</string>

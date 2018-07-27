@@ -284,7 +284,7 @@
     <string name="codereset_warn2" >Warm reminder: the transaction password must be 6 digit numbers or letters</string>
     <string name="update_failed">Update Failed</string>
     <string name="download_monthy_list">Monthly StateMent</string>
-    <string name="download_failed">Download failed</string>
+    <string name="download_failed">Did not find a monthly statement, please contact the bank.</string>
     <string name="download_succeed">Download succeed</string>
     <string name="monthy_statement">Monthly statement</string>
 </resources>

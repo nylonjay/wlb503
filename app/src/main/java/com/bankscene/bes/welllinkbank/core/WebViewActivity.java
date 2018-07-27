@@ -243,7 +243,7 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
 //                super.onReceivedError(view, request, error);
                 Trace.e("error","235");
-                actionBar.setVisibility(View.GONE);
+//                actionBar.setVisibility(View.GONE);
                 setStatusBarColor(WebViewActivity.this,R.color.error_404);
                 findViewById(R.id.ll_error).setVisibility(View.VISIBLE);
             }
@@ -360,7 +360,8 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
         HashMap params=new HashMap();
         params.put("_ChannelId","PMBS");
 //        params.put()
-        String parameters="&"+"account="+account+"&"+"date="+date;
+        account="300005979213";
+        String parameters="&"+"acctNo="+account+"&"+"month="+date;
         downloadPDF(progressDialog,handler1, CommDictAction.DownLoadPDF+parameters,params);
     }
 

@@ -259,6 +259,7 @@ public class PersonInfo extends HttpActivity {
                             file.mkdirs();
                         }
                         File f= scalFile(new File(path),target);
+//                        File f=comp(path,target);
                         UploadBase64(f);
                     }
                 }

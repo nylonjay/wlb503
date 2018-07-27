@@ -28,7 +28,7 @@
     相机权限
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 震动 -->
-    <!--<uses-permission android:name="android.permission.VIBRATE" />-->
+    <uses-permission android:name="android.permission.VIBRATE" />
     <!--&lt;!&ndash; 闪光灯 &ndash;&gt;-->
     <!--<uses-permission android:name="android.permission.FLASHLIGHT" />-->
     <!--&lt;!&ndash; 获取精确的位置 &ndash;&gt;-->

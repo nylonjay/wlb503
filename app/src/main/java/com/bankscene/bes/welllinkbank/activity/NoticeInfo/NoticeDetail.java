@@ -3,9 +3,11 @@ package com.bankscene.bes.welllinkbank.activity.NoticeInfo;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bankscene.bes.welllinkbank.R;
+import com.bankscene.bes.welllinkbank.adapter.GlideImageLoader;
 import com.bankscene.bes.welllinkbank.common.CommDictAction;
 import com.bankscene.bes.welllinkbank.core.HttpActivity;
 import com.bankscene.bes.welllinkbank.pulltorefresh.entity.Status;
@@ -33,8 +35,8 @@ public class NoticeDetail extends HttpActivity {
     TranslucentActionBar actionBar;
     @BindView(R.id.tv_title)
     TextView tv_title;
-//    @BindView(R.id.iv_main)
-//    ImageView iv_main;
+    @BindView(R.id.iv_main)
+    ImageView iv_main;
     @BindView(R.id.tv_mcontent)
     TextView tv_mcontent;
     List<Status> stas;
@@ -48,16 +50,19 @@ public class NoticeDetail extends HttpActivity {
 //        message.what=1;
 //        message.obj=status;
 //        handler.sendMessage(message);
+        String title=getIntent().getStringExtra("title");
+        String content=getIntent().getStringExtra("content");
+        String url=getIntent().getStringExtra("url");
+        new GlideImageLoader().displayImage(this,url,iv_main);
+        tv_title.setText(title);
+//                        iv_main.setImageBitmap(FileUtil.base64ReturnBitmap(status.getMimg()));
+        tv_mcontent.setText(content);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        String title=getIntent().getStringExtra("title");
-        String content=getIntent().getStringExtra("content");
-        tv_title.setText(title);
-//                        iv_main.setImageBitmap(FileUtil.base64ReturnBitmap(status.getMimg()));
-        tv_mcontent.setText(content);
+
     }
 
     @Override

@@ -312,7 +312,7 @@
     <string name="stock_closed">您還未開通股票轉賬</string>
     <string name="codereset_warn">溫馨提示:登錄密碼必須為非純數字或非純字母的8位密碼</string>
     <string name="downloading">下載中...</string>
-    <string name="codereset_warn2" >溫馨提示:交易密碼必須為6位英文或者字母</string>
+    <string name="codereset_warn2" >溫馨提示:交易密碼必須為6位数字或者字母</string>
     <string name="update_failed">更新失敗</string>
     <string name="download_failed">下載失敗</string>
     <string name="download_succeed">下載成功</string>

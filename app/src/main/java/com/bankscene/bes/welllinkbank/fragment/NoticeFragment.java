@@ -174,7 +174,7 @@ public class NoticeFragment extends BaseFragment{
                     in.putExtra("title",status.getMengtitle()+"");
                     in.putExtra("content",status.getMengcontent()+"");
                 }
-
+                    in.putExtra("url",status.getMimgurl());
                 startActivity(in);
             }
         });

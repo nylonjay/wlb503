@@ -3,10 +3,9 @@
     android:horizontalGap="1%p"
     android:keyHeight="@dimen/keyboard_key_height"
     android:keyWidth="10%p"
-
     android:verticalGap="4dp">
 
-    <Row>
+    <Row >
         <Key
             android:codes="49"
             android:keyEdgeFlags="left"

@@ -2,12 +2,14 @@ package com.kh.keyboard;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.Service;
 import android.graphics.drawable.Drawable;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Trace;
+import android.os.Vibrator;
 import android.text.Editable;
 import android.text.InputType;
 import android.util.Log;
@@ -15,7 +17,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.PopupWindow;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
+import java.util.regex.Pattern;
 
 
 public class KhKeyboardView {
@@ -48,7 +54,6 @@ public class KhKeyboardView {
         mSymbolKeyboard = new Keyboard(mContext, R.xml.keyboard_symbol);
         mNumberView = (KeyboardView) parentView.findViewById(R.id.keyboard_view);
         mLetterView = (KeyboardView) parentView.findViewById(R.id.keyboard_view_2);
-
         mNumberView.setKeyboard(mNumberKeyboard);
         mNumberView.setEnabled(true);
         mNumberView.setPreviewEnabled(false);
@@ -131,6 +136,8 @@ public class KhKeyboardView {
                     hideKeyboard();
                 } else {
                     // 输入键盘值
+                    Vibrator vibrator=(Vibrator)mContext.getSystemService(Service.VIBRATOR_SERVICE);
+                    vibrator.vibrate(new long[]{0,50}, -1);
                     editable.insert(start, Character.toString((char) primaryCode));
                 }
             } catch (Exception e) {
@@ -184,11 +191,53 @@ public class KhKeyboardView {
         }
     }
 
+    public static boolean isInteger(String str) {
+        Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
+        return pattern.matcher(str).matches();
+    }
     //  数字-字母,显示字母键盘
     private void showLetterView() {
+        List<Keyboard.Key> keys = mLetterKeyboard.getKeys();
+        List<Keyboard.Key> newkeyList = new ArrayList<Keyboard.Key>();
+        for (Keyboard.Key key : keys) {
+            if (key.label!=null
+                    && isInteger(key.label.toString()
+            )){
+                newkeyList.add(key);
+            }
+        }
+
+        int count = newkeyList.size();
+        List<KeyModel> resultList = new ArrayList<KeyModel>();
+        LinkedList<KeyModel> temp=new LinkedList<KeyModel>();
+        for (int i = 0; i < count; i++) {
+            temp.add(new KeyModel(48 + i, i + ""));
+        }
+
+//        Random random = new Random();
+//        for (int i = 0; i < count; i++) {
+//            int index = random.nextInt(count - i);
+//            KeyModel keyModel = temp.get(index);
+//            newkeyList.get(i).label=keyModel.getLable();
+//            newkeyList.get(i).codes[0]=keyModel.getCode();
+//            temp.remove(index);
+//        }
+        Random rand = new Random();
+        for (int i = 0; i < count; i++) {
+            int num = rand.nextInt(count - i);
+            resultList.add(new KeyModel(temp.get(num).getCode(), temp.get(num)
+                    .getLable()));
+            temp.remove(num);
+        }
+        for (int i = 0; i < newkeyList.size(); i++) {
+            newkeyList.get(i).label = resultList.get(i).getLable();
+            newkeyList.get(i).codes[0] = resultList.get(i).getCode();
+        }
+
         try {
             if (mLetterView != null && mNumberView != null) {
                 isNumber = false;
+                mLetterView.setKeyboard(mLetterKeyboard);
                 mLetterView.setVisibility(View.VISIBLE);
                 mNumberView.setVisibility(View.INVISIBLE);
             }

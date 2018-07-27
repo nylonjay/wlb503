@@ -101,9 +101,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         unbinder = ButterKnife.bind(this);
 
 
-        noticeUtils = new NoticeUtils(this);
-        dialogUtils = new DialogUtils(this);
-        lockUtils = new LockUtils(this);
+            noticeUtils = new NoticeUtils(this);
+            dialogUtils = new DialogUtils(this);
+            lockUtils = new LockUtils(this);
 
 
 

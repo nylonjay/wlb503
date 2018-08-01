@@ -7,6 +7,21 @@
     android:orientation="vertical"
     android:background="@color/background"
     tools:context="com.bankscene.bes.welllinkbank.activity.mine.PersonInfo">
+    <com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:type="1"
+        />
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/ll_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></LinearLayout>
+    <!--<com.bankscene.bes.welllinkbank.activity.pdf.PDFViewPager-->
+        <!--android:id="@+id/pdf_viewpager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
     <!--<com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar-->
         <!--android:id="@+id/actionBar"-->
         <!--android:layout_width="match_parent"-->

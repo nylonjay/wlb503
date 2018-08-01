@@ -65,7 +65,8 @@ public class PDFPagerAdapter extends BasePDFPagerAdapter
         PhotoViewAttacher attacher = new PhotoViewAttacher(iv);
         attacher.setScale(scale.getScale(), scale.getCenterX(), scale.getCenterY(), true);
         attacher.setOnMatrixChangeListener(this);
-
+//        attacher.canZoom();//支持缩放
+        attacher.setZoomable(true);
         attachers.put(position, new WeakReference<PhotoViewAttacher>(attacher));
 
         iv.setImageBitmap(bitmap);

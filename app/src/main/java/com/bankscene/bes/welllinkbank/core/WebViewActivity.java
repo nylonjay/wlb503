@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -239,10 +240,11 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
 
         }
 
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
 //                super.onReceivedError(view, request, error);
-                Trace.e("error","235");
+                Trace.e("error","235"+error.getDescription().toString());
 //                actionBar.setVisibility(View.GONE);
                 setStatusBarColor(WebViewActivity.this,R.color.error_404);
                 findViewById(R.id.ll_error).setVisibility(View.VISIBLE);
@@ -360,7 +362,7 @@ public class WebViewActivity extends HttpActivity implements View.OnClickListene
         HashMap params=new HashMap();
         params.put("_ChannelId","PMBS");
 //        params.put()
-        account="300005979213";
+//        account="300005979213";
         String parameters="&"+"acctNo="+account+"&"+"month="+date;
         downloadPDF(progressDialog,handler1, CommDictAction.DownLoadPDF+parameters,params);
     }

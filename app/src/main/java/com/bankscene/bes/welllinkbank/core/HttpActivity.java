@@ -535,6 +535,7 @@ public class HttpActivity extends ShareActivity implements BaseHandler.CallBack 
 
         final HttpInfo info = HttpInfo.Builder()
                 .addParams(params)
+                .addHead("cookie",DBHelper.getDataByKey(DataKey.cookie))
 //                .setRequestType(RequestType.POST)
                 .addDownloadFile(fileURL,CommDictAction.pdfName, new ProgressCallback() {
                     @Override

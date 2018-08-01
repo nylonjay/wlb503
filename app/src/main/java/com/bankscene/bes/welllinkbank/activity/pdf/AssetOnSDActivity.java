@@ -20,19 +20,37 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bankscene.bes.welllinkbank.R;
+import com.bankscene.bes.welllinkbank.activity.MenuList;
 import com.bankscene.bes.welllinkbank.activity.pdf.adapter.BasePDFPagerAdapter;
 import com.bankscene.bes.welllinkbank.activity.pdf.asset.CopyAsset;
 import com.bankscene.bes.welllinkbank.activity.pdf.asset.CopyAssetThreadImpl;
+import com.bankscene.bes.welllinkbank.biz.MenuBiz;
+import com.bankscene.bes.welllinkbank.biz.MessageEvent;
+import com.bankscene.bes.welllinkbank.core.BaseActivity;
+import com.bankscene.bes.welllinkbank.core.BaseFragment;
+import com.bankscene.bes.welllinkbank.db1.DBHelper;
+import com.bankscene.bes.welllinkbank.db1.Data;
+import com.bankscene.bes.welllinkbank.db1.DataKey;
+import com.bankscene.bes.welllinkbank.view.translucent.ActionBarClickListener;
+import com.bankscene.bes.welllinkbank.view.translucent.TranslucentActionBar;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
+import java.lang.reflect.Type;
+import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 
-public class AssetOnSDActivity extends BaseSampleActivity {
+public class AssetOnSDActivity extends BaseActivity {
     final String[] sampleAssets = {"adobe.pdf", "sample.pdf"};
-
+    LinearLayout ll_contaner;
+    TranslucentActionBar actionBar;
     PDFViewPager pdfViewPager;
     File pdfFolder;
     String path="";
@@ -40,16 +58,20 @@ public class AssetOnSDActivity extends BaseSampleActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setTitle(R.string.asset_on_sd);
-        setContentView(R.layout.layout_pdf);
+//        setContentView(R.layout.layout_pdf);
         path=getIntent().getStringExtra("pdf");
         pdfFolder = Environment.getExternalStorageDirectory();
+        actionBar= (TranslucentActionBar) findViewById(R.id.actionBar);
+        ll_contaner= (LinearLayout) findViewById(R.id.ll_container);
         copyAssetsOnSDCard();
     }
 
     protected void copyAssetsOnSDCard() {
         final Context context = this;
         pdfViewPager = new PDFViewPager(context, getPdfPathOnSDCard());
-        setContentView(pdfViewPager);
+        ll_contaner.addView(pdfViewPager);
+//        rootview.add
+//        setContentView(pdfViewPager);
 //        CopyAsset copyAsset = new CopyAssetThreadImpl(getApplicationContext(), new Handler(), new CopyAsset.Listener() {
 //            @Override
 //            public void success(String assetName, String destinationPath) {
@@ -82,6 +104,29 @@ public class AssetOnSDActivity extends BaseSampleActivity {
         if (pdfViewPager != null) {
             ((BasePDFPagerAdapter) pdfViewPager.getAdapter()).close();
         }
+
+
+    }
+
+    @Override
+    protected void setActionBar() {
+        actionBar.setActionBar(getResources().getString(R.string.monthy_statement), R.string.wlb_arrow_l, "", 0, "", new ActionBarClickListener() {
+            @Override
+            public void onLeftClick() {
+            AssetOnSDActivity.this.finish();
+            }
+
+            @Override
+            public void onRightClick() {
+
+            }
+        });
+        actionBar.setStatusBarHeight();
+    }
+
+    @Override
+    protected int setLayoutId() {
+        return R.layout.layout_pdf;
     }
 
     public static void open(Context context) {
